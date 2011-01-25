@@ -2,6 +2,6 @@
     <!-- Static TF from ax12 to kinect -->
     <node pkg="tf" type="static_transform_publisher" name="kinect_to_ax12_tilt" args="0 0 0.045 0 0 0 ax12_tilt kinect_rgb 10" />
     <!-- Static TF from mounting to ax12 -->
-    <node pkg="tf" type="static_transform_publisher" name="mount_to_ax12_base" args="3.14 0 0.05 0 0 0 top_laser ax12_base 10" />
+    <node pkg="tf" type="static_transform_publisher" name="mount_to_ax12_base" args="3.14 0 0.05 1.51 0 0 top_laser ax12_base 10" />
 </launch>
 
