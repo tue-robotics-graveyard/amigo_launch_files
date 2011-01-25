@@ -1,0 +1,5 @@
+<launch>
+    <include file="$(find amigo_launch_files)/launch/sensors/dynamixel.launch" />
+    <include file="$(find kinect_camera)/launch/kinect_node.launch" />
+</launch>
+
