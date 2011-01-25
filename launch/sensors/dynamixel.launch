@@ -4,4 +4,3 @@
   
   <include file="$(find amigo_launch_files)/launch/sensors/ax12_static_tf_kinect.launch" />
 </launch>
-
