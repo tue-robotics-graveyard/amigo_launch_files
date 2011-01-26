@@ -8,6 +8,7 @@
   <include file="$(find amigo_laser_filter)/start_base_filter.launch" />
 <!-- As demanded by Bas -->
 <!--  <include file="$(find amigo_state_publisher)/start.launch" /> -->
+  <include file="$(find amigo_launch_files)/launch/sensors/kinect.launch" />
 
   <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/hospital_room3.yaml" machine="amigo1"/>
 
