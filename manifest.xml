@@ -8,7 +8,18 @@
   <license>BSD</license>
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/amigo_launch_files</url>
-
+  <depend package="amigo_state_publisher"/>
+  <depend package="amigo_laser"/>
+  <depend package="gmapping"/>
+  <depend package="amigo_msgs"/>
+  <depend package="map_server"/>
+  <depend package="amigo_machine_files"/>
+  <depend package="dynamixel"/>
+  <depend package="amigo_laser_filter"/>
+  <depend package="amigo_base_navigation"/>
+  <depend package="move_base"/>
+  <depend package="amcl"/>
+  <depend package="kinect_camera"/>
 </package>
 
 
