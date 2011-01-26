@@ -6,7 +6,7 @@
   <include file="$(find amigo_launch_files)/launch/sensors/dynamixel.launch" />
   <include file="$(find amigo_launch_files)/launch/sensors/kinect_node.launch" />
 	
-<!--  <node pkg="tf" type="static_transform_publisher" name="kinect_rgb_to_kinect_depth"
-    args="-0.03 0.0 0.0 0.0 0.0 0.0 /kinect_rgb /kinect_depth 10" /> -->
+  <node pkg="tf" type="static_transform_publisher" name="kinect_rgb_to_kinect_depth"
+    args="-0.03 0.0 0.0 0.0 0.0 0.0 /kinect_rgb /kinect_depth 10" machine="amigo3"/>
 </launch>
 
