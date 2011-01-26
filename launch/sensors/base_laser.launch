@@ -1,0 +1,15 @@
+<launch>
+    <include file="$(find amigo_machine_files)/machines/amigo1.machine" />
+    <include file="$(find amigo_machine_files)/machines/amigo2.machine" />
+    <include file="$(find amigo_machine_files)/machines/amigo3.machine" />
+
+  <node pkg="hokuyo_node" type="hokuyo_node" name="hokuyo_node" output="screen" machine="amigo1">
+  <remap from="scan" to="/base_scan"/>
+  <param name="frame_id" value="/base_laser"/>
+  </node>
+  <node name="$(anon dynparam)" pkg="dynamic_reconfigure" type="dynparam" args="set_from_parameters hokuyo_node">
+    <param name="min_ang" type="double" value="-1.5708" />
+    <param name="max_ang" type="double" value="1.5708" />
+  </node>
+</launch>
+
