@@ -17,7 +17,7 @@
   <depend package="dynamixel"/>
   <depend package="amigo_laser_filter"/>
   <depend package="amigo_base_navigation"/>
-  <depend package="amigo_base_controller_position"/>
+  <depend package="amigo_base_controller"/>
   <depend package="move_base"/>
   <depend package="amcl"/>
   <depend package="kinect_camera"/>
