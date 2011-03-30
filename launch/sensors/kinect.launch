@@ -41,7 +41,7 @@
     <!-- Run a VoxelGrid filter to clean NaNs and downsample the data -->
     <node pkg="nodelet" type="nodelet" name="voxel_grid" args="load pcl/VoxelGrid pcl_manager" output="screen" machine="amigo3">
       <remap from="~input" to="/camera/rgb/points" />
-      <remap from="~output" to="/camera/rbg/points_voxelized" />
+      <remap from="~output" to="/camera/rgb/points_voxelized" />
       <rosparam>
         filter_field_name: z
         filter_limit_min: 0.01
