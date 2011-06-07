@@ -2,7 +2,7 @@
 
 
 <!-- ETHERCAT HARDWARE -->
-  <include file="$(find amigo_launch_files/launch/actuators)/all_etherCAT_hardware.launch" />
+  <include file="$(find amigo_launch_files)/launch/actuators/all_etherCAT_hardware.launch" />
   
 
 <!-- INTEGRATION -->
