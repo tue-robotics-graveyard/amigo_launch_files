@@ -4,30 +4,29 @@
     <include file="$(find amigo_machine_files)/machines/amigo3.machine" />
     <include file="$(find amigo_machine_files)/machines/CST64.machine" />
 
-  <include file="$(find amigo_launch_files)/launch/sensors/base_laser.launch" />
-  <include file="$(find amigo_laser_filter)/start_base_filter.launch" />
-<!-- As demanded by Bas -->
-<!--  <include file="$(find amigo_state_publisher)/start.launch" /> -->
+   
+<!-- BASE NAVIGATION -->
+  <!-- loading the map-->	
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/koningshof2.yaml"/>
 
-  <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/hospital_room3.yaml" machine="amigo1"/>
-
-  <node pkg="amcl" type="amcl" respawn="false" name="amcl" output="screen" machine="CST64-eth1"> 
+  <!--localization-->  
+   <node pkg="amcl" type="amcl" respawn="false" name="amcl" output="screen">
   <remap from="scan" to="/base_scan" />
   <!-- Publish scans from best pose at a max of 10 Hz -->
   <param name="base_frame_id" value="base_link"/>
   <param name="odom_model_type" value="omni"/>
-  <param name="odom_alpha5" value="0.1"/><!--0.1-->
+  <param name="odom_alpha5" value="0.2"/><!--0.1-->
   <param name="gui_publish_rate" value="10.0"/>
   <param name="laser_max_beams" value="30"/>
   <param name="min_particles" value="500"/>
-  <param name="max_particles" value="5000"/>
+  <param name="max_particles" value="10000"/>
   <param name="kld_err" value="0.01"/>
   <param name="kld_z" value="0.99"/>
   <param name="odom_alpha1" value="0.6"/><!--0.2-->
-  <param name="odom_alpha2" value="0.2"/><!--0.2-->
+  <param name="odom_alpha2" value="0.6"/><!--0.2-->
   <!-- translation std dev, m -->
-  <param name="odom_alpha3" value="2.8"/><!--0.8-->
-  <param name="odom_alpha4" value="0.2 "/><!--0.2-->
+  <param name="odom_alpha3" value="1.8"/><!--0.8-->
+  <param name="odom_alpha4" value="0.6 "/><!--0.2-->
   <param name="laser_z_hit" value="0.5"/>
   <param name="laser_z_short" value="0.05"/>
   <param name="laser_z_max" value="0.05"/>
@@ -38,30 +37,34 @@
   <param name="laser_model_type" value="likelihood_field"/>
   <!-- <param name="laser_model_type" value="beam"/> -->
   <param name="laser_likelihood_max_dist" value="2.0"/>
-  <param name="update_min_d" value="0.2"/>
-  <param name="update_min_a" value="0.5"/>
+  <param name="update_min_d" value="0.15"/>
+  <param name="update_min_a" value="0.15"/>
   <param name="odom_frame_id" value="/odom"/>
   <param name="resample_interval" value="1"/>
   <param name="transform_tolerance" value="0.1"/>
-  <param name="recovery_alpha_slow" value="0.0"/>
-  <param name="recovery_alpha_fast" value="0.0"/>
-  <param name="initial_pose_x" value="-0.738"/>
-  <param name="initial_pose_y" value="0.964"/>
-  <param name="initial_pose_a" value="0.1"/>
-  <remap from="scan" to="base_scan"/>
-  </node>
-
-  <node name="costmap_node" pkg="costmap_2d" type="costmap_2d_node" machine="CST64-eth1">
+  <param name="recovery_alpha_slow" value="0.2"/>
+  <param name="recovery_alpha_fast" value="0.2"/>
+  <!--
+<param name="initial_pose_x" value="-0.85"/>
+<param name="initial_pose_y" value="0.38"/>
+<param name="initial_pose_a" value="0.1"/>
+-->
+<param name="initial_cov_xx" value="4.0"/>
+<param name="initial_cov_yy" value="4.0"/>
+<param name="initial_cov_aa" value="4.0"/>
+</node>
+  <!--costmap>
+  <node name="costmap_node" pkg="costmap_2d" type="costmap_2d_node" >
     <rosparam file="$(find amigo_base_navigation)/costmap_params.yaml" command="load" ns="costmap" />
-  </node>
+  </node-->
 
-  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen" machine="amigo1">
+  <!--move_base-->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
     <rosparam file="$(find amigo_base_navigation)/costmap_common_params.yaml" command="load" ns="global_costmap" />
     <rosparam file="$(find amigo_base_navigation)/costmap_common_params.yaml" command="load" ns="local_costmap" />
     <rosparam file="$(find amigo_base_navigation)/local_costmap_params.yaml" command="load" />
     <rosparam file="$(find amigo_base_navigation)/global_costmap_params.yaml" command="load" />
     <rosparam file="$(find amigo_base_navigation)/base_local_planner_params.yaml" command="load" />
-    <rosparam file="$(find amigo_base_navigation)/move_base_config.yaml" command="load" ns="move_base"/>
   </node>
 </launch>
 
