@@ -1,0 +1,48 @@
+<launch>
+
+
+<!-- ETHERCAT HARDWARE -->
+  <include file="$(find amigo_launch_files/launch/actuators)/all_etherCAT_hardware.launch" />
+  
+
+<!-- INTEGRATION -->
+  <!-- robot model & integration with low level encoder data-->
+  <include file="$(find amigo_state_publisher)/start.launch" />
+
+<!-- LASER -->
+  <!--sensor (filtering) -->
+  <include file="$(find amigo_laser)/start.launch" />
+
+  <include file="$(find amigo_laser_filter)/start_base_filter.launch" />
+
+<!-- ARMS DELETED BY TIM SINCE NO USABLE TRUNK VERSION EXISTS! -->
+  <!-- arm & gripper control -->
+  <!--<include file="$(find amigo_arm_server)/start.launch" />
+  
+  <include file="$(find amigo_gripper_server)/start.launch" />
+      
+  <include file="$(find amigo_kinematics)/start_both_arms.launch" />-->
+  
+<!-- BATTERY -->
+  <include file="$(find amigo_battery_manager)/start.launch" />
+  
+<!-- EMERGENCY BUTTON -->
+  <include file="$(find amigo_emergency_speakup)/start.launch" />
+  
+<!-- text_to_speech -->
+  <include file="$(find text_to_speech)/start.launch" />
+
+  <!--move_base-->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find amigo_base_navigation)/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find amigo_base_navigation)/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find amigo_base_navigation)/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find amigo_base_navigation)/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find amigo_base_navigation)/base_local_planner_params.yaml" command="load" />
+  </node>
+  
+
+</launch>
+
+
+
