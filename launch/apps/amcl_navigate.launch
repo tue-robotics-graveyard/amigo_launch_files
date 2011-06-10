@@ -7,7 +7,7 @@
    
 <!-- BASE NAVIGATION -->
   <!-- loading the map-->	
-  <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/koningshof2.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/dctlab_empty.yaml"/>
 
   <!--localization-->  
    <node pkg="amcl" type="amcl" respawn="false" name="amcl" output="screen">
