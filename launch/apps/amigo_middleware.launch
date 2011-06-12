@@ -1,0 +1,6 @@
+<launch>
+
+	<include file="$(find amigo_launch_files)/launch/apps/amcl_navigate.launch" />
+	<include file="$(find amigo_launch_files)/launch/apps/arms.launch" />
+	
+</launch>
