@@ -4,7 +4,7 @@
     <include file="$(find amigo_machine_files)/machines/amigo3.machine" />
     <include file="$(find amigo_machine_files)/machines/CST64.machine" />
     
- <include file="$(find amigo_base_navigation/start_amcl.launch"/>
+ <include file="$(find amigo_base_navigation)/start_amcl.launch"/>
 
 </launch>
 
