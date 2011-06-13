@@ -8,5 +8,5 @@
       
   <include file="$(find amigo_kinematics)/start_both_arms.launch" />
   
-  </launch>
+ </launch>
   

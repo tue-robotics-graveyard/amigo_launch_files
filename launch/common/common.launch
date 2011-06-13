@@ -1,9 +1,7 @@
 <launch>
 
-
 <!-- ETHERCAT HARDWARE -->
   <include file="$(find amigo_launch_files)/launch/actuators/all_etherCAT_hardware.launch" />
-  
 
 <!-- INTEGRATION -->
   <!-- robot model & integration with low level encoder data-->
