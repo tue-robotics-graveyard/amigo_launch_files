@@ -1,8 +1,5 @@
 <launch>
 
-	<!-- robot model & integration with low level encoder data-->
-	<include file="$(find amigo_state_publisher)/start.launch" />
-
 	<!-- Navigation -->
 	<include file="$(find amigo_launch_files)/launch/apps/gmapping.launch" />
 	
