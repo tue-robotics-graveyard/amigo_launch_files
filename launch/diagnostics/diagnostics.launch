@@ -1,0 +1,10 @@
+<launch>
+
+  <include file="$(find amigo_diagnostics)/launch/aggregator.launch" />
+  <include file="$(find amigo_diagnostics)/launch/cpu_monitor.launch" />
+  <include file="$(find amigo_diagnostics)/launch/ntp_monitor.launch" />    
+
+</launch>
+
+
+
