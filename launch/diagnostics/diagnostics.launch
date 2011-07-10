@@ -3,6 +3,13 @@
   <include file="$(find amigo_diagnostics)/launch/aggregator.launch" />
   <include file="$(find amigo_diagnostics)/launch/cpu_monitor.launch" />
   <include file="$(find amigo_diagnostics)/launch/ntp_monitor.launch" />    
+  
+  <!-- BATTERY -->
+  <include file="$(find amigo_battery_manager)/start.launch" />
+  
+  <!-- EMERGENCY BUTTON -->
+  <include file="$(find amigo_emergency_speakup)/start.launch" />
+
 
 </launch>
 

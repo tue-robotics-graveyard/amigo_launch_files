@@ -21,12 +21,9 @@
       
   <include file="$(find amigo_kinematics)/start_both_arms.launch" />-->
   
-<!-- BATTERY -->
-  <include file="$(find amigo_battery_manager)/start.launch" />
-  
-<!-- EMERGENCY BUTTON -->
-  <include file="$(find amigo_emergency_speakup)/start.launch" />
-  
+<!-- DIAGNOSTICS -->
+  <include file="$(find amigo_launch_files)/launch/diagnostics/diagnostics.launch" />
+   
 <!-- text_to_speech -->
   <include file="$(find text_to_speech)/start.launch" />
 

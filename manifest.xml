@@ -21,6 +21,7 @@
   <depend package="move_base"/>
   <depend package="amcl"/>
   <depend package="kinect_camera"/>
+  <depend package="amigo_diagnostics"/>
 </package>
 
 
