@@ -1,8 +1,5 @@
 <launch>
 
-<!-- ETHERCAT HARDWARE -->
-  <include file="$(find amigo_launch_files)/launch/actuators/all_etherCAT_hardware.launch" />
-
 <!-- INTEGRATION -->
   <!-- robot model & integration with low level encoder data-->
   <include file="$(find amigo_state_publisher)/start.launch" />
@@ -12,14 +9,6 @@
   <include file="$(find amigo_laser)/start.launch" />
 
   <include file="$(find amigo_laser_filter)/start_base_filter.launch" />
-
-<!-- ARMS DELETED BY TIM SINCE NO USABLE TRUNK VERSION EXISTS! -->
-  <!-- arm & gripper control -->
-  <!--<include file="$(find amigo_arm_server)/start.launch" />
-  
-  <include file="$(find amigo_gripper_server)/start.launch" />
-      
-  <include file="$(find amigo_kinematics)/start_both_arms.launch" />-->
   
 <!-- DIAGNOSTICS -->
   <include file="$(find amigo_launch_files)/launch/diagnostics/diagnostics.launch" />
@@ -29,6 +18,8 @@
 
   <include file="$(find amigo_launch_files)/launch/sensors/kinect.launch" />
   
+<!-- ETHERCAT HARDWARE -->
+  <include file="$(find amigo_launch_files)/launch/actuators/all_etherCAT_hardware.launch" />
 
 </launch>
 
