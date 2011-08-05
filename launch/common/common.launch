@@ -16,7 +16,7 @@
 <!-- text_to_speech -->
   <include file="$(find text_to_speech)/start.launch" />
 
-  <include file="$(find amigo_launch_files)/launch/sensors/kinect.launch" />
+<!--  <include file="$(find amigo_launch_files)/launch/sensors/kinect.launch" />-->
   
 <!-- ETHERCAT HARDWARE -->
   <include file="$(find amigo_launch_files)/launch/actuators/all_etherCAT_hardware.launch" />
