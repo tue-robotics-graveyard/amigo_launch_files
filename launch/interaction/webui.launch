@@ -1,0 +1,7 @@
+<launch>
+
+  <!-- GRAPHICAL USER INTERFACE -->
+  <include file="$(find webui)/webui.launch" />
+
+ </launch>
+  

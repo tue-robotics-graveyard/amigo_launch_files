@@ -10,12 +10,6 @@
 
   <include file="$(find amigo_laser_filter)/start_base_filter.launch" />
   
-<!-- DIAGNOSTICS -->
-  <include file="$(find amigo_launch_files)/launch/diagnostics/diagnostics.launch" />
-   
-<!-- text_to_speech -->
-  <include file="$(find text_to_speech)/start.launch" />
-
 <!--  <include file="$(find amigo_launch_files)/launch/sensors/kinect.launch" />-->
   
 <!-- ETHERCAT HARDWARE -->
