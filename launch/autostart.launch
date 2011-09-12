@@ -8,6 +8,13 @@
    
 <!-- TEXT TO SPEECH -->
   <include file="$(find amigo_launch_files)/launch/interaction/speech.launch" />
+  
+<!-- LASER -->
+  <include file="$(find amigo_laser)/start.launch" />
+  
+<!-- robot model & integration with low level encoder data-->
+  <include file="$(find amigo_state_publisher)/start.launch" />
+
 
  </launch>
   

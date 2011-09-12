@@ -1,13 +1,8 @@
 <launch>
 
 <!-- INTEGRATION -->
-  <!-- robot model & integration with low level encoder data-->
-  <include file="$(find amigo_state_publisher)/start.launch" />
 
-<!-- LASER -->
-  <!--sensor (filtering) -->
-  <include file="$(find amigo_laser)/start.launch" />
-
+<!--laser (filtering) -->
   <include file="$(find amigo_laser_filter)/start_base_filter.launch" />
   
 <!--  <include file="$(find amigo_launch_files)/launch/sensors/kinect.launch" />-->
