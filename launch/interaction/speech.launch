@@ -1,7 +1,8 @@
 <launch>
 
   <!-- text_to_speech -->
-  <include file="$(find text_to_speech)/start.launch" />
+  <!--<include file="$(find text_to_speech)/start.launch" />-->
+  <include file="$(find text_to_speech_philips)/start.launch" />
 
  </launch>
   
