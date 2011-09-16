@@ -12,5 +12,5 @@
     -s $(find amigo_etherCAT)/hardware_ROStopics.ops 
     -s $(find amigo_pera_controller_dev)/rpera_ROStopics.ops 
     -s $(find amigo_pera_controller_dev)/rpera.ops 
-    --" output="screen" machine="amigo3"></node> -->
+    - -" output="screen" machine="amigo3"></node> -->
 </launch>
