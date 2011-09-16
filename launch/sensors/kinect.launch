@@ -54,11 +54,11 @@
 
 
 
-  <!-- point cloud converter so that navigation maps accept incoming clouds from kinect -->
+  <!-- point cloud converter so that navigation maps accept incoming clouds from kinect 
   <node pkg="point_cloud_converter" type="point_cloud_converter" name="kinect_cloud_converter" machine="amigo3" >
     <remap from="points2_in" to="/camera/rgb/points_voxelized"/>
     <remap from="points_out" to="/camera/rbg/points_voxelized_pc1_format"/>
-  </node>
+  </node>-->
 
  <!-- point cloud converter so that navigation maps accept incoming clouds from kinect -->
   <!--node pkg="semantic_point_annotator" type="sac_inc_ground_removal_node" name="sac_ground_removal" machine="amigo3" >
