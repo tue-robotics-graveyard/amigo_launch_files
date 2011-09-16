@@ -8,7 +8,7 @@
 <!--  <include file="$(find amigo_launch_files)/launch/sensors/kinect.launch" />-->
   
 <!-- ETHERCAT HARDWARE -->
-  <include file="$(find amigo_launch_files)/launch/actuators/all_etherCAT_hardware.launch" />
+  <include file="$(find amigo_launch_files)/launch/actuators/all_hardware.launch" />
 
 </launch>
 
