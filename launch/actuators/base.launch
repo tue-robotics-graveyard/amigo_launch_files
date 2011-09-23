@@ -7,6 +7,7 @@
     -s $(find amigo_etherCAT)/hardware_ROStopics.ops 
     -s $(find amigo_etherCAT)/soem.ops 
     -s $(find amigo_base_controller)/base_ROStopics.ops 
-    -s $(find amigo_base_controller)/base_controller.ops 
+    -s $(find amigo_base_controller)/base_controller_load.ops 
+    -s $(find amigo_base_controller)/base_controller_start.ops 
     --" output="screen" machine="amigo2"></node>           
 </launch>
