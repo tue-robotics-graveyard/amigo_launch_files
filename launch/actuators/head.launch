@@ -8,5 +8,5 @@
     -s $(find amigo_etherCAT)/soem.ops 
     -s $(find amigo_head_controller)/head_ROStopics.ops 
     -s $(find amigo_head_controller)/head_controller.ops 
-    --" output="screen" machine="amigo2"></node>           
+    --" output="screen"></node>           
 </launch>
