@@ -4,14 +4,15 @@
     <include file="$(find amigo_machine_files)/machines/amigo3.machine" />
     
     <node name="amigo_etherCAT_hardware" pkg="ocl" type="deployer-gnulinux" args="
+    ETHERCAT_HARDWARE
     -s $(find amigo_etherCAT)/hardware_ROStopics.ops 
     -s $(find amigo_etherCAT)/soem.ops 
     -s $(find amigo_base_controller)/base_ROStopics.ops 
     -s $(find amigo_base_controller)/base_controller.ops
     -s $(find amigo_spindle_controller)/spindle_ROStopics.ops 
     -s $(find amigo_spindle_controller)/spindle_controller.ops 
-    -s $(find dynamixel_ethercat)/head_ROStopics.ops 
-    -s $(find dynamixel_ethercat)/deploy_head.ops 
+    -s $(find amigo_head_controller)/head_ROStopics.ops 
+    -s $(find amigo_head_controller)/head_controller.ops 
     -s $(find rgb_lights)/rgb_ROStopics.ops 
     -s $(find rgb_lights)/deploy_lights.ops 
     --" output="screen" machine="amigo2"></node>   

@@ -6,7 +6,7 @@
     <node name="amigo_head_controller" machine="amigo2" pkg="ocl" type="deployer-gnulinux" args="
     -s $(find amigo_etherCAT)/hardware_ROStopics.ops 
     -s $(find amigo_etherCAT)/soem.ops 
-    -s $(find dynamixel_ethercat)/head_ROStopics.ops 
-    -s $(find dynamixel_ethercat)/deploy_head.ops 
+    -s $(find amigo_head_controller)/head_ROStopics.ops 
+    -s $(find amigo_head_controller)/head_controller.ops 
     --" output="screen" machine="amigo2"></node>           
 </launch>
