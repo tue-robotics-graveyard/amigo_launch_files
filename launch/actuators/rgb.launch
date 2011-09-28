@@ -8,5 +8,5 @@
     -s $(find amigo_etherCAT)/soem.ops 
     -s $(find rgb_lights)/rgb_ROStopics.ops 
     -s $(find rgb_lights)/deploy_lights.ops 
-    --" output="screen" machine="amigo2"></node>           
+    --" output="screen"></node>           
 </launch>
