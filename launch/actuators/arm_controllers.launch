@@ -5,8 +5,8 @@
     
     <node name="amigo_left_arm" pkg="ocl" type="deployer-gnulinux" args="
     -s $(find amigo_etherCAT)/hardware_ROStopics.ops 
-    -s $(find amigo_pera_controller_dev)/lpera_ROStopics.ops 
-    -s $(find amigo_pera_controller_dev)/lpera.ops 
+    -s $(find amigo_pera_controller)/lpera_ROStopics.ops 
+    -s $(find amigo_pera_controller)/lpera.ops 
     --" output="screen" machine="amigo2"></node>   
     <!--<node name="amigo_right_arm" pkg="ocl" type="deployer-gnulinux" args="
     -s $(find amigo_etherCAT)/hardware_ROStopics.ops 
