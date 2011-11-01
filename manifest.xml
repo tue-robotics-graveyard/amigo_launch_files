@@ -20,7 +20,6 @@
   <depend package="amigo_base_controller"/>
   <depend package="move_base"/>
   <depend package="amcl"/>
-  <depend package="kinect_camera"/>
   <depend package="amigo_diagnostics"/>
   <depend package="amigo_emergency_speakup"/>
 </package>
