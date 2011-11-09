@@ -15,6 +15,8 @@
 <!-- robot model & integration with low level encoder data-->
   <include file="$(find amigo_state_publisher)/start.launch" />
 
+<!-- hardware controllers -->
+  <include file="$(find amigo_launch_files)/launch/actuators/controller_enabler.launch" />
 
  </launch>
   
