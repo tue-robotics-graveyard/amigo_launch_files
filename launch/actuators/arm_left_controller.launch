@@ -5,8 +5,6 @@
     
     <node name="amigo_left_arm" pkg="ocl" type="deployer-corba-gnulinux" args="
     LEFT_ARM
-    -s $(find amigo_etherCAT)/hardware_ROStopics.ops 
-    -s $(find amigo_pera_controller)/lpera_ROStopics.ops 
     -s $(find amigo_pera_controller)/lpera.ops 
     --" output="screen" machine="amigo2"></node>   
 </launch>

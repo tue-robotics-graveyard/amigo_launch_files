@@ -2,7 +2,6 @@
     <include file="$(find amigo_machine_files)/machines/amigo2.machine" />
     
     <node name="etherCAT" pkg="ocl" type="deployer-corba-gnulinux" args="
-    -s $(find amigo_etherCAT)/hardware_ROStopics.ops 
     -s $(find amigo_etherCAT)/soem.ops 
     --" output="screen" machine="amigo2"></node>   
     <!-- TODO: Remove output=screen -->

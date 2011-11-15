@@ -5,9 +5,7 @@
     
     <node name="amigo_base_controller" pkg="ocl" type="deployer-corba-gnulinux" args="
     ETHERCAT_HARDWARE
-    -s $(find amigo_etherCAT)/hardware_ROStopics.ops 
     -s $(find amigo_etherCAT)/soem.ops 
-    -s $(find amigo_base_controller)/base_ROStopics.ops 
     -s $(find amigo_base_controller)/base_controller.ops 
     --" output="screen" machine="amigo2"></node>           
 </launch>

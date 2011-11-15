@@ -4,9 +4,7 @@
     <include file="$(find amigo_machine_files)/machines/amigo3.machine" />
     
     <node name="amigo_rgb_controller" machine="amigo2" pkg="ocl" type="deployer-gnulinux" args="
-    -s $(find amigo_etherCAT)/hardware_ROStopics.ops 
     -s $(find amigo_etherCAT)/soem.ops 
-    -s $(find rgb_lights)/rgb_ROStopics.ops 
-    -s $(find rgb_lights)/deploy_lights.ops 
+    -s $(find rgb_lights)/rgb_lights.ops 
     --" output="screen"></node>           
 </launch>
