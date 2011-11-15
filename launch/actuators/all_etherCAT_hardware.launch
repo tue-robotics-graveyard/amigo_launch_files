@@ -9,7 +9,6 @@
     -s $(find amigo_etherCAT)/soem.ops 
     -s $(find amigo_base_controller)/base_ROStopics.ops 
     -s $(find amigo_base_controller)/base_controller.ops
-    -s $(find amigo_spindle_controller)/spindle_ROStopics.ops 
     -s $(find amigo_spindle_controller)/spindle_controller.ops 
     -s $(find amigo_head_controller)/head_ROStopics.ops 
     -s $(find amigo_head_controller)/head_controller.ops 
