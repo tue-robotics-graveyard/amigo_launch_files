@@ -1,7 +1,7 @@
 <launch>
 
 <!-- GRAPHICAL USER INTERFACE -->
-  <include file="$(find amigo_launch_files)/launch/interaction/webui.launch" />
+  <!--<include file="$(find amigo_launch_files)/launch/interaction/webui.launch" />-->
   
 <!-- DIAGNOSTICS -->
   <include file="$(find amigo_launch_files)/launch/diagnostics/diagnostics.launch" />
