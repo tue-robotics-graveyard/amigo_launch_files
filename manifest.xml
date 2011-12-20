@@ -25,6 +25,9 @@
   <depend package="amigo_battery_manager"/>
   <depend package="text_to_speech_philips"/>
   <depend package="amigo_controller_enabler"/>
+  <depend package="amigo_arm_server"/>
+  <depend package="amigo_gripper_server"/>
+  <depend package="amigo_kinematics"/>
 </package>
 
 
