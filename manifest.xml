@@ -4,7 +4,7 @@
      amigo_launch_files: this gather all launch files and script to start applications, the robot, ... in a structured manner
 
   </description>
-  <author>koen buys - koen.buys@mech.kuleuven.be</author>
+  <author>Tim Clephas, Koen Buys</author>
   <license>BSD</license>
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/amigo_launch_files</url>
