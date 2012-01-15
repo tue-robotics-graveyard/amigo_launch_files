@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<launch>	
+	
+	<!-- Localization -->
+	<include file="$(find amigo_launch_files)/launch/new/localization.launch" />
+
+	<!-- Navigation -->
+	<include file="$(find amigo_launch_files)/launch/new/base_navigation.launch" />
+	
+	<!-- Arm & gripper control -->
+	<include file="$(find amigo_launch_files)/launch/new/arms.launch" />
+	
+	<!-- Head control -->
+	<include file="$(find amigo_launch_files)/launch/new/head.launch" />
+	
+	<!-- Text to speech -->
+	<include file="$(find amigo_launch_files)/launch/new/text_to_speech.launch" />	
+	
+</launch>
