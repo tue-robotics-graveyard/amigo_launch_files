@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<launch>	
+	
+	<!-- Localization -->
+	<include file="$(find amigo_launch_files)/launch/new/middleware/localization.launch" />
+
+	<!-- Navigation -->
+	<include file="$(find amigo_launch_files)/launch/new/middleware/base_navigation.launch" />
+	
+	<!-- Arm & gripper control -->
+	<include file="$(find amigo_launch_files)/launch/new/middleware/arms.launch" />
+	
+	<!-- Head control -->
+	<include file="$(find amigo_launch_files)/launch/new/middleware/head.launch" />	
+	
+</launch>
