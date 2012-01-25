@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-
-<launch>	
-	
-	<!-- Base laser -->
-	<include file="$(find amigo_launch_files)/launch/new/base_laser.launch" />
-
-</launch>

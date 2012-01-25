@@ -1,8 +1,20 @@
 <?xml version="1.0"?>
-
 <launch>
 
-<group unless="$(optenv ROBOT_SIM true)">
+<!--
+    Starts the basic functionalities of the robot:
+      - Robot model
+      - Sensors
+      - Diagnostics
+      - Text to speech
+
+    On the real robot, the hardware controllers are NOT started (only the controller enabler).
+    These can be started seperately through the amigo dashboard.
+
+-->
+
+
+<group if="$(optenv ROBOT_REAL false)">
     <!-- REAL ROBOT -->
 
     <!-- GRAPHICAL USER INTERFACE -->
@@ -14,12 +26,12 @@
     <!-- robot model & integration with low level encoder data-->
     <include file="$(find amigo_state_publisher)/start.launch" />
 
-    <!-- hardware controllers -->
+    <!-- hardware controller enabler -->
     <include file="$(find amigo_launch_files)/launch/actuators/controller_enabler.launch" />
 
 </group>
 
-<group if="$(optenv ROBOT_SIM true)">
+<group unless="$(optenv ROBOT_REAL false)">
     <!-- SIMULATION -->
     
     <!-- Required simulation parameter -->
@@ -45,7 +57,10 @@
 
 
 <!-- Start all sensors -->
-<include file="$(find amigo_launch_files)/launch/new/sensors.launch" />	
+<include file="$(find amigo_launch_files)/launch/new/sensors/all_sensors.launch" />
+
+<!-- Start text to speech -->
+<include file="$(find amigo_launch_files)/launch/new/interaction/text_to_speech.launch" />
 
 
  </launch>

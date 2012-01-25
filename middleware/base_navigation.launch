@@ -12,7 +12,7 @@
         <param name="planner_frequency" value="0"/>        
 
         <!-- IF IN SIMULATION, NEED TO DO REMAP -->
-        <remap from="/cmd_vel" to="/base_controller/cmd_vel" if="$(optenv ROBOT_SIM true)"/>
+        <remap from="/cmd_vel" to="/base_controller/cmd_vel" unless="$(optenv ROBOT_REAL false)"/>
         
     </node>
 
