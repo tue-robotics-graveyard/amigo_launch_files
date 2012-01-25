@@ -32,6 +32,14 @@
   <depend package="amigo_gripper_server"/>
   <depend package="amigo_kinematics"/>
   <depend package="tue_filters"/>
+
+  <depend package="amigo_navigation_local"/>
+  <depend package="amigo_arm_server"/>
+  <depend package="amigo_gripper_server"/>
+  <depend package="amigo_kinematics"/>
+  <depend package="amigo_head_ref"/>
+
+
 </package>
 
 
