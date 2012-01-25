@@ -1,7 +1,0 @@
-<launch>
-    <include file="$(find amigo_machine_files)/machines/amigo1.machine" />
-    <include file="$(find amigo_machine_files)/machines/amigo2.machine" />
-    <include file="$(find amigo_machine_files)/machines/amigo3.machine" />
-    
-    <node name="controller_enabler" pkg="amigo_controller_enabler" type="ControllerCommand.py"/>
-</launch>
