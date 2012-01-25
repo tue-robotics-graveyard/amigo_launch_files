@@ -1,0 +1,14 @@
+<package>
+  <description brief="amigo_launch_files_new2">
+
+     amigo_launch_files_new2
+
+  </description>
+  <author>sdries</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/amigo_launch_files_new2</url>
+
+</package>
+
+
