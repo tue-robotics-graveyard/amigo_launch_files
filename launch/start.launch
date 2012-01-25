@@ -18,16 +18,16 @@
     <!-- REAL ROBOT -->
 
     <!-- GRAPHICAL USER INTERFACE -->
-    <!--<include file="$(find amigo_launch_files)/launch/interaction/webui.launch" />-->
+    <!--<include file="$(find amigo_launch_files_new)/launch/interaction/webui.launch" />-->
 
     <!-- DIAGNOSTICS -->
-    <include file="$(find amigo_launch_files)/launch/diagnostics/diagnostics.launch" />
+    <include file="$(find amigo_launch_files_new)/launch/diagnostics/diagnostics.launch" />
          
     <!-- robot model & integration with low level encoder data-->
     <include file="$(find amigo_state_publisher)/start.launch" />
 
     <!-- hardware controller enabler -->
-    <include file="$(find amigo_launch_files)/launch/actuators/controller_enabler.launch" />
+    <include file="$(find amigo_launch_files_new)/launch/actuators/controller_enabler.launch" />
 
 </group>
 
@@ -57,10 +57,10 @@
 
 
 <!-- Start all sensors -->
-<include file="$(find amigo_launch_files)/launch/new/sensors/all_sensors.launch" />
+<include file="$(find amigo_launch_files_new)/launch/sensors/all_sensors.launch" />
 
 <!-- Start text to speech -->
-<include file="$(find amigo_launch_files)/launch/new/interaction/text_to_speech.launch" />
+<include file="$(find amigo_launch_files_new)/launch/interaction/text_to_speech.launch" />
 
 
  </launch>
