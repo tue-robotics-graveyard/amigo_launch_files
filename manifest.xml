@@ -1,14 +1,50 @@
 <package>
-  <description brief="amigo_launch_files_new2">
+  <description brief="amigo_launch_files">
 
-     amigo_launch_files_new2
+     amigo_launch_files: this gather all launch files and script to start applications, the robot, ... in a structured manner
 
   </description>
-  <author>sdries</author>
+  <author>Tim Clephas, Koen Buys</author>
   <license>BSD</license>
   <review status="unreviewed" notes=""/>
-  <url>http://ros.org/wiki/amigo_launch_files_new2</url>
+  <url>http://ros.org/wiki/amigo_launch_files</url>
+  <depend package="amigo_state_publisher"/>
+  <depend package="amigo_laser"/>
+  <depend package="gmapping"/>
+  <depend package="amigo_msgs"/>
+  <depend package="map_server"/>
+  <depend package="amigo_machine_files"/>
+  <depend package="dynamixel"/>
+  <depend package="dynamixel_ethercat"/>
+  <depend package="amigo_laser_filter"/>
+  <depend package="amigo_base_navigation"/>
+  <depend package="amigo_base_controller"/>
+  <depend package="amigo_pera_controller"/>
+  <depend package="amigo_head_controller"/>
+  <depend package="move_base"/>
+  <depend package="amcl"/>
+  <depend package="amigo_diagnostics"/>
+  <depend package="amigo_emergency_speakup"/>
+  <depend package="amigo_battery_manager"/>
+  <depend package="text_to_speech_philips"/>
+  <depend package="amigo_controller_enabler"/>
+  <depend package="amigo_arm_server"/>
+  <depend package="amigo_gripper_server"/>
+  <depend package="amigo_kinematics"/>
+  <depend package="tue_filters"/>
+
+  <depend package="amigo_navigation_local"/>
+  <depend package="amigo_arm_server"/>
+  <depend package="amigo_gripper_server"/>
+  <depend package="amigo_kinematics"/>
+  <depend package="amigo_head_ref"/>
+
 
 </package>
 
 
+<!--
+	
+  <depend pacakge="amigo_spindle_controller"/>
+  
+  -->
