@@ -34,5 +34,6 @@
   <depend package="tue_filters"/>
   <depend package="amigo_navigation_local"/>
   <depend package="amigo_head_ref"/>
+  <depend package="amigo_self_filter"/>
 
 </package>
