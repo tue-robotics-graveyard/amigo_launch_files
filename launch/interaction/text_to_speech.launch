@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<launch>
+	    
+    <group if="$(optenv ROBOT_REAL false)">    
+        <!-- REAL ROBOT -->    
+        <include file="$(find text_to_speech_philips)/start.launch" />
+    </group>
+
+    <group unless="$(optenv ROBOT_REAL false)">    
+        <!-- SIMULATION -->
+        <!-- Why different from real robot? And does text to speech even work in simulation? -->
+        <include file="$(find text_to_speech)/start.launch" /> 
+    </group>
+		
+</launch>

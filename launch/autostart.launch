@@ -1,22 +1,21 @@
+<?xml version="1.0"?>
+
+<!--
+
+    DEPRECATED.
+
+    THIS FILE IS JUST A TEMPORARY WRAPPER TO ENSURE EASY MIGRATION OF THE NEW
+    LAUNCH STRUCTURE ON THE REAL ROBOT. WILL BE REMOVED. PLEASE USE
+
+        start.launch
+
+    INSTEAD.
+
+-->
+
 <launch>
 
-<!-- GRAPHICAL USER INTERFACE -->
-  <!--<include file="$(find amigo_launch_files)/launch/interaction/webui.launch" />-->
+    <include file="$(find amigo_launch_files)/launch/start.launch" />
   
-<!-- DIAGNOSTICS -->
-  <include file="$(find amigo_launch_files)/launch/diagnostics/diagnostics.launch" />
-   
-<!-- TEXT TO SPEECH -->
-  <include file="$(find amigo_launch_files)/launch/interaction/speech.launch" />
-  
-<!-- LASER -->
-  <include file="$(find amigo_laser)/start.launch" />
-  
-<!-- robot model & integration with low level encoder data-->
-  <include file="$(find amigo_state_publisher)/start.launch" />
-
-<!-- hardware controllers -->
-  <include file="$(find amigo_launch_files)/launch/actuators/controller_enabler.launch" />
-
  </launch>
   

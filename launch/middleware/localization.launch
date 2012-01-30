@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+
+<launch>       
+    
+    <group if="$(optenv ROBOT_REAL false)">    
+        <!-- REAL ROBOT -->    
+        <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(optenv ROBOT_MAP tue_hospital_room_2012).yaml"/>
+    </group>
+
+    <group unless="$(optenv ROBOT_REAL false)">    
+        <!-- SIMULATION -->
+        <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(optenv ROBOT_MAP hospital_room).yaml"/>        
+    </group>
+
+    <node pkg="amcl" type="amcl" respawn="false" name="amcl" output="screen">
+        <remap from="scan" to="/base_scan" />
+        <!-- Publish scans from best pose at a max of 10 Hz -->
+        <param name="base_frame_id" value="base_link"/>
+        <param name="odom_model_type" value="omni"/>
+        <param name="odom_alpha5" value="0.2"/><!--0.1-->
+        <param name="gui_publish_rate" value="10.0"/>
+        <param name="laser_max_beams" value="30"/>
+        <param name="min_particles" value="500"/>
+        <param name="max_particles" value="10000"/>
+        <param name="kld_err" value="0.01"/>
+        <param name="kld_z" value="0.99"/>
+        <param name="odom_alpha1" value="0.6"/><!--0.2-->
+        <param name="odom_alpha2" value="0.6"/><!--0.2-->
+        <!-- translation std dev, m -->
+        <param name="odom_alpha3" value="1.8"/><!--0.8-->
+        <param name="odom_alpha4" value="0.6 "/><!--0.2-->
+        <param name="laser_z_hit" value="0.5"/>
+        <param name="laser_z_short" value="0.05"/>
+        <param name="laser_z_max" value="0.05"/>
+        <param name="laser_z_rand" value="0.5"/>
+        <param name="laser_sigma_hit" value="0.2"/>
+        <param name="laser_lambda_short" value="0.1"/>
+        <param name="laser_lambda_short" value="0.1"/>
+        <param name="laser_model_type" value="likelihood_field"/>
+        <!-- <param name="laser_model_type" value="beam"/> -->
+        <param name="laser_likelihood_max_dist" value="2.0"/>
+        <param name="update_min_d" value="0.15"/>
+        <param name="update_min_a" value="0.15"/>
+        <param name="odom_frame_id" value="/odom"/>
+        <param name="resample_interval" value="1"/>
+        <param name="transform_tolerance" value="0.1"/>
+        <param name="recovery_alpha_slow" value="0.2"/>
+        <param name="recovery_alpha_fast" value="0.2"/>
+        <!--
+        <param name="initial_pose_x" value="-0.85"/>
+        <param name="initial_pose_y" value="0.38"/>
+        <param name="initial_pose_a" value="0.1"/>
+        -->
+        
+        <param name="initial_cov_xx" value="14.0"/>
+        <param name="initial_cov_yy" value="14.0"/>
+        <param name="initial_cov_aa" value="14.0"/>
+
+    </node>
+
+    <!-- Needed for SnapMapICP to work, due to hard coded, incorrect tf frame id's  -->
+    <!--node pkg="tf" type="static_transform_publisher" respawn="false" name="snapmapicp_tf_conversion" args="0 0 0 0 0 0 /base_laser /base_laser_link 10" output="screen" / -->
+    <!-- node pkg="tf" type="static_transform_publisher" respawn="false" name="snapmapicp_tf_conversion2" args="0 0 0 0 0 0 /base_link /base_footprint 10" output="screen" / -->
+
+    <!-- SnapMapICP: 'snaps' base laser data to map for better localization -->
+    <!-- node pkg="SnapMapICP" type="SnapMapICP" respawn="false" name="snapmapicp" output="screen" / -->
+  
+</launch>
+
+
+

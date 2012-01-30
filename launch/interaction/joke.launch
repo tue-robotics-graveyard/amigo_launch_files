@@ -1,9 +1,0 @@
-<launch>
-
-<!-- JOKE -->
-  <node pkg="amigo_admin_files" type="mop.sh" name="joke" output="screen" />
-  
-</launch>
-
-
-

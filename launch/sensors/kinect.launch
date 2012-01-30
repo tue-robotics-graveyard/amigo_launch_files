@@ -1,3 +1,5 @@
+<?xml version="1.0"?>
+
 <launch>
 <!-- KINECT -->
 
@@ -31,8 +33,6 @@
   <node pkg="tf" type="static_transform_publisher" name="kinect_base_link2" args="0 0 0 -1.57 0 -1.57 /openni_depth_frame /openni_depth_optical_frame  100"  machine="amigo3" />  
   <node pkg="tf" type="static_transform_publisher" name="kinect_base_link3" args="0 0 0 -1.57 0 -1.57 /openni_rgb_frame /openni_rgb_optical_frame 100" machine="amigo3"/> --> 
 
-
-
   <!-- voxelizer -->
   <!-- include file="$(find amigo_point_voxelizer)/launch/amigo_point_voxelizer.launch" /-->
   
@@ -51,8 +51,6 @@
         leaf_size: 0.01
       </rosparam>
     </node>
-
-
 
   <!-- point cloud converter so that navigation maps accept incoming clouds from kinect 
   <node pkg="point_cloud_converter" type="point_cloud_converter" name="kinect_cloud_converter" machine="amigo3" >

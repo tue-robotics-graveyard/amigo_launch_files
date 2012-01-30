@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!--
+        Starts the basic functionalities of the robot:
+          - Robot model
+          - Sensors
+          - Self filtering
+          - Diagnostics
+          - Text to speech
+
+        On the real robot, the hardware controllers are NOT started (only the controller enabler).
+        These can be started seperately through the amigo dashboard.
+    -->
+
+    <group if="$(optenv ROBOT_REAL false)">
+        <!-- REAL ROBOT -->
+
+        <!-- GRAPHICAL USER INTERFACE -->
+        <!--<include file="$(find amigo_launch_files)/launch/interaction/webui.launch" />-->
+
+        <!-- DIAGNOSTICS -->
+        <include file="$(find amigo_launch_files)/launch/diagnostics/diagnostics.launch" />
+             
+        <!-- robot model & integration with low level encoder data-->
+        <include file="$(find amigo_state_publisher)/start.launch" />
+
+        <!-- hardware controller enabler -->
+        <include file="$(find amigo_launch_files)/launch/actuators/controller_enabler.launch" />
+
+    </group>
+
+    <group unless="$(optenv ROBOT_REAL false)">
+        <!-- SIMULATION -->
+
+        <!-- Required simulation parameter -->
+        <param name="/use_sim_time" value="true"/>
+
+        <!-- start hospital room (export HEADLESS to -r if you want to run gazebo headless, this is done on the Jenkins server, ask Rob J-->
+        <node name="gazebo" pkg="gazebo" type="gazebo" args="$(optenv GAZEBO_HEADLESS) $(find amigo_maps)/worlds/$(optenv ROBOT_MAP hospital_room).world" respawn="false" output="screen"/>
+
+        <!-- start controller manager (rviz) -->
+        <include file="$(find pr2_controller_manager)/controller_manager.launch"/>
+
+        <include file="$(find amigo_simulation_controllers)/controllers.launch"/>
+
+        <!-- load robot -->
+        <param name="robot_description" command="$(find xacro)/xacro.py '$(find amigo_robot_model)/robot.urdf.xacro' " />
+
+        <!-- push robot_description to factory and spawn robot in gazebo -->
+        <node name="spawn_amigo" pkg="gazebo" type="spawn_model" args=" -unpause -urdf -param robot_description -model amigo -x 0.5 -y 0.5 -z 0.1" respawn="false" output="screen" />
+        
+    </group>
+
+
+    <!-- Start all sensors -->
+    <include file="$(find amigo_launch_files)/launch/sensors/sensors.launch" />
+
+    <!-- Self filter (robots self removed from Kinect pointcloud on topic /camera/depth/points_self_filtered) -->
+    <include file="$(find amigo_self_filter)/start_filter.launch"/>
+
+    <!-- Start text to speech -->
+    <include file="$(find amigo_launch_files)/launch/interaction/text_to_speech.launch" />
+
+
+ </launch>
+  
