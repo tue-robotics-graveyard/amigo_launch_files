@@ -5,6 +5,6 @@
     
     <node name="amigo_left_arm" pkg="ocl" type="deployer-corba-gnulinux" args="
     LEFT_ARM
-    -s $(find amigo_pera_controller)/lpera.ops 
+    -s $(find amigo_pera_controller)/lpera_new_model.ops 
     --" output="screen" machine="amigo2"></node>   
 </launch>

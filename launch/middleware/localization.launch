@@ -59,11 +59,11 @@
     </node>
 
     <!-- Needed for SnapMapICP to work, due to hard coded, incorrect tf frame id's  -->
-    <node pkg="tf" type="static_transform_publisher" respawn="false" name="snapmapicp_tf_conversion" args="0 0 0 0 0 0 /base_laser /base_laser_link 10" output="screen" />
-    <node pkg="tf" type="static_transform_publisher" respawn="false" name="snapmapicp_tf_conversion2" args="0 0 0 0 0 0 /base_link /base_footprint 10" output="screen" />
+    <!--node pkg="tf" type="static_transform_publisher" respawn="false" name="snapmapicp_tf_conversion" args="0 0 0 0 0 0 /base_laser /base_laser_link 10" output="screen" / -->
+    <!-- node pkg="tf" type="static_transform_publisher" respawn="false" name="snapmapicp_tf_conversion2" args="0 0 0 0 0 0 /base_link /base_footprint 10" output="screen" / -->
 
     <!-- SnapMapICP: 'snaps' base laser data to map for better localization -->
-    <node pkg="SnapMapICP" type="SnapMapICP" respawn="false" name="snapmapicp" output="screen" />
+    <!-- node pkg="SnapMapICP" type="SnapMapICP" respawn="false" name="snapmapicp" output="screen" / -->
   
 </launch>
 

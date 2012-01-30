@@ -3,11 +3,9 @@
 <launch>
 
     <!-- REAL -->
-    <include file="$(find amigo_arm_server)/start.launch" />
-      
+    <include file="$(find amigo_arm_navigation)/start.launch" />
+
     <include file="$(find amigo_gripper_server)/start.launch" />
-          
-    <include file="$(find amigo_kinematics)/start_both_arms.launch" />
       
 </launch>
   

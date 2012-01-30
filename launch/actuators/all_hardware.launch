@@ -1,5 +1,5 @@
 <launch>
-    <include file="$(find amigo_launch_files_new)/launch/actuators/all_etherCAT_hardware.launch" />
-    <include file="$(find amigo_launch_files_new)/launch/actuators/arm_left_controller.launch" />
+    <include file="$(find amigo_launch_files)/launch/actuators/all_etherCAT_hardware.launch" />
+    <include file="$(find amigo_launch_files)/launch/actuators/arm_controllers.launch" />
     
 </launch>
