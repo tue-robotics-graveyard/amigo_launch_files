@@ -3,9 +3,9 @@
 <launch>	
 	
 	<!-- Base laser -->
-	<include file="$(find amigo_launch_files_new)/launch/sensors/base_laser.launch" />
+	<include file="$(find amigo_launch_files)/launch/sensors/base_laser.launch" />
 
 	<!-- Kinect (only for real robot; in simulation Kinect is loaded by Gazebo -->
-	<include file="$(find amigo_launch_files_new)/launch/sensors/kinect.launch" if="$(optenv ROBOT_REAL false)" />
+	<include file="$(find amigo_launch_files)/launch/sensors/kinect.launch" if="$(optenv ROBOT_REAL false)" />
 
 </launch>
