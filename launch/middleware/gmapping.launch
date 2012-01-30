@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<launch>
+ 
+    <node name="gmapping_node" pkg="gmapping" type="slam_gmapping" respawn="true" >
+        <remap to="base_scan" from="scan"/>
+    </node>
+
+</launch>
+
+
+
