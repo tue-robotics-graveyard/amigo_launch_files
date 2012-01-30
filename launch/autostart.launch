@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<!--
+
+    DEPRECATED.
+
+    THIS FILE IS JUST A TEMPORARY WRAPPER TO ENSURE EASY MIGRATION OF THE NEW
+    LAUNCH STRUCTURE ON THE REAL ROBOT. WILL BE REMOVED. PLEASE USE
+
+        start.launch
+
+    INSTEAD.
+
+-->
+
+<launch>
+
+    <include file="$(find amigo_launch_files)/launch/start.launch" />
+  
+ </launch>
+  
