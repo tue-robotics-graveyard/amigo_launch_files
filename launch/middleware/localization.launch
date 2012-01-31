@@ -46,20 +46,19 @@
         <param name="transform_tolerance" value="0.1"/>
         <param name="recovery_alpha_slow" value="0.2"/>
         <param name="recovery_alpha_fast" value="0.2"/>
-        <!--
-        <param name="initial_pose_x" value="-0.85"/>
-        <param name="initial_pose_y" value="0.38"/>
-        <param name="initial_pose_a" value="0.1"/>
-        -->
+
+        <param name="initial_pose_x" value="0.8"/>
+        <param name="initial_pose_y" value="0.8"/>
+        <param name="initial_pose_a" value="0.0"/>
         
-        <param name="initial_cov_xx" value="14.0"/>
-        <param name="initial_cov_yy" value="14.0"/>
-        <param name="initial_cov_aa" value="14.0"/>
+        <param name="initial_cov_xx" value="0.001"/>
+        <param name="initial_cov_yy" value="0.001"/>
+        <param name="initial_cov_aa" value="0.001"/>
 
     </node>
 
     <!-- Needed for SnapMapICP to work, due to hard coded, incorrect tf frame id's  -->
-    <!--node pkg="tf" type="static_transform_publisher" respawn="false" name="snapmapicp_tf_conversion" args="0 0 0 0 0 0 /base_laser /base_laser_link 10" output="screen" / -->
+    <!-- node pkg="tf" type="static_transform_publisher" respawn="false" name="snapmapicp_tf_conversion" args="0 0 0 0 0 0 /base_laser /base_laser_link 10" output="screen" / -->
     <!-- node pkg="tf" type="static_transform_publisher" respawn="false" name="snapmapicp_tf_conversion2" args="0 0 0 0 0 0 /base_link /base_footprint 10" output="screen" / -->
 
     <!-- SnapMapICP: 'snaps' base laser data to map for better localization -->
