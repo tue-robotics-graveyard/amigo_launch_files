@@ -13,5 +13,8 @@
 	
 	<!-- Head control -->
 	<include file="$(find amigo_launch_files)/launch/middleware/head.launch" />	
+
+	<!-- Spindle -->
+	<include file="$(find amigo_launch_files)/launch/middleware/spindle.launch" />	
 	
 </launch>
