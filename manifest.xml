@@ -35,5 +35,6 @@
   <depend package="amigo_navigation_local"/>
   <depend package="amigo_head_ref"/>
   <depend package="amigo_self_filter"/>
+  <depend package="amigo_spindle_server"/>
 
 </package>
