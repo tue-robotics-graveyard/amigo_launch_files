@@ -16,4 +16,7 @@ and incrementally builds an octomap. The data is sent out in different represent
 		<remap from="map" to="/octomap" />
 	
 	</node>
+
+	<node pkg="tf" type="static_transform_publisher" respawn="false" name="octomap_tf_conversion" args="0 0 0 0 0 0 /base_link /base_footprint 10" output="screen" />
+	
 </launch>
