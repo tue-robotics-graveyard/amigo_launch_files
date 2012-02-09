@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+   
+    <include file="$(find amigo_machine_files)/machines/amigo4.machine" />
+
+    <!-- RE comm -->
+    <node pkg="re_comm" type="run" name="re_comm" output="screen" machine="amigo4" /> 
+
+ </launch>
+  
