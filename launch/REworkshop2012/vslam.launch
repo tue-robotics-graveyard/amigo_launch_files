@@ -3,38 +3,15 @@
    
     <include file="$(find amigo_machine_files)/machines/amigo4.machine" />
 
-    <!-- RE articulation -->
-    <node pkg="re_articulation" type="re_articulation_client_PR2" name="re_articulation_client_AMIGO" output="screen" machine="amigo4"> 
-    <!-- <param name="robot_server_name" 			value="move_arm_open_cabinet"/> -->
-    <param name="robot_server_name" 			value="move_left_arm"/>
-    <param name="re_articulation_server_name"	value="re_articulation_server"/>
-    <param name="action_timeout"				value="50.0"/>
-    <param name="group_name" 					value="left_arm"/>
-    <param name="header_frame_name" 			value="base_link"/>
-    <param name="link_name" 					value="grippoint_left"/>
-	<param name="handle_position_x" 	value="0.6"/>
-	<param name="handle_position_y" 	value="0.2"/>
-	<param name="handle_position_z" 	value="0.9"/>
-	<param name="handle_orientation_x"	value="0.0"/>
-	<param name="handle_orientation_y"	value="0.0"/>
-	<param name="handle_orientation_z"	value="0.0"/>
-	<param name="handle_orientation_w"	value="1.0"/>
-	<param name="bagfile_name"          value="/home/amigo/ros/stacks/roboearth/re_articulation/PR2prior.bag"/>
-  </node>
+    <!-- RE VSLAM -->
+    <node pkg="ctam_tracking" type="CTAMtracking" name="CTAMtracking" cwd="node" respawn="false" output="screen" machine="amigo4"> 
+  	<param name="mode" type="int" value="1" />
+  	<param name="stat" type="int" value="0" />
+    </node>
 
-  <!-- These are the nodes for the articulation estimation -->
-  <!-- Start articulation controller -->
-  <node name="re_articulationController" pkg="re_articulation" type="re_articulationController" respawn="false" output="screen" machine="amigo4"/>
-    
-  <!-- Start model estimator -->
-  <node pkg="articulation_models" type="model_learner_msg" name="model_learner" output="screen" machine="amigo4"> 
-    <param name="filter_models" value="rotational prismatic"/>
-    <param name="sigma_position" value="0.005"/>
-    <param name="sigma_orientation" value="1.0"/>
-  </node>
- 
-  <!-- This is the node of the re_articulation actionlib server -->
-  <node name="re_articulation_server" pkg="re_articulation" type="re_articulation_server" output="screen" machine="amigo4"/>
+    <node pkg="ctam_mapping" type="CTAMmapping" name="CTAMmapping"  args="" cwd="node" respawn="false" output="screen" machine="amigo4">
+  	<param name="numKeyFrames" type="int" value="-1" />
+    </node>
 
  </launch>
   
