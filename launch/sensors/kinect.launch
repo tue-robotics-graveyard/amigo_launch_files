@@ -6,9 +6,10 @@
   <include file="$(find amigo_machine_files)/machines/amigo1.machine" />
   <include file="$(find amigo_machine_files)/machines/amigo2.machine" />
   <include file="$(find amigo_machine_files)/machines/amigo3.machine" />
+  <include file="$(find amigo_machine_files)/machines/amigo4.machine" />
 
 
-  <node pkg="openni_camera" type="openni_node" name="kinect" output="screen" machine="amigo3">
+  <node pkg="openni_camera" type="openni_node" name="kinect" output="screen" machine="amigo4">
     <!--param name="topic" value="first" /-->
     <!--param name="device_id" value="2@3" --> <!-- this line uses device on usb bus 2 and addres 3 -->
     <!--param name="device_id" value="B00367707227042B"/--> <!-- this line uses device with given serial number -->
@@ -28,18 +29,18 @@
 
 <!-- Static frames -->
 
-  <!--<node pkg="tf" type="static_transform_publisher" name="kinect_base_link" args="0 -0.02 0 0 0 0  /openni_camera /openni_depth_frame 100"  machine="amigo3" />  
-  <node pkg="tf" type="static_transform_publisher" name="kinect_base_link1" args="0 -0.04 0 0 0 0  /openni_camera /openni_rgb_frame 100"  machine="amigo3" />  
-  <node pkg="tf" type="static_transform_publisher" name="kinect_base_link2" args="0 0 0 -1.57 0 -1.57 /openni_depth_frame /openni_depth_optical_frame  100"  machine="amigo3" />  
-  <node pkg="tf" type="static_transform_publisher" name="kinect_base_link3" args="0 0 0 -1.57 0 -1.57 /openni_rgb_frame /openni_rgb_optical_frame 100" machine="amigo3"/> --> 
+  <!--<node pkg="tf" type="static_transform_publisher" name="kinect_base_link" args="0 -0.02 0 0 0 0  /openni_camera /openni_depth_frame 100"  machine="amigo4" />  
+  <node pkg="tf" type="static_transform_publisher" name="kinect_base_link1" args="0 -0.04 0 0 0 0  /openni_camera /openni_rgb_frame 100"  machine="amigo4" />  
+  <node pkg="tf" type="static_transform_publisher" name="kinect_base_link2" args="0 0 0 -1.57 0 -1.57 /openni_depth_frame /openni_depth_optical_frame  100"  machine="amigo4" />  
+  <node pkg="tf" type="static_transform_publisher" name="kinect_base_link3" args="0 0 0 -1.57 0 -1.57 /openni_rgb_frame /openni_rgb_optical_frame 100" machine="amigo4"/> --> 
 
   <!-- voxelizer -->
   <!-- include file="$(find amigo_point_voxelizer)/launch/amigo_point_voxelizer.launch" /-->
   
-    <node pkg="nodelet" type="nodelet" name="pcl_manager" args="manager" output="screen" machine="amigo3"/>
+    <node pkg="nodelet" type="nodelet" name="pcl_manager" args="manager" output="screen" machine="amigo4"/>
 
     <!-- Run a VoxelGrid filter to clean NaNs and downsample the data -->
-    <node pkg="nodelet" type="nodelet" name="voxel_grid" args="load pcl/VoxelGrid pcl_manager" output="screen" machine="amigo3">
+    <node pkg="nodelet" type="nodelet" name="voxel_grid" args="load pcl/VoxelGrid pcl_manager" output="screen" machine="amigo4">
       <remap from="~input" to="/camera/rgb/points" />
       <remap from="~output" to="/camera/rgb/points_voxelized" />
       <rosparam>
@@ -53,13 +54,13 @@
     </node>
 
   <!-- point cloud converter so that navigation maps accept incoming clouds from kinect 
-  <node pkg="point_cloud_converter" type="point_cloud_converter" name="kinect_cloud_converter" machine="amigo3" >
+  <node pkg="point_cloud_converter" type="point_cloud_converter" name="kinect_cloud_converter" machine="amigo4" >
     <remap from="points2_in" to="/camera/rgb/points_voxelized"/>
     <remap from="points_out" to="/camera/rbg/points_voxelized_pc1_format"/>
   </node>-->
 
  <!-- point cloud converter so that navigation maps accept incoming clouds from kinect -->
-  <!--node pkg="semantic_point_annotator" type="sac_inc_ground_removal_node" name="sac_ground_removal" machine="amigo3" >
+  <!--node pkg="semantic_point_annotator" type="sac_inc_ground_removal_node" name="sac_ground_removal" machine="amigo4" >
     <remap from="tilt_laser_cloud_filtered" to="/camera/rbg/points_voxelized_pc1_format_voxel" />
     <remap from="cloud_ground_filtered" to="/camera/rbg/points_voxelized_pc1_format" />
     <param name="z_threshold" value="0.15" />
