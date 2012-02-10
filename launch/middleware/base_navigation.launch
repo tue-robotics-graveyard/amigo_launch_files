@@ -2,7 +2,16 @@
 
 <launch>
 
-    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <include file="$(find amigo_machine_files)/machines/amigo1.machine" />
+    <include file="$(find amigo_machine_files)/machines/amigo2.machine" />
+    <include file="$(find amigo_machine_files)/machines/amigo3.machine" />
+    <include file="$(find amigo_machine_files)/machines/amigo4.machine" />
+    <include file="$(find amigo_machine_files)/machines/localhost.machine" />
+
+    <arg if="$(optenv ROBOT_REAL false)" name="machine" value="amigo3"/>
+    <arg unless="$(optenv ROBOT_REAL false)" name="machine" value="localhost"/>  
+
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen" machine="$(arg machine)">
         <!-- Common costmap parameters -->        
         <rosparam file="$(find amigo_base_navigation)/costmap_common_params.yaml" command="load" ns="global_costmap" />
         <rosparam file="$(find amigo_base_navigation)/costmap_common_params.yaml" command="load" ns="local_costmap" />
