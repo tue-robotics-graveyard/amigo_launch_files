@@ -4,6 +4,11 @@
  
     <node name="gmapping_node" pkg="gmapping" type="slam_gmapping" respawn="true" >
         <remap to="base_scan" from="scan"/>
+        <param name="delta" value="0.025" />
+	<param name="xmin" value="-10" />
+	<param name="ymin" value="-10" />
+	<param name="xmax" value="10" />
+	<param name="ymax" value="10" />	
     </node>
 
 </launch>
