@@ -73,6 +73,7 @@
      <node  name="SnapMapICP" pkg="SnapMapICP" type="SnapMapICP" respawn="false" machine="$(arg machine)">
 	    <param name="odom_frame" value="/odom"/>
         <param name="base_laser_frame" value="/base_laser"/>
+        <param name="age_threshold" value="2.0"/>
      </node>
   
 </launch>
