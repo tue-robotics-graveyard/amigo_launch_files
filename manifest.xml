@@ -36,5 +36,6 @@
   <depend package="amigo_head_ref"/>
   <depend package="amigo_self_filter"/>
   <depend package="amigo_spindle_server"/>
+  <depend package="SnapMapICP"/>
 
 </package>
