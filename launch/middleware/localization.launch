@@ -1,6 +1,15 @@
 <?xml version="1.0"?>
 
-<launch>       
+<launch>  
+
+    <include file="$(find amigo_machine_files)/machines/amigo1.machine" />
+    <include file="$(find amigo_machine_files)/machines/amigo2.machine" />
+    <include file="$(find amigo_machine_files)/machines/amigo3.machine" />
+    <include file="$(find amigo_machine_files)/machines/amigo4.machine" />
+    <include file="$(find amigo_machine_files)/machines/localhost.machine" />
+
+    <arg if="$(optenv ROBOT_REAL false)" name="machine" value="amigo3"/>
+    <arg unless="$(optenv ROBOT_REAL false)" name="machine" value="localhost"/>      
     
     <group if="$(optenv ROBOT_REAL false)">    
         <!-- REAL ROBOT -->    
@@ -12,7 +21,7 @@
         <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(optenv ROBOT_MAP hospital_room).yaml"/>        
     </group>
 
-  <node pkg="amcl" type="amcl" respawn="false" name="amcl" output="screen">
+  <node pkg="amcl" type="amcl" respawn="false" name="amcl" output="screen" machine="${arg machine)">
          <remap from="scan" to="/base_scan" />
          <!-- Publish scans from best pose at a max of 10 Hz -->
          <param name="base_frame_id" value="base_link"/>
@@ -61,7 +70,7 @@
      </node>
 
      <!-- SnapMapICP -->
-     <node  name="SnapMapICP" pkg="SnapMapICP" type="SnapMapICP" respawn="false">
+     <node  name="SnapMapICP" pkg="SnapMapICP" type="SnapMapICP" respawn="false" machine="${arg machine)">
 	    <param name="odom_frame" value="/odom"/>
         <param name="base_laser_frame" value="/base_laser"/>
      </node>
