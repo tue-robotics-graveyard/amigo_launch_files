@@ -5,10 +5,11 @@
     
     <node name="amigo_etherCAT_hardware" pkg="ocl" type="deployer-corba-gnulinux" args="
     ETHERCAT_HARDWARE
-    -s $(find amigo_etherCAT)/soem.ops 
+    -linfo -s $(find amigo_etherCAT)/soem.ops 
     -s $(find amigo_base_controller)/base_controller.ops
     -s $(find amigo_spindle_controller)/spindle_controller.ops 
     -s $(find amigo_head_controller)/head_controller.ops 
-    -s $(find rgb_lights)/rgb_lights.ops 
     --" output="screen" machine="amigo2"></node>   
 </launch>
+
+<!-- -s $(find rgb_lights)/rgb_lights.ops -->
