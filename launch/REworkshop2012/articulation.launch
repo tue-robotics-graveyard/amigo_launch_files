@@ -4,8 +4,7 @@
     <include file="$(find amigo_machine_files)/machines/amigo4.machine" />
 
     <!-- RE articulation -->
-    <node pkg="re_articulation" type="re_articulation_client_PR2" name="re_articulation_client_AMIGO" output="screen" machine="amigo4"> 
-    <!-- <param name="robot_server_name" 			value="move_arm_open_cabinet"/> -->
+    <!--<node pkg="re_articulation" type="re_articulation_client_PR2" name="re_articulation_client_AMIGO" output="screen" machine="amigo4"> 
     <param name="robot_server_name" 			value="move_left_arm"/>
     <param name="re_articulation_server_name"	value="re_articulation_server"/>
     <param name="action_timeout"				value="50.0"/>
@@ -20,7 +19,7 @@
 	<param name="handle_orientation_z"	value="0.0"/>
 	<param name="handle_orientation_w"	value="1.0"/>
 	<param name="bagfile_name"          value="/home/amigo/ros/stacks/roboearth/re_articulation/PR2prior.bag"/>
-  </node>
+  </node>-->
 
   <!-- These are the nodes for the articulation estimation -->
   <!-- Start articulation controller -->
