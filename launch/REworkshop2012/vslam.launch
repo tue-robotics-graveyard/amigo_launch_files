@@ -9,9 +9,15 @@
   	<param name="stat" type="int" value="0" />
     </node>
 
-    <node pkg="ctam_mapping" type="CTAMmapping" name="CTAMmapping"  args="" cwd="node" respawn="false" output="screen" machine="amigo4">
+    <!--<node pkg="ctam_mapping" type="CTAMmapping" name="CTAMmapping"  args="" cwd="node" respawn="false" output="screen" machine="amigo4">
   	<param name="numKeyFrames" type="int" value="-1" />
+    </node>-->
+
+    <node pkg="re_vision" type="ObjectDetector" name="ObjectDetector" args="-v -c kinect" cwd="node" respawn="false" output="screen" machine="amigo4"> 
+  	<remap from="/camera_info" to="/camera/rgb/camera_info"/>
     </node>
+
+    <node pkg="ctam_finder" type="CTAMfinder" name="CTAMfinder" args="" cwd="node" output="screen" machine="amigo4"/>
 
  </launch>
   
