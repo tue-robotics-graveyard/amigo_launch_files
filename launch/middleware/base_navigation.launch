@@ -26,8 +26,8 @@
         <param name="AmigoLocalPlanner/max_acc_translation" value="0.2"/>
         <param name="AmigoLocalPlanner/max_vel_rotation" value="0.2"/>
         <param name="AmigoLocalPlanner/max_acc_rotation" value="0.4"/>
-        <param name="AmigoLocalPlanner/xy_goal_tolerance" value="0.1"/>
-        <param name="AmigoLocalPlanner/yaw_goal_tolerance" value="0.1"/>
+        <param name="AmigoLocalPlanner/xy_goal_tolerance" value="0.025"/>
+        <param name="AmigoLocalPlanner/yaw_goal_tolerance" value="0.025"/>
 
         <rosparam file="$(find amigo_base_navigation)/local_costmap_params.yaml" command="load" />
 
