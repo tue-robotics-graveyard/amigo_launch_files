@@ -14,7 +14,7 @@
     </node>-->
 
     <node pkg="re_vision" type="ObjectDetector" name="ObjectDetector" args="-v -c kinect" cwd="node" respawn="false" output="screen" machine="amigo4"> 
-  	<remap from="/camera_info" to="/camera/rgb/camera_info"/>
+  	  <remap from="/camera_info" to="/camera/rgb/camera_info"/>
     </node>
 
     <node pkg="ctam_finder" type="CTAMfinder" name="CTAMfinder" args="" cwd="node" output="screen" machine="amigo4"/>
