@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <include file="$(find amigo_machine_files)/machines/amigo1.machine" />
+    <include file="$(find amigo_machine_files)/machines/amigo2.machine" />
+    <include file="$(find amigo_machine_files)/machines/amigo3.machine" />
+    <include file="$(find amigo_machine_files)/machines/amigo4.machine" />
+    <include file="$(find amigo_machine_files)/machines/localhost.machine" />
+
+    <arg if="$(optenv ROBOT_REAL false)" name="machine" value="amigo3"/>
+    <arg unless="$(optenv ROBOT_REAL false)" name="machine" value="localhost"/>
+
+    <node name="map_server_navigation" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(optenv ROBOT_MAP hospital_room).yaml">
+        <remap from="/map" to="/map_navigation"/>
+    </node>
+
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen" machine="$(arg machine)">
+        <remap from="/map" to="/map_navigation"/>
+
+        <!-- Common costmap parameters -->        
+        <rosparam file="$(find amigo_base_navigation)/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find amigo_base_navigation)/costmap_common_params.yaml" command="load" ns="local_costmap" />
+
+        <!-- Global planner settings -->
+        <param name="planner_frequency" value="0"/>   
+        <rosparam file="$(find amigo_base_navigation)/global_costmap_params.yaml" command="load" />
+
+        <!-- Local planner settings -->
+        <param name="base_local_planner" value="amigo_navigation_local/AmigoLocalPlanner"/>
+        <param name="AmigoLocalPlanner/max_vel_translation" value="0.2"/>
+        <param name="AmigoLocalPlanner/max_acc_translation" value="0.2"/>
+        <param name="AmigoLocalPlanner/max_vel_rotation" value="0.2"/>
+        <param name="AmigoLocalPlanner/max_acc_rotation" value="0.4"/>
+        <param name="AmigoLocalPlanner/xy_goal_tolerance" value="0.1"/>
+        <param name="AmigoLocalPlanner/yaw_goal_tolerance" value="0.1"/>
+
+        <rosparam file="$(find amigo_base_navigation)/local_costmap_params.yaml" command="load" />
+
+        <!-- IF IN SIMULATION, NEED TO DO REMAP -->
+        <remap from="/cmd_vel" to="/base_controller/cmd_vel" unless="$(optenv ROBOT_REAL false)"/>
+        
+    </node>
+
+</launch>
