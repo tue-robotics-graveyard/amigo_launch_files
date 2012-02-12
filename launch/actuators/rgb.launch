@@ -7,4 +7,6 @@
     -s $(find amigo_etherCAT)/soem.ops 
     -s $(find rgb_lights)/rgb_lights.ops 
     --" output="screen"></node>           
+    
+    <node name="rgb_lights_manager" type="rgb_lights_manager" machine="amigo2" pkg="rgb_lights_manager_dev" />
 </launch>
