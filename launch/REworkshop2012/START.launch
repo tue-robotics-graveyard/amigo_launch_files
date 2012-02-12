@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- Start.launch and middleware.launch already have to be launched!!! -->
+   
+    <include file="$(find amigo_launch_files)/launch/REworkshop2012/handle_detection.launch" />
+
+    <include file="$(find amigo_launch_files)/launch/REworkshop2012/articulation.launch" />
+
+    <include file="$(find amigo_launch_files)/launch/REworkshop2012/re_comm.launch" />
+
+    <include file="$(find amigo_launch_files)/launch/REworkshop2012/vslam.launch" />
+
+ </launch>
+  
