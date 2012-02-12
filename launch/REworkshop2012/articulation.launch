@@ -23,17 +23,19 @@
 
   <!-- These are the nodes for the articulation estimation -->
   <!-- Start articulation controller -->
-  <node name="re_articulationController" pkg="re_articulation" type="re_articulationController" respawn="false" output="screen" machine="amigo4"/>
+  <!--<node name="re_articulationController" pkg="re_articulation" type="re_articulationController" respawn="false" output="screen" machine="amigo4"/>-->
     
   <!-- Start model estimator -->
-  <node pkg="articulation_models" type="model_learner_msg" name="model_learner" output="screen" machine="amigo4"> 
+  <!--<node pkg="articulation_models" type="model_learner_msg" name="model_learner" output="screen" machine="amigo4"> 
     <param name="filter_models" value="rotational prismatic"/>
     <param name="sigma_position" value="0.005"/>
     <param name="sigma_orientation" value="1.0"/>
-  </node>
+  </node>-->
  
   <!-- This is the node of the re_articulation actionlib server -->
-  <node name="re_articulation_server" pkg="re_articulation" type="re_articulation_server" output="screen" machine="amigo4"/>
+  <!--<node name="re_articulation_server" pkg="re_articulation" type="re_articulation_server" output="screen" machine="amigo4"/>-->
+
+  <node name="trajectoryFromModelServer" pkg="re_articulation" type="trajectoryFromModelServer" output="screen" machine="amigo4"/>
 
  </launch>
   
