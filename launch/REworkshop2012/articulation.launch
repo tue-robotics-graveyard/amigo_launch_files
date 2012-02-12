@@ -35,7 +35,7 @@
   <!-- This is the node of the re_articulation actionlib server -->
   <!--<node name="re_articulation_server" pkg="re_articulation" type="re_articulation_server" output="screen" machine="amigo4"/>-->
 
-  <node name="trajectoryFromModelServer" pkg="re_articulation" type="trajectoryFromModelServer" output="screen" machine="amigo4"/>
+  <node name="getTrajectoryFromModel" pkg="re_articulation" type="getTrajectoryFromModel" output="screen" machine="amigo4"/>
 
  </launch>
   
