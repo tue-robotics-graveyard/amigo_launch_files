@@ -13,12 +13,12 @@
     
     <group if="$(optenv ROBOT_REAL false)">    
         <!-- REAL ROBOT -->    
-        <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(optenv ROBOT_MAP empty).yaml" output="screen"/>
+        <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(optenv ROBOT_MAP tum_hospital_room).yaml" output="screen"/>
     </group>
 
     <group unless="$(optenv ROBOT_REAL false)">    
         <!-- SIMULATION -->
-        <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(optenv ROBOT_MAP empty).yaml"/>        
+        <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(optenv ROBOT_MAP tum_hospital_room).yaml"/>        
     </group>
 
   <node pkg="amcl" type="amcl" respawn="false" name="amcl" output="screen" machine="$(arg machine)">
