@@ -1,7 +1,33 @@
 <?xml version="1.0"?>
-<launch>
-   
-    <include file="$(find amigo_handle_detector)/start.launch" />
 
- </launch>
-  
+<launch>
+
+  <include file="$(find amigo_machine_files)/machines/amigo4.machine" />
+
+  <node pkg="amigo_handle_detector" type="transform_pointcloud" name="transform_pointcloud_node" respawn="false" machine="amigo4">
+    <param name="input_cloud_topic" value="/camera/rgb/points" />
+    <param name="to_frame" value="/base_link" />
+  </node>
+
+  <!-- drawer handles detector -->
+    <node pkg="amigo_handle_detector" type="handle_detector" name="handle_detector" respawn="false" machine="amigo4">
+      <param name="point_cloud_topic" value="/camera/rgb/points_transformed" />
+      <rosparam>
+         normal_distance_weight: 0.05
+         eps_angle: 20.0 
+         k: 30
+         sac_distance: 0.02
+         object_cluster_min_size: 200   <!-- Size of surface -->
+         x_max_limit_: 1.5
+         cluster_max_height: .2
+         handle_cluster_min_size: 100
+         handle_cluster_max_size: 200
+      </rosparam>
+    </node>
+
+  <node name="pointcloud_to_grasppoint" pkg="amigo_handle_detector" type="pointcloud_to_grasppoint" respawn="false" output="screen" machine="amigo4">
+	<remap from="/pointcloud" to="/handle_detector/handle_projected_inliers/output"/>
+	<remap from="/posestamped" to="/handle_detector/handle_pose"/>
+  </node>
+
+</launch>
