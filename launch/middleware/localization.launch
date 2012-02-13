@@ -13,7 +13,7 @@
     
     <group if="$(optenv ROBOT_REAL false)">    
         <!-- REAL ROBOT -->    
-        <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(optenv ROBOT_MAP tum_hospital_room).yaml" output="screen"/>
+        <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(optenv ROBOT_MAP empty).yaml" output="screen"/>
     </group>
 
     <group unless="$(optenv ROBOT_REAL false)">    
@@ -70,7 +70,7 @@
      </node>
 
      <!-- SnapMapICP -->
-     <node  name="SnapMapICP" pkg="SnapMapICP" type="SnapMapICP" respawn="false" machine="$(arg machine)">
+     <node  name="SnapMapICP" pkg="SnapMapICP" type="SnapMapICP" respawn="true" machine="$(arg machine)">
 	    <param name="odom_frame" value="/odom"/>
         <param name="base_laser_frame" value="/base_laser"/>
         <param name="age_threshold" value="10.0"/>

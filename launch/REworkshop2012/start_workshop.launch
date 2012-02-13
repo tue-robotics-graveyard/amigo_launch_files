@@ -7,7 +7,7 @@
 
     <include file="$(find amigo_launch_files)/launch/REworkshop2012/articulation.launch" />
 
-    <include file="$(find amigo_launch_files)/launch/REworkshop2012/re_comm.launch" />
+    <!--<include file="$(find amigo_launch_files)/launch/REworkshop2012/re_comm.launch" />-->
 
     <!--<include file="$(find amigo_launch_files)/launch/REworkshop2012/vslam.launch" />--> <!-- NOT RUNNING IF LAUNCHED REMOTELY SHOULD BE STARTED ON AMIGO4 -->
 
