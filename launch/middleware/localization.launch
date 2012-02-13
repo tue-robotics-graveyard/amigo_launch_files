@@ -21,7 +21,7 @@
         <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(optenv ROBOT_MAP hospital_room).yaml"/>        
     </group>
 
-  <node pkg="amcl" type="amcl" respawn="false" name="amcl" output="screen" machine="$(arg machine)">
+  <node pkg="amcl" type="amcl" respawn="true" name="amcl" output="screen" machine="$(arg machine)">
          <remap from="scan" to="/base_scan" />
          <!-- Publish scans from best pose at a max of 10 Hz -->
          <param name="base_frame_id" value="base_link"/>
