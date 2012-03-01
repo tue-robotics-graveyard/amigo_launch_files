@@ -37,5 +37,6 @@
   <depend package="amigo_self_filter"/>
   <depend package="amigo_spindle_server"/>
   <depend package="SnapMapICP"/>
+  <depend package="rgb_lights_manager"/>
 
 </package>
