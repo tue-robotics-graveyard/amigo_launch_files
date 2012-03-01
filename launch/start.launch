@@ -28,6 +28,9 @@
         <!-- hardware controller enabler -->
         <include file="$(find amigo_launch_files)/launch/actuators/controller_enabler.launch" />
 
+	<!-- RGB lights manager -->
+	<node name="rgb_lights_manager" pkg="rgb_lights_manager" type="rgb_lights_manager" output="screen" />
+
     </group>
 
     <group unless="$(optenv ROBOT_REAL false)">
@@ -61,8 +64,6 @@
 
     <!-- Start text to speech -->
     <include file="$(find amigo_launch_files)/launch/interaction/text_to_speech.launch" />
-
-    <node name="rgb_lights_manager" pkg="rgb_lights_manager" type="rgb_lights_manager" output="screen" />
 
  </launch>
   
