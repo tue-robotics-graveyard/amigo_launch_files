@@ -13,7 +13,7 @@
     
     <group if="$(optenv ROBOT_REAL false)">    
         <!-- REAL ROBOT -->    
-        <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(optenv ROBOT_MAP tue_hospital_room_2012).yaml" output="screen"/>
+        <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(optenv ROBOT_MAP tue_automotive_21032012).yaml" output="screen"/>
     </group>
 
     <group unless="$(optenv ROBOT_REAL false)">    
