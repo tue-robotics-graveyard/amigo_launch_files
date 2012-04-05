@@ -30,6 +30,8 @@
 
 	<!-- RGB lights manager -->
 	<node name="rgb_lights_manager" pkg="rgb_lights_manager" type="rgb_lights_manager" output="screen" />
+	
+	<node name="amplifier_enabler" pkg="amigo_amplifier_enabler" type="amplifier_enabler" output="screen" />
 
     </group>
 
