@@ -4,7 +4,10 @@
 	    
     <group if="$(optenv ROBOT_REAL false)">    
         <!-- REAL ROBOT -->    
-        <include file="$(find text_to_speech_philips)/start.launch" />
+        <!--<include file="$(find text_to_speech_philips)/start.launch" />-->
+        <!-- Temporarily use the original text-to-speech -->
+        <include file="$(find text_to_speech)/start.launch" /> 
+        
     </group>
 
     <group unless="$(optenv ROBOT_REAL false)">    
