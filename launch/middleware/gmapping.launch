@@ -1,6 +1,12 @@
 <?xml version="1.0"?>
 
 <launch>
+
+	<include file="$(find amigo_machine_files)/machines/amigo1.machine" />
+    <include file="$(find amigo_machine_files)/machines/amigo2.machine" />
+    <include file="$(find amigo_machine_files)/machines/amigo3.machine" />
+    <include file="$(find amigo_machine_files)/machines/amigo4.machine" />
+    <include file="$(find amigo_machine_files)/machines/localhost.machine" />
  
     <node name="gmapping_node" pkg="gmapping" type="slam_gmapping" respawn="true" >
         <remap to="base_scan" from="scan"/>
