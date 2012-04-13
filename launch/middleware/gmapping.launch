@@ -8,13 +8,19 @@
     <include file="$(find amigo_machine_files)/machines/amigo4.machine" />
     <include file="$(find amigo_machine_files)/machines/localhost.machine" />
  
-    <node name="gmapping_node" pkg="gmapping" type="slam_gmapping" respawn="true" >
+    <node name="gmapping_node" pkg="gmapping" type="slam_gmapping" respawn="true" machine="amigo3" >
         <remap to="base_scan" from="scan"/>
         <param name="delta" value="0.025" />
 	<param name="xmin" value="-10" />
 	<param name="ymin" value="-10" />
 	<param name="xmax" value="10" />
-	<param name="ymax" value="10" />	
+	<param name="ymax" value="10" />
+<!--	<param name="srr"  value="10" />	
+	<param name="srt"  value="10" />
+	<param name="str"  value="10" />
+	<param name="stt"  value="10" /> -->
+	<param name="angularUpdate"  value="0.5" />
+
     </node>
 
 </launch>
