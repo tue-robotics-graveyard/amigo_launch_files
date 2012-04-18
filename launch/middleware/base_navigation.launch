@@ -17,7 +17,7 @@
         <rosparam file="$(find amigo_base_navigation)/costmap_common_params.yaml" command="load" ns="local_costmap" />
 
         <!-- Global planner settings -->
-        <param name="planner_frequency" value="0"/>   
+        <param name="planner_frequency" value="3"/>   
         <rosparam file="$(find amigo_base_navigation)/global_costmap_params.yaml" command="load" />
 
         <!-- Local planner settings -->
