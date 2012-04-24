@@ -5,7 +5,10 @@
 	<!-- Base laser (only for real robot; in simulation base liaser is loaded by Gazebo) -->
 	<include file="$(find amigo_launch_files)/launch/sensors/base_laser.launch" if="$(optenv ROBOT_REAL false)" />
 
-	<!-- Kinect (only for real robot; in simulation Kinect is loaded by Gazebo) -->
-	<include file="$(find amigo_launch_files)/launch/sensors/kinect.launch" if="$(optenv ROBOT_REAL false)" />
+	<!-- Top Kinect (only for real robot; in simulation Kinect is loaded by Gazebo) -->
+	<include file="$(find amigo_launch_files)/launch/sensors/top_kinect.launch" if="$(optenv ROBOT_REAL false)" />
+
+    <!-- Base Kinect (only for real robot; in simulation Kinect is loaded by Gazebo) -->
+	<include file="$(find amigo_launch_files)/launch/sensors/base_kinect.launch" if="$(optenv ROBOT_REAL false)" />
 
 </launch>
