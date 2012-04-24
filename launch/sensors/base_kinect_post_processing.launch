@@ -11,10 +11,10 @@
 
   <arg if="$(optenv ROBOT_REAL false)" name="machine" value="amigo4"/>
   <arg unless="$(optenv ROBOT_REAL false)" name="machine" value="localhost"/> 
-
+  
   <!-- voxelizer -->
   <!-- include file="$(find amigo_point_voxelizer)/launch/amigo_point_voxelizer.launch" /-->
-  
+
   <node pkg="nodelet" type="nodelet" name="base_kinect_pcl_manager" args="manager" output="screen" machine="$(arg machine)"/>
 
     <!-- Run a VoxelGrid filter to clean NaNs and downsample the data -->
@@ -31,27 +31,10 @@
       </rosparam>
     </node>
 
-  <!-- point cloud converter so that navigation maps accept incoming clouds from kinect -->
+  <!-- point cloud 1->2 converter so that navigation maps accept incoming clouds from kinect -->
   <node pkg="point_cloud_converter" type="point_cloud_converter" name="base_kinect_kinect_cloud_converter" machine="$(arg machine)" >
     <remap from="points2_in" to="/base_kinect/camera/rgb/points_voxelized"/>
     <remap from="points_out" to="/base_kinect/camera/rgb/points_voxelized_pc1_format"/>
   </node>
-
-  <!-- point cloud converter so that navigation maps accept incoming clouds from kinect -->
-  <!--<node pkg="tf" type="static_transform_publisher" name="dummy_odom_combined_tf_publisher" args="0 0 0 0 0 0 /odom /odom_combined 10"/>-->
-
- <!-- point cloud converter so that navigation maps accept incoming clouds from kinect -->
- <!--<node pkg="semantic_point_annotator" type="sac_inc_ground_removal_node" name="sac_ground_removal" machine="$(arg machine)" >
-    <remap from="tilt_laser_cloud_filtered" to="/base_kinect/camera/rgb/points_voxelized_pc1_format" />
-    <remap from="cloud_ground_filtered" to="/base_kinect/camera/rgb/points_voxelized_pc1_format_ground_filtered" />
-    <param name="z_threshold" value="10.0" />
-    <param name="sac_min_points_per_model" value="6" />
-    <param name="ground_slope_threshold" value="0.0" />
-    <param name="sac_distance_threshold" value="0.05" />
-    <param name="planar_refine" value="1" />
-    <param name="sac_max_iterations" value="200" />
-    <param name="robot_footprint_frame" value="base_link"/>
-    <param name="laser_tilt_mount_frame" value="base_kinect_openni_rgb_optical_frame"/>
-  </node>-->
 
 </launch>
