@@ -12,24 +12,17 @@
     <arg unless="$(optenv ROBOT_REAL false)" name="machine" value="localhost"/>  
 
     <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen" machine="$(arg machine)">
+        <!-- local and global planner parameters -->        
+        <rosparam file="$(find amigo_launch_files)/parameters/move_base.yaml" command="load" />
+
         <!-- Common costmap parameters -->        
         <rosparam file="$(find amigo_launch_files)/parameters/costmap_common_params.yaml" command="load" ns="global_costmap" />
         <rosparam file="$(find amigo_launch_files)/parameters/costmap_common_params.yaml" command="load" ns="local_costmap" />
 
-        <!-- Global planner settings -->
-        <param name="base_global_planner" value="tue_astar_planner/AStarPlannerROS"/>
-        <param name="planner_frequency" value="3"/>   
+        <!-- Global costmap settings -->
         <rosparam file="$(find amigo_launch_files)/parameters/costmap_global_params.yaml" command="load" />
 
-        <!-- Local planner settings -->
-        <param name="base_local_planner" value="amigo_navigation_local/AmigoLocalPlanner"/>
-        <param name="AmigoLocalPlanner/max_vel_translation" value="0.3"/>
-        <param name="AmigoLocalPlanner/max_acc_translation" value="0.2"/>
-        <param name="AmigoLocalPlanner/max_vel_rotation" value="0.5"/>
-        <param name="AmigoLocalPlanner/max_acc_rotation" value="0.4"/>
-        <param name="AmigoLocalPlanner/xy_goal_tolerance" value="0.01"/>
-        <param name="AmigoLocalPlanner/yaw_goal_tolerance" value="0.01"/>
-
+        <!-- Local costmap settings -->
         <rosparam file="$(find amigo_launch_files)/parameters/costmap_local_params.yaml" command="load" />
 
         <!-- IF IN SIMULATION, NEED TO DO REMAP -->
