@@ -11,7 +11,7 @@ robot_radius: 0.35
 # determines how far AMIGO wants to stay away from obstacles (like a safety region), but it CAN plan closer
 # if you have problems navigating through doors, make this value smaller.
 # if the global planner dangerously plans around obstacles, make it bigger.
-inflation_radius: 0.50 
+inflation_radius: 2.00 
 
 # inscribed and circumscribed radius should both be equal to the base RADIUS, since AMIGO has a circular footprint
 inscribed_radius: 0.35
@@ -19,7 +19,7 @@ circumscribed_radius: 0.35
 
 # The higher the cost_scaling_factor, the faster the costs decrease with increasing distance from the obstacles.
 # If the robot cannot navigate through a door, increase this value
-cost_scaling_factor: 50.0   # DEFAULT: 10.0
+cost_scaling_factor: 0.5   # DEFAULT: 10.0
 
 observation_sources: base_laser point_cloud_sensor
 
