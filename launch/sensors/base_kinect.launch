@@ -61,8 +61,8 @@
 
  <!-- point cloud converter so that navigation maps accept incoming clouds from kinect -->
  <!--<node pkg="semantic_point_annotator" type="sac_inc_ground_removal_node" name="sac_ground_removal" machine="amigo4" >
-    <remap from="tilt_laser_cloud_filtered" to="/camera/rbg/points_voxelized_pc1_format_voxel" />
-    <remap from="cloud_ground_filtered" to="/camera/rbg/points_voxelized_pc1_format" />
+    <remap from="tilt_laser_cloud_filtered" to="/camera/rgb/points_voxelized_pc1_format_voxel" />
+    <remap from="cloud_ground_filtered" to="/camera/rgb/points_voxelized_pc1_format" />
     <param name="z_threshold" value="0.15" />
     <param name="sac_min_points_per_model" value="6" />
     <param name="sac_distance_threshold" value="0.05" />
