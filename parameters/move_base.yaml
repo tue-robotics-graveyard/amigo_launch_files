@@ -7,10 +7,10 @@ planner_frequency : 3
 
 # Specific local planner parameters
 AmigoLocalPlanner:
-    max_vel_translation : 0.3
-    max_acc_translation : 0.2
-    max_vel_rotation    : 0.5
-    max_acc_rotation    : 0.4
+    max_vel_translation : 0.8
+    max_acc_translation : 0.5
+    max_vel_rotation    : 0.8
+    max_acc_rotation    : 0.8
     xy_goal_tolerance   : 0.01
     yaw_goal_tolerance  : 0.01
 
