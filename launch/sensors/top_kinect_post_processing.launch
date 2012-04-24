@@ -11,9 +11,6 @@
 
   <arg if="$(optenv ROBOT_REAL false)" name="machine" value="amigo1"/>
   <arg unless="$(optenv ROBOT_REAL false)" name="machine" value="localhost"/>
-
-  <!-- voxelizer -->
-  <!-- include file="$(find amigo_point_voxelizer)/launch/amigo_point_voxelizer.launch" /-->
   
   <node pkg="nodelet" type="nodelet" name="pcl_manager" args="manager" output="screen" machine="$(arg machine)"/>
 

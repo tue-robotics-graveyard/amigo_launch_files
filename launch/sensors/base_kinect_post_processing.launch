@@ -11,9 +11,6 @@
 
   <arg if="$(optenv ROBOT_REAL false)" name="machine" value="amigo4"/>
   <arg unless="$(optenv ROBOT_REAL false)" name="machine" value="localhost"/> 
-  
-  <!-- voxelizer -->
-  <!-- include file="$(find amigo_point_voxelizer)/launch/amigo_point_voxelizer.launch" /-->
 
   <node pkg="nodelet" type="nodelet" name="base_kinect_pcl_manager" args="manager" output="screen" machine="$(arg machine)"/>
 
@@ -32,9 +29,10 @@
     </node>
 
   <!-- point cloud 1->2 converter so that navigation maps accept incoming clouds from kinect -->
-  <node pkg="point_cloud_converter" type="point_cloud_converter" name="base_kinect_kinect_cloud_converter" machine="$(arg machine)" >
+  <node pkg="point_cloud_converter" type="point_cloud_converter" name="base_kinect_kinect_cloud_converter" machine="$(arg machine)">
     <remap from="points2_in" to="/base_kinect/camera/rgb/points_voxelized"/>
     <remap from="points_out" to="/base_kinect/camera/rgb/points_voxelized_pc1_format"/>
+    <remap from="points2_out" to="/base_kinect/camera/rgb/points_voxelized_pc2_format"/>
   </node>
 
 </launch>
