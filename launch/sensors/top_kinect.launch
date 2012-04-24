@@ -37,10 +37,10 @@
   <!-- voxelizer -->
   <!-- include file="$(find amigo_point_voxelizer)/launch/amigo_point_voxelizer.launch" /-->
   
-    <node pkg="nodelet" type="nodelet" name="pcl_manager" args="manager" output="screen" machine="amigo1"/>
+    <!--<node pkg="nodelet" type="nodelet" name="pcl_manager" args="manager" output="screen" machine="amigo1"/>-->
 
     <!-- Run a VoxelGrid filter to clean NaNs and downsample the data -->
-    <node pkg="nodelet" type="nodelet" name="voxel_grid" args="load pcl/VoxelGrid pcl_manager" output="screen" machine="amigo1">
+    <!--<node pkg="nodelet" type="nodelet" name="voxel_grid" args="load pcl/VoxelGrid pcl_manager" output="screen" machine="amigo1">
       <remap from="~input" to="/camera/rgb/points" />
       <remap from="~output" to="/camera/rgb/points_voxelized" />
       <rosparam>
@@ -51,7 +51,7 @@
         frame_out: base_link
         leaf_size: 0.01
       </rosparam>
-    </node>
+    </node>-->
 
   <!-- point cloud converter so that navigation maps accept incoming clouds from kinect 
   <node pkg="point_cloud_converter" type="point_cloud_converter" name="kinect_cloud_converter" machine="amigo1" >
