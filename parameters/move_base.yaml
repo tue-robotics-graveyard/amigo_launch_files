@@ -11,7 +11,7 @@ AmigoLocalPlanner:
     max_acc_translation : 0.5
     max_vel_rotation    : 0.5
     max_acc_rotation    : 0.4
-    xy_goal_tolerance   : 0.01
-    yaw_goal_tolerance  : 0.01
+    xy_goal_tolerance   : 0.1
+    yaw_goal_tolerance  : 0.05
 
 
