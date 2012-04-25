@@ -54,7 +54,7 @@
         <param name="robot_description" command="$(find xacro)/xacro.py '$(find amigo_robot_model)/robot.urdf.xacro' " />
 
         <!-- push robot_description to factory and spawn robot in gazebo -->
-        <node name="spawn_amigo" pkg="gazebo" type="spawn_model" args=" -unpause -urdf -param robot_description -model amigo -x -8 -y 4 -z 0.0" respawn="false" output="screen" />
+        <node name="spawn_amigo" pkg="gazebo" type="spawn_model" args=" -unpause -urdf -param robot_description -model amigo -x -8.5 -y 3.5 -z 0.0" respawn="false" output="screen" />
         
     </group>
 
