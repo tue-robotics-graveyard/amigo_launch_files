@@ -38,5 +38,6 @@
   <depend package="amigo_spindle_server"/>
   <depend package="SnapMapICP"/>
   <depend package="rgb_lights_manager"/>
+  <depend package="tue_astar_planner"/>
 
 </package>
