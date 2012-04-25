@@ -18,7 +18,7 @@
 
     <group unless="$(optenv ROBOT_REAL false)">    
         <!-- SIMULATION -->
-        <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(optenv ROBOT_MAP hospital_room).yaml"/>        
+        <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(optenv ROBOT_MAP rdo_scenario_23042012).yaml"/>        
     </group>
 
   <node pkg="amcl" type="amcl" respawn="true" name="amcl" output="screen" machine="$(arg machine)">

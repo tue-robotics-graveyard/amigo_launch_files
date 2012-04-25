@@ -29,9 +29,9 @@
         <include file="$(find amigo_launch_files)/launch/actuators/controller_enabler.launch" />
 
 	<!-- RGB lights manager -->
-	<node name="rgb_lights_manager" pkg="rgb_lights_manager" type="rgb_lights_manager" output="screen" />
+	<node name="rgb_lights_manager" pkg="rgb_lights_manager" type="rgb_lights_manager" output="screen" machine="MISCELLANEOUS"/>
 	
-	<node name="amplifier_enabler" pkg="amigo_amplifier_enabler" type="amplifier_enabler" output="screen" />
+	<node name="amplifier_enabler" pkg="amigo_amplifier_enabler" type="amplifier_enabler" output="screen" machine="MISCELLANEOUS"/>
 
     </group>
 
