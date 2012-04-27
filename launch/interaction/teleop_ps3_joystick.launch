@@ -1,6 +1,7 @@
 <launch>
 
   <node pkg="pr2_teleop" type="teleop_pr2" name="pr2_teleop" args="--deadman_no_publish" output="screen">
+      <rosparam file="$(find pr2_teleop)/config/teleop.yaml" command="load" />
   </node>
 	
   <node pkg="joy" type="joy_node" name="ps3_joy" output="screen" >
