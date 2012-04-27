@@ -28,7 +28,7 @@ circumscribed_radius: 0.35
 
 # The higher the cost_scaling_factor, the faster the costs decrease with increasing distance from the obstacles.
 # If the robot cannot navigate through a door, increase this value
-cost_scaling_factor: 5   # DEFAULT: 10.0
+cost_scaling_factor: 10   # DEFAULT: 10.0
 
 observation_sources: marking_cloud clearing_cloud
 
