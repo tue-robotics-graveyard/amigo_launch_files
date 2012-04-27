@@ -31,5 +31,5 @@ observation_sources: base_laser
 
 base_laser: {sensor_frame: /base_laser, data_type: LaserScan, topic: /base_scan, marking: true, clearing: true}
 
-publish_voxel_map: true #toegevoegd
+publish_voxel_map: false #toegevoegd
 map_type: costmap #toegevoegd
