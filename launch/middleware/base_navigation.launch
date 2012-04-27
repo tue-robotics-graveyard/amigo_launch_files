@@ -8,7 +8,7 @@
     <include file="$(find amigo_machine_files)/machines/amigo4.machine" />
     <include file="$(find amigo_machine_files)/machines/localhost.machine" />
 
-    <arg if="$(optenv ROBOT_REAL false)" name="machine" value="amigo3"/>
+    <arg if="$(optenv ROBOT_REAL false)" name="machine" value="amigo4"/>
     <arg unless="$(optenv ROBOT_REAL false)" name="machine" value="localhost"/>  
 
     <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen" machine="$(arg machine)">
