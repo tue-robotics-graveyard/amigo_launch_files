@@ -1,0 +1,12 @@
+<launch>
+
+  <node pkg="pr2_teleop" type="teleop_pr2" name="pr2_teleop" args="--deadman_no_publish" output="screen">
+  </node>
+	
+  <node pkg="joy" type="joy_node" name="ps3_joy" output="screen" >
+    <param name="dev" type="string" value="/dev/input/js1" />
+  </node>
+
+
+</launch>
+
