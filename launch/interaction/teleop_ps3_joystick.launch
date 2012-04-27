@@ -4,7 +4,7 @@
   </node>
 	
   <node pkg="joy" type="joy_node" name="ps3_joy" output="screen" >
-    <param name="dev" type="string" value="/dev/input/js1" />
+    <param name="dev" type="string" value="/dev/input/by-id/usb-Sony_PLAYSTATION_R_3Controller-joystick" />
   </node>
 
 
