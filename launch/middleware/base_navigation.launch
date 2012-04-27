@@ -26,7 +26,8 @@
         <rosparam file="$(find amigo_launch_files)/parameters/costmap_local_params.yaml" command="load" />
 
         <!-- IF IN SIMULATION, NEED TO DO REMAP -->
-        <remap from="/cmd_vel" to="/base_controller/cmd_vel" unless="$(optenv ROBOT_REAL false)"/>
+        <!-- Sjoerd: adjusted simulation base controller, so not necessary anymore! -->
+        <!--remap from="/cmd_vel" to="/base_controller/cmd_vel" unless="$(optenv ROBOT_REAL false)"/ -->
         
     </node>
 
