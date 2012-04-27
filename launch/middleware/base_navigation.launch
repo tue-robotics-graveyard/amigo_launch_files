@@ -11,23 +11,17 @@
     <arg if="$(optenv ROBOT_REAL false)" name="machine" value="amigo4"/>
     <arg unless="$(optenv ROBOT_REAL false)" name="machine" value="localhost"/>  
 
-    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen" machine="$(arg machine)">
+    <node pkg="tue_move_base" type="move_base" respawn="false" name="move_base" output="screen" machine="$(arg machine)">
         <!-- local and global planner parameters -->        
         <rosparam file="$(find amigo_launch_files)/parameters/move_base.yaml" command="load" />
 
-        <!-- Common costmap parameters -->        
-        <rosparam file="$(find amigo_launch_files)/parameters/costmap_common_params.yaml" command="load" ns="global_costmap" />
-        <rosparam file="$(find amigo_launch_files)/parameters/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <!-- Global costmap parameters -->        
+        <rosparam file="$(find amigo_launch_files)/parameters/global_costmap_laser.yaml" command="load" ns="global_costmap_laser" />
+	    <rosparam file="$(find amigo_launch_files)/parameters/global_costmap_kinect.yaml" command="load" ns="global_costmap_kinect" />
 
-        <!-- Global costmap settings -->
-        <rosparam file="$(find amigo_launch_files)/parameters/costmap_global_params.yaml" command="load" />
-
-        <!-- Local costmap settings -->
-        <rosparam file="$(find amigo_launch_files)/parameters/costmap_local_params.yaml" command="load" />
-
-        <!-- IF IN SIMULATION, NEED TO DO REMAP -->
-        <!-- Sjoerd: adjusted simulation base controller, so not necessary anymore! -->
-        <!--remap from="/cmd_vel" to="/base_controller/cmd_vel" unless="$(optenv ROBOT_REAL false)"/ -->
+    	<!-- Local costmap parameters -->
+	    <rosparam file="$(find amigo_launch_files)/parameters/local_costmap_laser.yaml" command="load" ns="local_costmap_laser" />
+    	<rosparam file="$(find amigo_launch_files)/parameters/local_costmap_kinect.yaml" command="load" ns="local_costmap_kinect" />
         
     </node>
 
