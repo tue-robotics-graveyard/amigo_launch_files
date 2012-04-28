@@ -9,14 +9,15 @@
 	<include file="$(find amigo_launch_files)/launch/sensors/base_laser.launch" if="$(optenv ROBOT_REAL false)" />
 
 	<!-- Top Kinect (only for real robot; in simulation Kinect is loaded by Gazebo) -->
-	<include file="$(find amigo_launch_files)/launch/sensors/top_kinect.launch" if="$(optenv ROBOT_REAL false)" />
+        <include file="$(find amigo_launch_files)/launch/sensors/top_kinect.launch" if="$(optenv ROBOT_REAL false)" />
+	<!--<include file="$(find amigo_launch_files)/launch/sensors/top_kinect_old.launch" if="$(optenv ROBOT_REAL false)" />-->
         
         <!-- Base Kinect (only for real robot; in simulation Kinect is loaded by Gazebo) -->
 	<include file="$(find amigo_launch_files)/launch/sensors/base_kinect.launch" if="$(optenv ROBOT_REAL false)" />
 
 	<!-- Post processing of Kinect data -->
-	<include file="$(find amigo_launch_files)/launch/sensors/top_kinect_post_processing.launch" />
-	<include file="$(find amigo_launch_files)/launch/sensors/base_kinect_post_processing.launch" />
+	<!--<include file="$(find amigo_launch_files)/launch/sensors/top_kinect_post_processing.launch" />-->
+	<!--<include file="$(find amigo_launch_files)/launch/sensors/base_kinect_post_processing.launch" />-->
         
 
 </launch>
