@@ -7,12 +7,11 @@
   <include file="$(find amigo_machine_files)/machines/amigo3.machine" />
   <include file="$(find amigo_machine_files)/machines/amigo4.machine" />
 
-<group ns="camera">
     <!-- The nodelet manager -->
     <node pkg="nodelet" type="nodelet" name="manager" args="manager" output="screen" machine="amigo1"/>
 
     <!-- Openni driver nodelet -->
-    <node pkg="nodelet" type="nodelet" name="driver" args="load openni_camera/driver manager" machine="amigo1">
+    <node pkg="nodelet" type="nodelet" name="driver" args="load openni_camera/OpenNINodelet manager" machine="amigo1">
       <param name="device_id" value="#1"/>
       <param name="rgb_frame_id" value="openni_rgb_optical_frame" />
       <param name="depth_frame_id" value="openni_depth_optical_frame" />
@@ -49,11 +48,9 @@
       <param name="output_frame_id" value="/camera_depth_optical_frame" />
     </node>-->
 
-    <!-- Cool 3D visualisatio window. Folder is located in ../user/rob -->
+    <!-- Cool 3D visualisation window. Folder is located in ../user/rob -->
     <!--<node pkg="nodelet" type="nodelet" name="TTKinect" args="load HelloNodelet/TTKinect camera_nodelet_manager" output="screen" machine="amigo1">
       <remap from="cloud_in" to="/camera/depth_registered/points"/>
     </node>-->
-
-</group>
 
 </launch>
