@@ -5,6 +5,14 @@ base_local_planner  : amigo_navigation_local/AmigoLocalPlanner
 # Planner frequency for the global plan
 planner_frequency : 3
 
+global_costmaps:
+    - global_costmap_kinect
+    - global_costmap_laser
+
+local_costmaps:
+    - local_costmap_kinect
+    - local_costmap_laser
+
 # Specific global planner parameters
 AStarPlannerROS:
     smoothing_window_size: 1.0    
