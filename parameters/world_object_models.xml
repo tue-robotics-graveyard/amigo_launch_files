@@ -47,7 +47,7 @@
     <object_class name="person" base="object">
     
         <probability_model>
-            <p_clutter value="0.01"/>
+            <p_clutter value="0.0000001"/>
             <p_new value="0.0000001"/>
         </probability_model>
 
