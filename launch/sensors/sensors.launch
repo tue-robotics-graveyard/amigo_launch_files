@@ -9,6 +9,6 @@
         <include file="$(find amigo_launch_files)/launch/sensors/top_kinect.launch"/>
         
         <!-- Base Kinect (only for real robot; in simulation Kinect is loaded by Gazebo) -->
-	<include file="$(find amigo_launch_files)/launch/sensors/base_kinect.launch"/>
+	<!--<include file="$(find amigo_launch_files)/launch/sensors/base_kinect.launch"/>-->
         
 </launch>
