@@ -6,11 +6,11 @@ base_local_planner  : amigo_navigation_local/AmigoLocalPlanner
 planner_frequency : 3
 
 global_costmaps:
-    - global_costmap_kinect
+    #- global_costmap_kinect
     - global_costmap_laser
 
 local_costmaps:
-    - local_costmap_kinect
+    #- local_costmap_kinect
     - local_costmap_laser
 
 # Specific global planner parameters
