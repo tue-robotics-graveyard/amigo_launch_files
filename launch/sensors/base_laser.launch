@@ -2,9 +2,6 @@
 
 <launch>
 
-    <!-- base laser - real -->    
-    <group if="$(optenv ROBOT_REAL false)">
-        <!--include file="$(find amigo_laser)/start.launch" /--> <!-- real (autostart.launch) -->
         <include file="$(find amigo_machine_files)/machines/amigo1.machine" />
 
         <node pkg="hokuyo_node" type="hokuyo_node" name="hokuyo_node" output="screen" machine="amigo1">
@@ -12,12 +9,10 @@
             <param name="frame_id" value="/base_laser"/>
         </node>
 
-
-        <node name="$(anon dynparam)" pkg="dynamic_reconfigure" type="dynparam" args="set_from_parameters hokuyo_node">
+        <node name="$(anon dynparam)" pkg="dynamic_reconfigure" type="dynparam" args="set_from_parameters hokuyo_node" machine="amigo1">
             <param name="min_ang" type="double" value="-2.1" />
             <param name="max_ang" type="double" value="2.1" />
         </node>
-    </group>   
 
 </launch>
   

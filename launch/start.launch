@@ -31,7 +31,11 @@
 	<!-- RGB lights manager -->
 	<node name="rgb_lights_manager" pkg="rgb_lights_manager" type="rgb_lights_manager" output="screen" />
 	
+	<!-- Amplifier enabler -->
 	<node name="amplifier_enabler" pkg="amigo_amplifier_enabler" type="amplifier_enabler" output="screen" />
+
+        <!-- Start all sensors -->
+        <include file="$(find amigo_launch_files)/launch/sensors/sensors.launch" />
 
     </group>
 
@@ -48,6 +52,7 @@
         <!-- start controller manager (rviz) -->
         <include file="$(find pr2_controller_manager)/controller_manager.launch"/>
 
+        <!-- Simulation controllers -->
         <include file="$(find amigo_simulation_controllers)/controllers.launch"/>
 
         <!-- load robot -->
@@ -58,9 +63,6 @@
         
     </group>
 
-
-    <!-- Start all sensors -->
-    <include file="$(find amigo_launch_files)/launch/sensors/sensors.launch" />
 
     <!-- Self filter (robots self removed from Kinect pointcloud on topic /camera/depth/points_self_filtered) -->
     <!--<include file="$(find amigo_self_filter)/start_filter.launch"/>-->
