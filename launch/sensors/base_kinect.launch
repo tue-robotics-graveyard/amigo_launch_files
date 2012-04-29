@@ -14,8 +14,8 @@
     <!-- Openni driver nodelet -->
     <node pkg="nodelet" type="nodelet" name="driver" args="load openni_camera/OpenNINodelet manager" machine="amigo4">
       <param name="device_id" value="#1"/>
-      <param name="rgb_frame_id" value="/base_camera_rgb_optical_frame" />
-      <param name="depth_frame_id" value="/base_camera_depth_optical_frame" />
+      <param name="rgb_frame_id" value="/base_kinect_openni_rgb_optical_frame" />
+      <param name="depth_frame_id" value="/base_kinect_openni_depth_optical_frame" />
       <param name="use_indices" value="false" />
       <param name="depth_registration" value="true" />
     </node>
