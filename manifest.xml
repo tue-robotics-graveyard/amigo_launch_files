@@ -30,6 +30,7 @@
   <depend package="text_to_speech_philips"/>
   <!--depend package="amigo_controller_enabler"/-->
   <depend package="amigo_arm_navigation"/>
+  <depend package="amigo_simulation_controllers"/>
   <depend package="amigo_gripper_server"/>
   <depend package="tue_filters"/>
   <depend package="amigo_head_ref"/>
