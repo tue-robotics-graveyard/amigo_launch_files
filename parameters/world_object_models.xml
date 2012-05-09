@@ -79,7 +79,7 @@
 
         <behavior_model attribute="position" model="position_kalman_filter">
             <param name="max_acceleration" value="5" />                
-            <param name="uniform_probability" value="0.001" /> 
+            <param name="uniform_probability" value="0.00001" /> 
         </behavior_model>      
 
         <behavior_model attribute="color" model="discrete_filter">
