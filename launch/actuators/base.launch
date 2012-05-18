@@ -7,5 +7,5 @@
     ETHERCAT_HARDWARE
     -s $(find amigo_etherCAT)/soem.ops 
     -s $(find amigo_base_controller)/base_controller_standby.ops 
-    --" output="screen" machine="amigo2"></node>           
+    --" output="screen" machine="amigo-desktop"></node>           
 </launch>
