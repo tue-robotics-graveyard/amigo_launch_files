@@ -13,7 +13,7 @@
     
     <group if="$(optenv ROBOT_REAL false)">    
         <!-- REAL ROBOT -->    
-        <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/hospital_room.yaml" output="screen"/>
+        <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/tue_hospital_room_2012.yaml" output="screen"/>
         
              <!-- SnapMapICP -->
      <node name="SnapMapICP" pkg="SnapMapICP" type="SnapMapICP" respawn="true" output="screen" machine="$(arg machine)">
