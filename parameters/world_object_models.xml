@@ -51,9 +51,10 @@
             <p_new value="0.0000001"/>
         </probability_model>
 
-        <behavior_model attribute="position" model="position_kalman_filter" dimensions="3">
+        <behavior_model attribute="position" model="person" dimensions="3">
             <param name="max_acceleration" value="4" />                
             <param name="uniform_probability" value="0.00001" /> 
+            <param name="velocity_factor" value="0.6" /> 
         </behavior_model>
              
     </object_class>
