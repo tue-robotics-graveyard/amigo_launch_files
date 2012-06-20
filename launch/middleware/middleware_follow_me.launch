@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<launch>	
+	
+	<!-- Localization -->
+	<!--include file="$(find amigo_launch_files)/launch/middleware/localization.launch" / -->
+
+	<node pkg="tf" type="static_transform_publisher" name="tf_fixed_localization" args="0 0 0 0 0 0 /map /odom 10" output="screen" respawn="true" />
+
+	<!-- Navigation -->
+	<!--include file="$(find tue_move_base)/launch/base_navigation.launch" / -->
+
+	<include file="$(find amigo_launch_files)/launch/middleware/base_navigation_follow_me.launch" />
+	
+	<!-- Arm & gripper control -->
+	<!--include file="$(find amigo_launch_files)/launch/middleware/arms.launch" / -->
+	
+	<!-- Head control -->
+	<include file="$(find amigo_launch_files)/launch/middleware/head.launch" />	
+
+	<!-- Spindle -->
+	<include file="$(find amigo_launch_files)/launch/middleware/spindle.launch" />	
+	
+</launch>
