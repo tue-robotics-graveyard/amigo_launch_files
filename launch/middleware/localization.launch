@@ -18,7 +18,7 @@
 
     <group unless="$(optenv ROBOT_REAL false)">    
         <!-- SIMULATION -->
-        <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/robocup2012_02.yaml"/>        
+        <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/robocup2012_02.yaml" output="screen"/>        
     </group> 
    
      <!-- SnapMapICP -->
