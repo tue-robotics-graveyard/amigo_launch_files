@@ -2,6 +2,6 @@
 
 <launch>
 	
-	<include file="$(find amigo_head_ref)/start.launch" />
+	<include file="$(find amigo_head_ref)/launch/start.launch" />
 		
 </launch>
