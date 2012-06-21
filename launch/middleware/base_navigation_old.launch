@@ -11,7 +11,7 @@
     <arg if="$(optenv ROBOT_REAL false)" name="machine" value="amigo4"/>
     <arg unless="$(optenv ROBOT_REAL false)" name="machine" value="localhost"/>  
 
-    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen" machine="$(arg machine)">
+    <node pkg="move_base" type="move_base" respawn="true" name="move_base" output="screen" machine="$(arg machine)">
         <!-- local and global planner parameters -->        
         <rosparam file="$(find amigo_launch_files)/parameters/move_base.yaml" command="load" />
 
