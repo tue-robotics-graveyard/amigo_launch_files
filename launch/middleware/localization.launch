@@ -31,7 +31,7 @@
 	<param name="angle_threshold" value="0.01"/>
 	<param name="update_age_threshold" value="1.0"/>
 	<param name="dist_threshold" value="0.01"/>
-	<param name="icp_inlier_threshold" value="0.88"/>
+	<param name="icp_inlier_threshold" value="0.6"/>
 	<param name="icp_inlier_dist" value="0.1"/>
 	<param name="icp_num_iter" value="250"/>
 	<param name="pose_covariance_trans" value="0.5"/>
