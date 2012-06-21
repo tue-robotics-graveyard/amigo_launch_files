@@ -16,7 +16,7 @@
         <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/robocup2012_02.yaml" output="screen"/>
         
              <!-- SnapMapICP -->
-     <!--node name="SnapMapICP" pkg="SnapMapICP" type="SnapMapICP" respawn="true" output="screen" machine="$(arg machine)">
+     <node name="SnapMapICP" pkg="amigo_snapmap_icp" type="SnapMapICP" respawn="true" output="screen" machine="$(arg machine)">
 	<param name="odom_frame" value="/odom"/>
         <param name="base_laser_frame" value="/base_laser"/>
 	<param name="icp_fitness_threshold" value="100.0"/>
@@ -29,7 +29,7 @@
 	<param name="icp_inlier_dist" value="0.1"/>
 	<param name="icp_num_iter" value="250"/>
 	<param name="pose_covariance_trans" value="0.5"/>
-     </node-->
+     </node>
         
         
     </group>
