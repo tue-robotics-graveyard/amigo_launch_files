@@ -49,6 +49,18 @@
 	<node name="gazebo" pkg="gazebo" type="gazebo" args="$(optenv GAZEBO_HEADLESS) $(find amigo_maps)/worlds/$(optenv ROBOT_MAP mexicoA).world" respawn="false" output="screen"/>
         <include file="$(find amigo_maps)/objects/objects.launch"/>
 
+        <!-- start controller manager (rviz) -->
+        <include file="$(find pr2_controller_manager)/controller_manager.launch"/>
+
+        <!-- Simulation controllers -->
+        <include file="$(find amigo_simulation_controllers)/controllers.launch"/>
+
+        <!-- load robot -->
+        <param name="robot_description" command="$(find xacro)/xacro.py '$(find amigo_robot_model)/robot.urdf.xacro' " />
+
+        <!-- push robot_description to factory and spawn robot in gazebo -->
+        <node name="spawn_amigo" pkg="gazebo" type="spawn_model" args=" -unpause -urdf -param robot_description -model amigo -x -6.5 -y -2.4 -z 0.0" respawn="false" output="screen" />
+        
         
     </group>
 
