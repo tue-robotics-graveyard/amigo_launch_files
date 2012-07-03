@@ -13,6 +13,8 @@
         These can be started seperately through the amigo dashboard.
     -->
 
+    <arg name="ROBOT_MAP" default="$(find amigo_maps)/worlds/mexicoA.world" />
+
     <group if="$(optenv ROBOT_REAL false)">
         <!-- REAL ROBOT -->
 
@@ -46,7 +48,7 @@
         <param name="/use_sim_time" value="true"/>
 
         <!-- start world file and objects (export HEADLESS to -r if you want to run gazebo headless, this is done on the Jenkins server, ask Rob J-->
-	<node name="gazebo" pkg="gazebo" type="gazebo" args="$(optenv GAZEBO_HEADLESS) $(find amigo_maps)/worlds/$(optenv ROBOT_MAP mexicoA).world" respawn="false" output="screen"/>
+	<node name="gazebo" pkg="gazebo" type="gazebo" args="$(optenv GAZEBO_HEADLESS) $(arg ROBOT_MAP)" respawn="false" output="screen"/>
         <include file="$(find amigo_maps)/objects/objects.launch"/>
 
         <!-- start controller manager (rviz) -->
