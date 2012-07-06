@@ -13,7 +13,7 @@
         These can be started seperately through the amigo dashboard.
     -->
 
-    <arg name="ROBOT_MAP" default="$(find amigo_maps)/worlds/mexicoA.world" />
+    <arg name="ROBOT_MAP" default="$(find amigo_maps)/worlds/mexicoB.world" />
 
     <group if="$(optenv ROBOT_REAL false)">
         <!-- REAL ROBOT -->
@@ -61,7 +61,7 @@
         <param name="robot_description" command="$(find xacro)/xacro.py '$(find amigo_robot_model)/robot.urdf.xacro' " />
 
         <!-- push robot_description to factory and spawn robot in gazebo -->
-        <node name="spawn_amigo" pkg="gazebo" type="spawn_model" args=" -unpause -urdf -param robot_description -model amigo -x -6.5 -y -2.4 -z 0.0" respawn="false" output="screen" />
+        <node name="spawn_amigo" pkg="gazebo" type="spawn_model" args=" -unpause -urdf -param robot_description -model amigo -x -6.5 -y 2.0 -z 0.0" respawn="false" output="screen" />
         
         
     </group>
