@@ -3,7 +3,7 @@
     <object_class name="object"> 
     
         <probability_model>
-            <p_clutter value="0.0"/>
+            <p_clutter value="0.00000000001"/>
         </probability_model>
 
         <behavior_model attribute="position" model="position_kalman_filter" p_new="0.0001" p_clutter="0.0">
@@ -34,6 +34,91 @@
 
     </object_class>
 
+    <object_class name="person" base="object">
+    
+        <probability_model>
+            <p_clutter value="0.0000000000000000000001"/>
+            <p_new value="0.0000001"/>
+        </probability_model>
+
+        <behavior_model attribute="position" model="person" p_new="0.0000001" p_clutter="0.0000001">
+            <param name="max_acceleration" value="8" />                
+            <param name="uniform_probability" value="0.0001" /> 
+            <param name="velocity_factor" value="0.4" /> 
+        </behavior_model>
+             
+    </object_class>
+
+    <object_class name="noodles" base="object">
+    
+        <probability_model>
+            <p_clutter value="0.0000000000000000000001"/>
+            <p_new value="0.001"/>
+        </probability_model>
+
+        <behavior_model attribute="position" model="position_kalman_filter" p_new="0.00001" p_clutter="0.0">
+            <param name="max_acceleration" value="0.001" />                
+            <param name="uniform_probability" value="0.0001" /> 
+        </behavior_model>
+             
+    </object_class>
+
+    <object_class name="coffee_pads" base="object">
+    
+        <probability_model>
+            <p_clutter value="0.0000000000000000000001"/>
+            <p_new value="0.001"/>
+        </probability_model>
+
+        <behavior_model attribute="position" model="position_kalman_filter" p_new="0.00001" p_clutter="0.0">
+            <param name="max_acceleration" value="0.001" />                
+            <param name="uniform_probability" value="0.0001" /> 
+        </behavior_model>
+             
+    </object_class>
+
+    <object_class name="closet" base="object">
+    
+        <probability_model>
+            <p_clutter value="0.0000000000000000000001"/>
+            <p_new value="0.001"/>
+        </probability_model>
+
+        <behavior_model attribute="position" model="position_kalman_filter" p_new="0.00001" p_clutter="0.0">
+            <param name="max_acceleration" value="0.001" />                
+            <param name="uniform_probability" value="0.0001" /> 
+        </behavior_model>
+             
+    </object_class>
+
+    <object_class name="table" base="object">
+    
+        <probability_model>
+            <p_clutter value="0.0000000000000000000001"/>
+            <p_new value="0.001"/>
+        </probability_model>
+
+        <behavior_model attribute="position" model="position_kalman_filter" p_new="0.00001" p_clutter="0.0">
+            <param name="max_acceleration" value="0.001" />                
+            <param name="uniform_probability" value="0.0001" /> 
+        </behavior_model>
+             
+    </object_class>
+
+    <object_class name="chair" base="object">
+    
+        <probability_model>
+            <p_clutter value="0.0000000000000000000001"/>
+            <p_new value="0.001"/>
+        </probability_model>
+
+        <behavior_model attribute="position" model="position_kalman_filter" p_new="0.00001" p_clutter="0.0">
+            <param name="max_acceleration" value="0.0001" />                
+            <param name="uniform_probability" value="0.0001" /> 
+        </behavior_model>
+
+    </object_class>
+
     <object_class name="body" base="object">
     
         <probability_model>
@@ -44,21 +129,6 @@
         <behavior_model attribute="position" model="position_kalman_filter" p_new="0.00001" p_clutter="0.0">
             <param name="max_acceleration" value="10" />                
             <param name="uniform_probability" value="0.000001" /> 
-        </behavior_model>
-             
-    </object_class>
-
-    <object_class name="person" base="object">
-    
-        <probability_model>
-            <p_clutter value="0.0000001"/>
-            <p_new value="0.0000001"/>
-        </probability_model>
-
-        <behavior_model attribute="position" model="person" p_new="0.0000001" p_clutter="0.0000001">
-            <param name="max_acceleration" value="10" />                
-            <param name="uniform_probability" value="0.00001" /> 
-            <param name="velocity_factor" value="0.4" /> 
         </behavior_model>
              
     </object_class>
