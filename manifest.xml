@@ -17,7 +17,6 @@
   <!--depend package="dynamixel"/ -->
   <!--depend package="dynamixel_ethercat"/ -->
   <depend package="amigo_laser_filter"/>
-  <depend package="amigo_base_navigation"/>
   <!--depend package="amigo_base_controller"/-->
   <!--depend package="amigo_pera_controller"/-->
   <!--depend package="amigo_head_controller"/-->
