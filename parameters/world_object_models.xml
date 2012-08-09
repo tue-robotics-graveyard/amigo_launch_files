@@ -6,12 +6,12 @@
             <p_clutter value="0.00000000001"/>
         </probability_model>
 
-        <behavior_model attribute="position" model="position_kalman_filter" p_new="0.0001" p_clutter="0.0">
+        <behavior_model attribute="position" model="position_kalman_filter" dimensions="3" p_new="0.0001" p_clutter="0.0">
             <param name="max_acceleration" value="0" />                
             <param name="uniform_probability" value="0.0001" />  
         </behavior_model>
 
-        <behavior_model attribute="orientation" model="position_kalman_filter" p_new="0.001" p_clutter="0.0">
+        <behavior_model attribute="orientation" model="position_kalman_filter" dimensions="4" p_new="0.001" p_clutter="0.0">
             <param name="max_acceleration" value="1" />                
             <param name="uniform_probability" value="0.001" /> 
         </behavior_model>     
@@ -21,6 +21,10 @@
         </behavior_model> 
 
         <behavior_model attribute="class_label" model="discrete_filter">
+            <param name="domain_size" value="100" />
+        </behavior_model>
+
+        <behavior_model attribute="knowrob_id" model="discrete_filter">
             <param name="domain_size" value="100" />
         </behavior_model>
 
@@ -41,7 +45,7 @@
             <p_new value="0.0000001"/>
         </probability_model>
 
-        <behavior_model attribute="position" model="person" p_new="0.0000001" p_clutter="0.0000001">
+        <behavior_model attribute="position" model="person" dimensions="3" p_new="0.0000001" p_clutter="0.0000001">
             <param name="max_acceleration" value="8" />                
             <param name="uniform_probability" value="0.0001" /> 
             <param name="velocity_factor" value="0.4" /> 
@@ -56,7 +60,7 @@
             <p_new value="0.0000001"/>
         </probability_model>
 
-        <behavior_model attribute="position" model="person" p_new="0.0000001" p_clutter="0.0000001">
+        <behavior_model attribute="position" model="person" dimensions="3" p_new="0.0000001" p_clutter="0.0000001">
             <param name="max_acceleration" value="15" />                
             <param name="uniform_probability" value="0.0001" /> 
             <param name="velocity_factor" value="0.4" /> 
@@ -71,7 +75,7 @@
             <p_new value="0.001"/>
         </probability_model>
 
-        <behavior_model attribute="position" model="position_kalman_filter" p_new="0.00001" p_clutter="0.0">
+        <behavior_model attribute="position" model="position_kalman_filter" dimensions="3" p_new="0.00001" p_clutter="0.0">
             <param name="max_acceleration" value="0.001" />                
             <param name="uniform_probability" value="0.0001" /> 
         </behavior_model>
@@ -85,7 +89,7 @@
             <p_new value="0.001"/>
         </probability_model>
 
-        <behavior_model attribute="position" model="position_kalman_filter" p_new="0.00001" p_clutter="0.0">
+        <behavior_model attribute="position" model="position_kalman_filter" dimensions="3" p_new="0.00001" p_clutter="0.0">
             <param name="max_acceleration" value="0.0001" />                
             <param name="uniform_probability" value="0.0001" /> 
         </behavior_model>
@@ -99,7 +103,7 @@
             <p_new value="0.00001"/>
         </probability_model>
 
-        <behavior_model attribute="position" model="position_kalman_filter" p_new="0.00001" p_clutter="0.0">
+        <behavior_model attribute="position" model="position_kalman_filter" dimensions="3" p_new="0.00001" p_clutter="0.0">
             <param name="max_acceleration" value="10" />                
             <param name="uniform_probability" value="0.000001" /> 
         </behavior_model>
@@ -112,7 +116,7 @@
             <p_clutter value="0.0"/>
          </probability_model>
 
-        <behavior_model attribute="position" model="position_kalman_filter" p_new="0.000001" p_clutter="0.0000001">
+        <behavior_model attribute="position" model="position_kalman_filter" dimensions="3" p_new="0.000001" p_clutter="0.0000001">
             <param name="max_acceleration" value="10" />                
             <param name="uniform_probability" value="0.000001" /> 
         </behavior_model>             
@@ -125,7 +129,7 @@
             <p_clutter value="0.0000000000000001"/>
         </probability_model>
 
-        <behavior_model attribute="position" model="position_kalman_filter" p_new="0.001" p_clutter="0.0000000000000001">
+        <behavior_model attribute="position" model="position_kalman_filter" dimensions="3" p_new="0.001" p_clutter="0.0000000000000001">
             <param name="max_acceleration" value="0.0009" />                
             <param name="uniform_probability" value="0.001" /> 
         </behavior_model>      
@@ -142,7 +146,7 @@
             <p_clutter value="0.0000000000000001"/>
         </probability_model>
 
-        <behavior_model attribute="position" model="position_kalman_filter" p_new="0.001" p_clutter="0.0000000000000001">
+        <behavior_model attribute="position" model="position_kalman_filter" dimensions="3" p_new="0.001" p_clutter="0.0000000000000001">
             <param name="max_acceleration" value="0.01" />                
             <param name="uniform_probability" value="0.001" /> 
         </behavior_model>      
@@ -159,7 +163,7 @@
             <p_clutter value="0.0000000000000001"/>
         </probability_model>
 
-        <behavior_model attribute="position" model="position_kalman_filter" p_new="0.001" p_clutter="0.0000000000000001">
+        <behavior_model attribute="position" model="position_kalman_filter" dimensions="3" p_new="0.001" p_clutter="0.0000000000000001">
             <param name="max_acceleration" value="0.005" />                
             <param name="uniform_probability" value="0.001" /> 
         </behavior_model>      
@@ -176,7 +180,7 @@
             <p_clutter value="0.0000000000000001"/>
         </probability_model>
 
-        <behavior_model attribute="position" model="position_kalman_filter" p_new="0.001" p_clutter="0.0000000000000001">
+        <behavior_model attribute="position" model="position_kalman_filter" dimensions="3" p_new="0.001" p_clutter="0.0000000000000001">
             <param name="max_acceleration" value="0.005" />                
             <param name="uniform_probability" value="0.001" /> 
         </behavior_model>      
@@ -193,7 +197,7 @@
             <p_clutter value="0.0000000000000001"/>
         </probability_model>
 
-        <behavior_model attribute="position" model="position_kalman_filter" p_new="0.001" p_clutter="0.0000000000000001">
+        <behavior_model attribute="position" model="position_kalman_filter" dimensions="3" p_new="0.001" p_clutter="0.0000000000000001">
             <param name="max_acceleration" value="0.005" />                
             <param name="uniform_probability" value="0.001" /> 
         </behavior_model>      
