@@ -19,7 +19,7 @@ AStarPlannerROS:
 
 # Specific local planner parameters
 AmigoLocalPlanner:
-    max_vel_translation : 0.5
+    max_vel_translation : 0.3
     max_acc_translation : 0.15
     max_vel_rotation    : 0.5
     max_acc_rotation    : 0.2
