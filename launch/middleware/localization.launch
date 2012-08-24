@@ -18,24 +18,8 @@
 
     <group unless="$(optenv ROBOT_REAL false)">    
         <!-- SIMULATION -->
-        <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/robocup2012.yaml" output="screen"/>        
-    </group> 
-   
-     <!-- SnapMapICP -->
-     <node name="SnapMapICP" pkg="amigo_snapmap_icp" type="SnapMapICP" respawn="true" output="screen" machine="$(arg machine)">
-	<param name="odom_frame" value="/odom"/>
-        <param name="base_laser_frame" value="/base_laser"/>
-	<param name="icp_fitness_threshold" value="100.0"/>
-	<param name="age_threshold" value="10.0"/>
-	<param name="angle_upper_threshold" value="1.0"/>
-	<param name="angle_threshold" value="0.01"/>
-	<param name="update_age_threshold" value="1.0"/>
-	<param name="dist_threshold" value="0.01"/>
-	<param name="icp_inlier_threshold" value="0.7"/>
-	<param name="icp_inlier_dist" value="0.1"/>
-	<param name="icp_num_iter" value="250"/>
-	<param name="pose_covariance_trans" value="0.5"/>
-     </node>
+        <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/testlab_190712.yaml" output="screen"/>        
+    </group>
 
      <!-- AMCL -->
      <node pkg="amcl" type="amcl" respawn="true" name="amcl" output="screen" machine="$(arg machine)">
@@ -84,6 +68,23 @@
          <param name="initial_cov_aa" value="0.001"/>
          <param name="use_map_topic" value="true"/>
 
+     </node>
+
+     <!-- SnapMapICP -->
+     <node name="SnapMapICP" pkg="SnapMapICP" type="SnapMapICP" respawn="false" output="screen" machine="$(arg machine)">
+        <param name="scan_rate" value="2"/>
+	<param name="odom_frame" value="/odom"/>
+        <param name="base_laser_frame" value="/base_laser"/>
+	<param name="icp_fitness_threshold" value="100.0"/>
+	<param name="age_threshold" value="10.0"/>
+	<param name="angle_upper_threshold" value="1.0"/>
+	<param name="angle_threshold" value="0.01"/>
+	<param name="update_age_threshold" value="1.0"/>
+	<param name="dist_threshold" value="0.01"/>
+	<param name="icp_inlier_threshold" value="0.7"/>
+	<param name="icp_inlier_dist" value="0.1"/>
+	<param name="icp_num_iter" value="250"/>
+	<param name="pose_covariance_trans" value="0.5"/>
      </node>
 
   

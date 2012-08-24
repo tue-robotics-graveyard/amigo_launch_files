@@ -35,8 +35,8 @@
   <depend package="amigo_head_ref"/>
   <depend package="amigo_self_filter"/>
   <depend package="amigo_spindle_server"/>
-  <!--<depend package="SnapMapICP"/>-->
-  <depend package="amigo_snapmap_icp"/>
+  <depend package="SnapMapICP"/>
+  <!--<depend package="amigo_snapmap_icp"/>-->
   <depend package="rgb_lights_manager"/>
 
   <depend package="tue_move_base"/>
