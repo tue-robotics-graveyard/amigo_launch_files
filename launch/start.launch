@@ -13,7 +13,7 @@
         These can be started seperately through the amigo dashboard.
     -->
 
-    <arg name="ROBOT_WORLD" default="$(find amigo_maps)/worlds/amigo_collada.world" />
+    <arg name="ROBOT_WORLD" default="$(find amigo_maps)/worlds/amigo_collada_$(optenv ROS_DISTRO).world" />
 
     <group if="$(optenv ROBOT_REAL false)">
         <!-- REAL ROBOT -->
