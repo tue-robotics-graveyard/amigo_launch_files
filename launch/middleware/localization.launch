@@ -22,7 +22,7 @@
     </group>
 
      <!-- AMCL -->
-     <node pkg="amcl" type="amcl" respawn="true" name="amcl" output="screen" machine="$(arg machine)">
+     <node pkg="amcl" type="amcl" respawn="true" name="amcl" machine="$(arg machine)">
          <remap from="scan" to="/base_scan" />
          <!-- Publish scans from best pose at a max of 10 Hz -->
          <param name="base_frame_id" value="base_link"/>
@@ -71,7 +71,7 @@
      </node>
 
      <!-- SnapMapICP -->
-     <node name="SnapMapICP" pkg="SnapMapICP" type="SnapMapICP" respawn="false" output="screen" machine="$(arg machine)">
+     <node name="SnapMapICP" pkg="SnapMapICP" type="SnapMapICP" respawn="false" machine="$(arg machine)">
         <param name="scan_rate" value="2"/>
 	<param name="odom_frame" value="/odom"/>
         <param name="base_laser_frame" value="/base_laser"/>
