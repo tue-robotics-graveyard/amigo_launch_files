@@ -17,6 +17,9 @@
 
     <arg name="ROBOT_WORLD" default="$(find amigo_maps)/worlds/amigo_collada_$(optenv ROS_DISTRO).world" />
 
+    <!-- load robot -->
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find amigo_robot_model)/description/robot_$(arg complexity).urdf.xacro' " />
+
     <group if="$(optenv ROBOT_REAL false)">
         <!-- REAL ROBOT -->
 
@@ -60,9 +63,6 @@
 
         <!-- Simulation controllers -->
         <include file="$(find amigo_simulation_controllers)/controllers_$(arg complexity).launch"/>
-
-        <!-- load robot -->
-        <param name="robot_description" command="$(find xacro)/xacro.py '$(find amigo_robot_model)/description/robot_$(arg complexity).urdf.xacro' " />
 
         <!-- push robot_description to factory and spawn robot in gazebo -->
         <node name="spawn_amigo" pkg="gazebo" type="spawn_model" args="-gazebo_namespace gazebo -unpause -urdf -param robot_description -model amigo -x 0.0 -y -3.0 -z 0.0 -Y 1.57" respawn="false" output="screen" />
