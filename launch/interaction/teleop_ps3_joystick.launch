@@ -1,10 +1,10 @@
 <launch>
 
-  <node pkg="pr2_teleop" type="teleop_pr2" name="pr2_teleop" args="--deadman_no_publish" >
+  <node pkg="pr2_teleop" type="teleop_pr2" name="pr2_teleop" args="--deadman_no_publish" output="screen">
       <rosparam file="$(find amigo_launch_files)/parameters/teleop.yaml" command="load" />
   </node>
 	
-  <node pkg="joy" type="joy_node" name="ps3_joy" >
+  <node pkg="joy" type="joy_node" name="ps3_joy" output="screen">
     <param name="dev" type="string" value="/dev/input/by-id/usb-Sony_PLAYSTATION_R_3Controller-joystick" />
   </node>
 
