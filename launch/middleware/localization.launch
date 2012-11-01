@@ -9,17 +9,12 @@
     <include file="$(find amigo_machine_files)/machines/localhost.machine" />
 
     <arg if="$(optenv ROBOT_REAL false)" name="machine" value="amigo3"/>
-    <arg unless="$(optenv ROBOT_REAL false)" name="machine" value="localhost"/>      
-    
-    <group if="$(optenv ROBOT_REAL false)">    
-        <!-- REAL ROBOT -->    
-        <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/r3cop_fraunhofer_2012.yaml" output="screen"/>
-    </group>  
+    <arg unless="$(optenv ROBOT_REAL false)" name="machine" value="localhost"/>
+    <arg unless="$(optenv ROBOT_REAL false)" name="machine" />   
 
-    <group unless="$(optenv ROBOT_REAL false)">    
-        <!-- SIMULATION -->
-        <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/testlab_190712.yaml" output="screen"/>        
-    </group>
+    <arg name="ROBOT_MAP" default="$(optenv ROBOT_MAP testlab_190712)" />   
+     
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(arg ROBOT_MAP).yaml" output="screen"/>
 
      <!-- AMCL -->
      <node pkg="amcl" type="amcl" respawn="true" name="amcl" machine="$(arg machine)">
