@@ -9,8 +9,7 @@
     <include file="$(find amigo_machine_files)/machines/localhost.machine" />
 
     <arg if="$(optenv ROBOT_REAL false)" name="machine" value="amigo3"/>
-    <arg unless="$(optenv ROBOT_REAL false)" name="machine" value="localhost"/>
-    <arg unless="$(optenv ROBOT_REAL false)" name="machine" />   
+    <arg unless="$(optenv ROBOT_REAL false)" name="machine" value="localhost"/>   
 
     <arg name="ROBOT_MAP" default="$(optenv ROBOT_MAP testlab_190712)" />   
      
