@@ -57,7 +57,7 @@
         <node name="gazebo" pkg="gazebo" type="gazebo" args="$(find amigo_maps)/worlds/$(arg ROBOT_WORLD).world" respawn="false" output="screen"/>
         
         <!-- Spawn dynamic objects (cokecans, plants, doors etc..) -->
-       	<include file="$(find amigo_maps)/objects/objects_$(optenv ROS_DISTRO).launch"/>
+       	<!--<include file="$(find amigo_maps)/objects/objects_$(optenv ROS_DISTRO).launch"/>-->
 
         <!-- start controller manager (rviz) -->
         <include file="$(find pr2_controller_manager)/controller_manager.launch"/>
