@@ -21,6 +21,10 @@
     <!-- load robot -->
     <param name="robot_description" command="$(find xacro)/xacro.py '$(find amigo_robot_model)/description/robot_$(arg ROBOT_COMPLEXITY).urdf.xacro' " />
 
+    <!-- load robot joint group info -->
+    <rosparam file="$(find amigo_robot_model)/description/joint_groups.yaml" command="load" />
+
+
     <group if="$(arg ROBOT_REAL)">
         <!-- REAL ROBOT -->
 
