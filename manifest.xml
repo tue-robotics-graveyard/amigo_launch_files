@@ -39,7 +39,7 @@
   <!--<depend package="amigo_snapmap_icp"/>-->
   <depend package="rgb_lights_manager"/>
 
-  <depend package="tue_move_base"/>
+  <!--<depend package="tue_move_base"/>-->
   <depend package="tue_astar_planner_old"/>
   <depend package="amigo_navigation_local"/>
 </package>
