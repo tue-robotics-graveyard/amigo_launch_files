@@ -11,7 +11,7 @@
     <arg if="$(optenv ROBOT_REAL false)" name="machine" value="amigo3"/>
     <arg unless="$(optenv ROBOT_REAL false)" name="machine" value="localhost"/>   
 
-    <arg name="ROBOT_MAP" default="$(optenv ROBOT_MAP testlab_190712)" />   
+    <arg name="ROBOT_MAP" default="$(optenv ROBOT_MAP robotics_testlab_A)" />   
      
     <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(arg ROBOT_MAP).yaml" output="screen"/>
 
