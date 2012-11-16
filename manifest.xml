@@ -14,12 +14,14 @@
   <depend package="amcl"/>
   <depend package="map_server"/>
   <depend package="SnapMapICP"/>
+  <!--<depend package="amigo_snapmap_icp"/>-->
 
   <!-- base navigation -->
   <depend package="move_base"/>
   <depend package="tue_astar_planner_old"/>
   <depend package="amigo_navigation_local"/>
-  
+  <!--<depend package="tue_move_base"/>-->
+ 
   <!-- arm navigation -->
   <depend package="amigo_arm_navigation"/>
 
@@ -45,7 +47,13 @@
   <depend package="amigo_battery_manager"/>
 
   <!-- controllers -->
-  <depend package="amigo_simulation_controllers"/>
+  <!--depend package="dynamixel"/ -->
+  <!--depend package="dynamixel_ethercat"/ -->
+  <!--depend package="amigo_base_controller"/-->
+  <!--depend package="amigo_pera_controller"/-->
+  <!--depend package="amigo_head_controller"/-->
+  <!--depend package="amigo_controller_enabler"/-->
+ <depend package="amigo_simulation_controllers"/>
 
   <!-- world model -->
   <depend package="world_model"/>
@@ -57,14 +65,5 @@
   <depend package="amigo_msgs"/>
   <depend package="amigo_state_publisher"/>
   <depend package="amigo_machine_files"/>
-  
-  <!--depend package="dynamixel"/ -->
-  <!--depend package="dynamixel_ethercat"/ -->
-  <!--depend package="amigo_base_controller"/-->
-  <!--depend package="amigo_pera_controller"/-->
-  <!--depend package="amigo_head_controller"/-->
-  <!--depend package="amigo_controller_enabler"/-->
-  <!--<depend package="amigo_snapmap_icp"/>-->
-  <!--<depend package="tue_move_base"/>-->
 
 </package>
