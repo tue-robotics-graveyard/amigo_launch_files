@@ -18,5 +18,9 @@
 
 	<!-- Spindle -->
 	<include file="$(find amigo_launch_files)/launch/middleware/spindle.launch" />	
+
+	<!-- World model -->
+	<include file="$(find amigo_launch_files)/launch/middleware/world_model.launch" />	
+
 	
 </launch>

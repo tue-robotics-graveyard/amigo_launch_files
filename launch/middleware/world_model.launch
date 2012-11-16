@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<launch>  
+
+    <arg name="models" default="$(find amigo_launch_files)/parameters/world_object_models.xml" />
+
+    <node pkg="world_model" type="world_model" respawn="false" name="world_model" output="screen" >
+        <rosparam file="$(find world_model)/parameters/world_model.yaml" command="load" ns=""/>
+        <param name="knowledge_filename" value="$(arg models)"/>
+        <param name="debug_verbose" value="false"/>
+    </node>
+
+    <include file="$(find world_model_vis)/launch/start.launch" />
+
+    <node name="world_model_executive_interface" pkg="world_model_executive_interface" type="world_model_executive_interface" output="screen"/>
+     
+</launch>
+
+
+
