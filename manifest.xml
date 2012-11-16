@@ -8,39 +8,63 @@
   <license>BSD</license>
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/amigo_launch_files</url>
-  <depend package="amigo_state_publisher"/>
-  <depend package="amigo_laser"/>
+
+  <!-- localization -->
   <depend package="gmapping"/>
-  <depend package="amigo_msgs"/>
-  <depend package="map_server"/>
-  <depend package="amigo_machine_files"/>
-  <!--depend package="dynamixel"/ -->
-  <!--depend package="dynamixel_ethercat"/ -->
-  <depend package="amigo_laser_filter"/>
-  <!--depend package="amigo_base_controller"/-->
-  <!--depend package="amigo_pera_controller"/-->
-  <!--depend package="amigo_head_controller"/-->
-  <depend package="move_base"/>
   <depend package="amcl"/>
+  <depend package="map_server"/>
+  <depend package="SnapMapICP"/>
+
+  <!-- base navigation -->
+  <depend package="move_base"/>
+  <depend package="tue_astar_planner_old"/>
+  <depend package="amigo_navigation_local"/>
+  
+  <!-- arm navigation -->
+  <depend package="amigo_arm_navigation"/>
+
+  <!-- perception -->
+  <depend package="amigo_laser"/>
+  <depend package="amigo_laser_filter"/>
+  <depend package="amigo_self_filter"/>
+  <depend package="tue_filters"/>
+
+  <!-- servers -->
+  <depend package="amigo_gripper_server"/>
+  <depend package="amigo_spindle_server"/>
+  <depend package="amigo_head_ref"/>
+  <depend package="rgb_lights_manager"/>
+
+  <!-- human robot interaction -->
+  <depend package="text_to_speech"/>
+  <depend package="text_to_speech_philips"/>
+
+  <!-- monitoring -->
   <depend package="amigo_diagnostics"/>
   <depend package="amigo_emergency_speakup"/>
   <depend package="amigo_battery_manager"/>
-  <depend package="text_to_speech"/>
-  <depend package="text_to_speech_philips"/>
-  <!--depend package="amigo_controller_enabler"/-->
-  <depend package="amigo_arm_navigation"/>
-  <depend package="amigo_simulation_controllers"/>
-  <depend package="amigo_gripper_server"/>
-  <depend package="tue_filters"/>
-  <depend package="amigo_head_ref"/>
-  <depend package="amigo_self_filter"/>
-  <depend package="amigo_spindle_server"/>
-  <depend package="SnapMapICP"/>
-  <!--<depend package="amigo_snapmap_icp"/>-->
-  <depend package="rgb_lights_manager"/>
 
-  <!--<depend package="tue_move_base"/>-->
-  <depend package="tue_astar_planner_old"/>
-  <depend package="amigo_navigation_local"/>
+  <!-- controllers -->
+  <depend package="amigo_simulation_controllers"/>
+
+  <!-- world model -->
+  <depend package="world_model"/>
+  <depend package="world_model_vis"/>
+  <depend package="state_estimators"/>
   <depend package="world_model_executive_interface"/>
+
+  <!-- misc -->
+  <depend package="amigo_msgs"/>
+  <depend package="amigo_state_publisher"/>
+  <depend package="amigo_machine_files"/>
+  
+  <!--depend package="dynamixel"/ -->
+  <!--depend package="dynamixel_ethercat"/ -->
+  <!--depend package="amigo_base_controller"/-->
+  <!--depend package="amigo_pera_controller"/-->
+  <!--depend package="amigo_head_controller"/-->
+  <!--depend package="amigo_controller_enabler"/-->
+  <!--<depend package="amigo_snapmap_icp"/>-->
+  <!--<depend package="tue_move_base"/>-->
+
 </package>
