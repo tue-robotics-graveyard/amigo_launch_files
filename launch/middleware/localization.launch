@@ -66,7 +66,7 @@
 
      <!-- SnapMapICP -->
      <node name="SnapMapICP" pkg="SnapMapICP" type="SnapMapICP" respawn="false" machine="$(arg machine)">
-        <param name="scan_rate" value="2"/>
+        <param name="scan_rate" value="4"/>
 	<param name="odom_frame" value="/odom"/>
         <param name="base_laser_frame" value="/base_laser"/>
 	<param name="icp_fitness_threshold" value="100.0"/>
