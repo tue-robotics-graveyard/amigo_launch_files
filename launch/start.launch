@@ -85,7 +85,7 @@
     <include file="$(find amigo_launch_files)/launch/interaction/text_to_speech.launch" />
 
     <!-- Start ps3 teleop -->
-    <include file="$(find amigo_launch_files)/launch/interaction/teleop_ps3_joystick.launch" />
+    <!--<include file="$(find amigo_launch_files)/launch/interaction/teleop_ps3_joystick.launch" />-->
 
  </launch>
   
