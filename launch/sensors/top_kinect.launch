@@ -37,7 +37,7 @@
         filter_limit_min: 0.0
         filter_limit_max: 5.0
         filter_limit_negative: False
-        leaf_size: 0.01
+        leaf_size: 0.05
       </rosparam>
     </node>
 
