@@ -7,5 +7,6 @@
     ETHERCAT_HARDWARE
     -s $(find amigo_etherCAT)/soem.ops 
     -s $(find amigo_base_controller)/base_controller.ops 
+    -s $(find rtt_custom_components)/clean_exit.ops
     --" output="screen" machine="amigo2"></node>           
 </launch>

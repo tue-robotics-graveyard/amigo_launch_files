@@ -6,7 +6,7 @@
     <node name="amigo_rgb_controller" machine="amigo2" pkg="ocl" type="deployer-gnulinux" args="
     -s $(find amigo_etherCAT)/soem.ops 
     -s $(find rgb_lights)/rgb_lights.ops 
+    -s $(find rtt_custom_components)/clean_exit.ops
     --" output="screen"></node>           
-    
     <node name="rgb_lights_manager" pkg="rgb_lights_manager" type="rgb_lights_manager" output="screen" />
 </launch>
