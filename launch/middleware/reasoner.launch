@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <arg name="args" default="" /> 
+
+    <node pkg="tue_reasoner" type="reasoner" args="$(arg args)" respawn="false" name="reasoner" output="screen">
+        <param name="database" value="$(find tue_reasoner)/database/knowledge.pl"/>   
+        <param name="std_database" value="$(find tue_reasoner)/database/std.pl"/>   
+        
+        <!-- World model parameters -->
+        <param name="world_model_frame" value="/map"/>
+        <param name="output_frame" value="/map"/>               
+        <param name="knowledge_filename" value="$(find amigo_launch_files)/parameters/world_object_models.xml"/>   
+        <param name="debug_verbose" value="false"/>   
+    </node>
+
+    <include file="$(find world_model_vis)/launch/start.launch" />
+
+    <node name="world_model_executive_interface" pkg="world_model_executive_interface" type="world_model_executive_interface" output="screen"/>
+
+</launch>
