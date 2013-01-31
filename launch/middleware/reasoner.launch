@@ -15,8 +15,6 @@
         <param name="debug_verbose" value="false"/>   
     </node>
 
-    <include file="$(find world_model_vis)/launch/start.launch" />
-
-    <node name="world_model_executive_interface" pkg="world_model_executive_interface" type="world_model_executive_interface" output="screen"/>
+    <include file="$(find wire_viz)/launch/start.launch" />
 
 </launch>
