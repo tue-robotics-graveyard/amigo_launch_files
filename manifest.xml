@@ -56,10 +56,16 @@
  <depend package="amigo_simulation_controllers"/>
 
   <!-- world model -->
-  <depend package="world_model"/>
-  <depend package="world_model_vis"/>
-  <depend package="state_estimators"/>
-  <depend package="world_model_executive_interface"/>
+  <depend package="wire_core"/>
+  <depend package="wire_viz"/>
+  <depend package="wire_state_estimators"/>
+
+  <!-- reasoner -->
+  <depend package="tue_reasoner_core"/>
+  <depend package="tue_reasoner_console"/>
+  <depend package="tue_reasoner_interface"/>
+  <depend package="tue_reasoner_interface_jpl"/>
+  <depend package="tue_reasoner_msgs"/>
 
   <!-- misc -->
   <depend package="amigo_msgs"/>
