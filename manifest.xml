@@ -25,6 +25,7 @@
  
   <!-- arm navigation -->
   <depend package="amigo_arm_navigation"/>
+  <depend package="amigo_marker_detection"/>
 
   <!-- perception -->
   <depend package="amigo_laser"/>

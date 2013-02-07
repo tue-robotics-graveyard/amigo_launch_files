@@ -5,5 +5,7 @@
     <include file="$(find amigo_arm_navigation)/start.launch" />
 
     <include file="$(find amigo_gripper_server)/launch/start.launch" />
+    
+    <include file="$(find amigo_marker_detection)/launch/amigo_gripper_detection.launch" />
       
 </launch>
