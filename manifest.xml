@@ -21,6 +21,7 @@
   <depend package="tue_astar_planner_old"/>
   <depend package="amigo_navigation_local"/>
   <depend package="tue_move_base"/>
+  <depend package="amigo_inverse_reachability"/>
  
   <!-- arm navigation -->
   <depend package="amigo_arm_navigation"/>
