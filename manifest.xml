@@ -64,10 +64,6 @@
 
   <!-- reasoner -->
   <depend package="tue_reasoner_core"/>
-  <depend package="tue_reasoner_console"/>
-  <depend package="tue_reasoner_interface"/>
-  <depend package="tue_reasoner_interface_jpl"/>
-  <depend package="tue_reasoner_msgs"/>
 
   <!-- misc -->
   <depend package="amigo_msgs"/>
