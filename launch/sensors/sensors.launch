@@ -2,6 +2,7 @@
 
 <launch>	
 	
+	
 	<!-- Base laser (only for real robot; in simulation base laser is loaded by Gazebo) -->
 	<include file="$(find amigo_launch_files)/launch/sensors/base_laser.launch"/>
 

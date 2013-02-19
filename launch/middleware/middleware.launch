@@ -1,9 +1,15 @@
 <?xml version="1.0"?>
 
 <launch>
+
+    <arg name="ROBOT_REAL" default="$(optenv ROBOT_REAL false)" />
 	
-	<!-- Start all sensors -->
-        <include file="$(find amigo_launch_files)/launch/sensors/sensors.launch" />	
+	<group if="$(arg ROBOT_REAL)">
+        	<!-- REAL ROBOT -->
+
+		<!-- Start all sensors -->
+        	<include file="$(find amigo_launch_files)/launch/sensors/sensors.launch" />	
+	</group>
 	
 	<!-- Localization -->
 	<include file="$(find amigo_launch_files)/launch/middleware/localization.launch" />
