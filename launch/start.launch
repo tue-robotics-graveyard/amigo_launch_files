@@ -48,9 +48,6 @@
         <!-- Amplifier enabler -->
         <node name="amplifier_enabler" pkg="amigo_amplifier_enabler" type="amplifier_enabler" output="screen" />
 
-        <!-- Start all sensors -->
-        <include file="$(find amigo_launch_files)/launch/sensors/sensors.launch" />
-
     </group>
 
     <group unless="$(arg ROBOT_REAL)">
@@ -84,9 +81,6 @@
 
     <!-- Self filter (robots self removed from Kinect pointcloud on topic /camera/depth/points_self_filtered) -->
     <!--<include file="$(find amigo_self_filter)/start_filter.launch"/>-->
-
-    <!-- Start text to speech -->
-    <include file="$(find amigo_launch_files)/launch/interaction/text_to_speech.launch" />
 
     <!-- Start ps3 teleop -->
     <!--<include file="$(find amigo_launch_files)/launch/interaction/teleop_ps3_joystick.launch" />-->

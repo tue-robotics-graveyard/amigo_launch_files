@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 
-<launch>	
+<launch>
+	
+	<!-- Start all sensors -->
+        <include file="$(find amigo_launch_files)/launch/sensors/sensors.launch" />	
 	
 	<!-- Localization -->
 	<include file="$(find amigo_launch_files)/launch/middleware/localization.launch" />
@@ -21,7 +24,9 @@
 	<include file="$(find amigo_launch_files)/launch/middleware/spindle.launch" />	
 
 	<!-- Reasoner (including World Model) -->
-	<include file="$(find amigo_launch_files)/launch/middleware/reasoner.launch"/>	
-
+	<include file="$(find amigo_launch_files)/launch/middleware/reasoner.launch"/>
+	
+	<!-- Start text to speech -->
+        <include file="$(find amigo_launch_files)/launch/interaction/text_to_speech.launch" />	
 	
 </launch>
