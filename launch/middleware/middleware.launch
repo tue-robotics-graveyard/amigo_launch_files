@@ -33,6 +33,6 @@
 	<include file="$(find amigo_launch_files)/launch/middleware/reasoner.launch"/>
 	
 	<!-- Start text to speech -->
-        <include file="$(find amigo_launch_files)/launch/interaction/text_to_speech.launch" />	
+    <include file="$(find amigo_launch_files)/launch/interaction/text_to_speech.launch" />	
 	
 </launch>
