@@ -6,6 +6,6 @@
 
     <include file="$(find tue_reasoner_core)/launch/start.launch" />
 
-    <include file="$(find wire_viz)/launch/start.launch" />
+    <!--include file="$(find wire_viz)/launch/start.launch" / -->
 
 </launch>
