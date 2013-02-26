@@ -12,8 +12,35 @@
     <arg unless="$(optenv ROBOT_REAL false)" name="machine" value="localhost"/>   
 
     <arg name="ROBOT_MAP" default="$(optenv ROBOT_MAP robotics_testlab_A)" />   
+
+    <!--
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(arg ROBOT_MAP).yaml" output="screen"/>
+    -->
+    <!-- 
+    <node name="map_server" pkg="map_server" type="map_server" 
+        args="/home/amigo/ros/fuerte/tue/user/Wouter/EnvironmentChanges/test1/test1.yaml" 
+        output="screen"/>
+    --> 
+    <!-- 
+    <node name="map_server" pkg="map_server" type="map_server" 
+        args="/home/amigo/ros/fuerte/tue/user/Wouter/EnvironmentChanges/test2a/test2a.yaml" 
+        output="screen"/>
+    --> 
      
-    <node name="map_server" pkg="map_server" type="map_server" args="/home/amigo/ros/fuerte/tue/user/Wouter/EnvironmentChanges/test1/test1.yaml" output="screen"/>
+    <node name="map_server" pkg="map_server" type="map_server" 
+        args="/home/amigo/ros/fuerte/tue/user/Wouter/EnvironmentChanges/test2b/test2b.yaml" 
+        output="screen"/>
+    
+    <!--
+    <node name="map_server" pkg="map_server" type="map_server" 
+        args="/home/amigo/ros/fuerte/tue/user/Wouter/EnvironmentChanges/test2c/test2c.yaml" 
+        output="screen"/>
+    -->
+    <!--
+    <node name="map_server" pkg="map_server" type="map_server" 
+        args="/home/amigo/ros/fuerte/tue/user/Wouter/EnvironmentChanges/test3/test3.yaml" 
+        output="screen"/>
+    -->
 
      <!-- AMCL -->
      <node pkg="amcl" type="amcl" respawn="true" name="amcl" machine="$(arg machine)">
