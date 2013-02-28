@@ -27,6 +27,7 @@
 		<arg name="depth_frame_id" value="openni_depth_optical_frame" />
 		<!--<arg name="use_indices" value="false" />-->
 		<arg name="depth_registration" value="true" />
+                <arg name="publish_tf" value="false"/>
     </include>
 
     <!-- throttling -->
