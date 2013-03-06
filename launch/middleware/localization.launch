@@ -11,13 +11,13 @@
     <arg if="$(optenv ROBOT_REAL false)" name="machine" value="amigo3"/>
     <arg unless="$(optenv ROBOT_REAL false)" name="machine" value="localhost"/>   
 
-    <arg name="ROBOT_MAP" default="$(optenv ROBOT_MAP tue_robotics_lab)" />   
+    <arg name="ROBOT_MAP" default="$(optenv ROBOT_MAP robotics_testlab_A)" />   
      
-    <node name="loc_map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(arg ROBOT_MAP)_loc.yaml" output="screen">
+    <node name="loc_map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(arg ROBOT_MAP)/loc/yaml" output="screen">
 	<remap from="/map" to="/loc_map"/>
     </node>
 
-    <node name="nav_map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(arg ROBOT_MAP)_nav.yaml" output="screen">
+    <node name="nav_map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(arg ROBOT_MAP)/nav/yaml" output="screen">
 	<remap from="/map" to="/nav_map"/>
     </node>
 
