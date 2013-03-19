@@ -11,13 +11,14 @@
     <arg if="$(optenv ROBOT_REAL false)" name="machine" value="amigo3"/>
     <arg unless="$(optenv ROBOT_REAL false)" name="machine" value="localhost"/>   
 
-    <arg name="ROBOT_MAP" default="$(optenv ROBOT_MAP robotics_testlab_A)" />   
+    <arg name="ROBOT_MAP" default="$(optenv ROBOT_MAP robotics_testlab_A)" /> 
+    <arg name="ROBOT_COMPLEXITY" default="$(optenv ROBOT_COMPLEXITY complex)" />  
      
-    <node name="loc_map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(arg ROBOT_MAP)/loc/yaml" output="screen">
+    <node name="loc_map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(arg ROBOT_MAP)/loc/yaml" output="screen" machine="$(arg machine)">
 	<remap from="/map" to="/loc_map"/>
     </node>
 
-    <node name="nav_map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(arg ROBOT_MAP)/nav/yaml" output="screen">
+    <node name="nav_map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(arg ROBOT_MAP)/nav/yaml" output="screen" machine="$(arg machine)">
 	<remap from="/map" to="/nav_map"/>
     </node>
 
@@ -26,7 +27,7 @@
          <remap from="scan" to="/base_scan" />
 	 <remap from="/map" to="/loc_map" />
          <!-- Publish scans from best pose at a max of 10 Hz -->
-         <param name="base_frame_id" value="base_link"/>
+         <param name="base_frame_id" value="/base_footprint"/>
          <param name="odom_model_type" value="omni"/>
          <param name="gui_publish_rate" value="10.0"/>
          <param name="laser_max_beams" value="30"/>
@@ -54,7 +55,7 @@
          <param name="laser_likelihood_max_dist" value="10.0"/>
          <param name="update_min_d" value="0.025"/>
          <param name="update_min_a" value="0.025"/>
-         <param name="odom_frame_id" value="/odom"/>
+         <param name="odom_frame_id" value="/odom_combined"/>
          <param name="resample_interval" value="1"/>
          <param name="transform_tolerance" value="0.1"/>
          <param name="recovery_alpha_slow" value="0.2"/>
@@ -67,15 +68,15 @@
          <param name="initial_cov_xx" value="0.001"/>
          <param name="initial_cov_yy" value="0.001"/>
          <param name="initial_cov_aa" value="0.001"/>
-         <param name="use_map_topic" value="true"/>
-
+         <param name="use_map_topic"  value="true"/>
+	 <param name="first_map_only" value="false"/>
      </node>
 
      <!-- SnapMapICP -->
-     <node name="SnapMapICP" pkg="SnapMapICP" type="SnapMapICP" respawn="false" machine="$(arg machine)">
+     <!--<node name="SnapMapICP" pkg="SnapMapICP" type="SnapMapICP" respawn="false" machine="$(arg machine)">
 	<remap from="/map" to="/loc_map" />
         <param name="scan_rate" value="4"/>
-	<param name="odom_frame" value="/odom"/>
+	<param name="odom_frame" value="/odom_combined"/>
         <param name="base_laser_frame" value="/base_laser"/>
 	<param name="icp_fitness_threshold" value="100.0"/>
 	<param name="age_threshold" value="10.0"/>
@@ -87,9 +88,24 @@
 	<param name="icp_inlier_dist" value="0.1"/>
 	<param name="icp_num_iter" value="250"/>
 	<param name="pose_covariance_trans" value="0.5"/>
-     </node>
+     </node>-->
 
-  
+  <!-- Robot Pose EKF -->
+  <node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">
+    <remap from="odom" to="/odom" />		 	<!-- Input wheel odometry topic -->
+    <param name="output_frame" value="/odom_combined"/> <!-- Output odom topic -->
+    <param name="freq" value="30.0"/>
+    <param name="sensor_timeout" value="1.0"/>
+    <param name="odom_used" value="true"/>
+    <param name="imu_used" value="false"/>
+    <param name="vo_used" value="false"/>
+    <param name="debug" value="false"/>
+    <param name="self_diagnose" value="false"/>
+  </node>
+
+  <!-- Transform base_footprint to base_link -->
+  <include file="$(find amigo_launch_files)/launch/middleware/robot_$(arg ROBOT_COMPLEXITY)_base_transform.launch" />
+
 </launch>
 
 
