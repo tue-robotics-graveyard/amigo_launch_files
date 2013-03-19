@@ -11,7 +11,7 @@
     <arg if="$(optenv ROBOT_REAL false)" name="machine" value="amigo3"/>
     <arg unless="$(optenv ROBOT_REAL false)" name="machine" value="localhost"/>   
 
-    <node name="static_transform_publisher" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 /base_footprint /base_fixed_link 10 " machine="$(arg machine)"/>
+    <node name="static_transform_publisher" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 /base_footprint /world 10 " machine="$(arg machine)"/>
 
 </launch>
 
