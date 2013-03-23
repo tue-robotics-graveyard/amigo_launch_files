@@ -87,7 +87,7 @@
 	<param name="icp_inlier_dist" value="0.1"/>
 	<param name="icp_num_iter" value="250"/>
 	<param name="pose_covariance_trans" value="0.5"/>
-     </node>
+     </node>  
 
 </launch>
 
