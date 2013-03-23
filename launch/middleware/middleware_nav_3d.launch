@@ -9,7 +9,7 @@
 
 		<!-- Start all sensors -->
         	<include file="$(find amigo_launch_files)/launch/sensors/sensors.launch" />
-        	<include file="$(find amigo_launch_files)/launch/sensors/base_kinect.launch"/>	
+        	<!-- <include file="$(find amigo_launch_files)/launch/sensors/base_kinect.launch"/>	-->
 	</group>
 	
 	<!-- Localization -->
