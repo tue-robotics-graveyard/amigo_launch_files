@@ -72,5 +72,6 @@
   <depend package="amigo_machine_files"/>
 
   <depend package="obj_in_gripper"/>
+  <depend package="amigo_joint_interface_converter"/>
 
 </package>
