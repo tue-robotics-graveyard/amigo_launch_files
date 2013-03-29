@@ -11,6 +11,5 @@
     -s $(find amigo_head_controller)/head_controller.ops 
     -s $(find rgb_lights)/rgb_lights.ops
     -s $(find amigo_pera_controller)/erpera.ops
-    -s $(find rtt_custom_components)/clean_exit.ops
     --" output="screen" machine="amigo2"></node>   
 </launch>
