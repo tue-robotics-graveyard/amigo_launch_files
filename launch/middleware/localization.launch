@@ -99,7 +99,7 @@
 	<param name="use_vel"        value="false"/>
 	<param name="max_iterations" value="10"/>
         <param name="fixed_frame"    value="/odom"/>
-	<param name="base_frame"     value="/base_link"/>
+	<param name="base_frame"     value="/world"/>
 	<param name="publish_tf"     value="true"/>
         <param name="publish_pose"   value="true"/>
 	<param name="publish_pose_stamped" value="false"/>
