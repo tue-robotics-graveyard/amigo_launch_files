@@ -5,13 +5,17 @@
     <arg name="ROBOT_REAL" default="$(optenv ROBOT_REAL false)" />
 	
 	<group if="$(arg ROBOT_REAL)">
-        <!-- REAL ROBOT -->
+        	<!-- REAL ROBOT -->
 
 		<!-- Start all sensors -->
-        <include file="$(find amigo_launch_files)/launch/sensors/sensors.launch" />	
+	        <include file="$(find amigo_launch_files)/launch/sensors/sensors.launch" />	
 
-        <!-- PEIN Perception -->
-        <include file="$(find pein_supervisor)/launch/start.launch" />		
+	        <!-- PEIN Perception -->
+        	<include file="$(find pein_supervisor)/launch/start.launch" />
+
+		 <!-- face segmentation -->
+        	<include file="$(find pein_face_recognition)/launch/start.launch" />		
+
 	</group>
 	
 	<!-- Localization -->
