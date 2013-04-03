@@ -34,6 +34,11 @@
   <depend package="amigo_laser_filter"/>
   <depend package="amigo_self_filter"/>
   <depend package="tue_filters"/>
+  <depend package="pein_supervisor"/>
+  <depend package="pein_face_recognition"/>
+  <depend package="pein_face_segmentation"/>
+  <depend package="pein_tabletop_segmentation"/>
+  <depend package="pein_template_matching"/>
 
   <!-- servers -->
   <depend package="amigo_gripper_server"/>
