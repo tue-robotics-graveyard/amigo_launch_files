@@ -21,7 +21,13 @@
 
 	</group>
 	
-	<!-- TODO: Include perception for simulation! -->
+	<group unless="$(arg ROBOT_REAL)">
+		<!-- SIMULATION -->
+		
+		<!-- Gazebo perception -->
+		<include file="$(find gazebo_perception)/launch/start.launch" />
+		
+	</group>
 	
 	<!-- Localization -->
 	<include file="$(find amigo_launch_files)/launch/middleware/localization.launch" />
