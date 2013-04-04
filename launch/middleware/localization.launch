@@ -72,7 +72,7 @@
      </node>
 
      <!-- SnapMapICP -->
-     <node name="SnapMapICP" pkg="SnapMapICP" type="SnapMapICP" respawn="false" machine="$(arg machine)">
+     <!--<node name="SnapMapICP" pkg="SnapMapICP" type="SnapMapICP" respawn="false" machine="$(arg machine)">
 	<remap from="/map" to="/loc_map" />
         <param name="scan_rate" value="4"/>
 	<param name="odom_frame" value="/odom"/>
@@ -87,7 +87,7 @@
 	<param name="icp_inlier_dist" value="0.1"/>
 	<param name="icp_num_iter" value="250"/>
 	<param name="pose_covariance_trans" value="0.5"/>
-     </node> 
+     </node>-->
 
 </launch>
 
