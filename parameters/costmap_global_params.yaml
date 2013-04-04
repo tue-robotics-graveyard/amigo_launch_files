@@ -1,3 +1,0 @@
-global_costmap:
-  static_map: true
-  map_topic: /map
