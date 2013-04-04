@@ -24,6 +24,13 @@
             <remap from="/map" to="/octree_map" />
             
         </node>
+        
+        <!-- Start the node that converts the laser data to a pointcloud -->
+        <!-- <node pkg="tue_laser_to_pointcloud" type="laser_to_pointcloud" name="laser_to_pointcloud" machine="$(arg machine)"/> -->
+        <node pkg="scan_to_cloud_converter" type="scan_to_cloud_converter_node" name="scan_to_cloud_converter_node" machine="$(arg machine)">
+            <remap from="/scan" to="/base_scan" /> 
+            <remap from="/cloud" to="/base_scan_pointcloud" />
+        </node>  
                 
         <!-- REAL ROBOT: use throttled and voxelized topics -->
         <group if="$(arg ROBOT_REAL)">
@@ -31,7 +38,7 @@
             <!--<include file="$(find amigo_launch_files)/launch/sensors/base_kinect.launch"/>-->
         <!-- Relay laser, base- and head kinect pointclouds to fused_pointclouds topic -->
              <node args="/base_scan_pointcloud /fused_pointclouds" name="base_scan_to_fused_pointclouds" pkg="topic_tools" type="relay" />
-             <node args="/base_camera/depth/points_throttled_and_voxelized /fused_pointclouds" name="base_camera_to_fused_pointclouds" pkg="topic_tools" type="relay" /> 
+             <!-- <node args="/base_camera/depth/points_throttled_and_voxelized /fused_pointclouds" name="base_camera_to_fused_pointclouds" pkg="topic_tools" type="relay" /> -->
              <node args="/camera/depth/points_throttled_and_voxelized /fused_pointclouds" name="camera_to_fused_pointclouds" pkg="topic_tools" type="relay" /> 
         </group>
         
@@ -39,12 +46,9 @@
         <group unless="$(arg ROBOT_REAL)">
         <!-- Relay laser, base- and head kinect pointclouds to fused_pointclouds topic -->
              <node args="/base_scan_pointcloud /fused_pointclouds" name="base_scan_to_fused_pointclouds" pkg="topic_tools" type="relay" /> 
-             <node args="/base_camera/rgb/points /fused_pointclouds" name="base_camera_to_fused_pointclouds" pkg="topic_tools" type="relay" /> 
+             <!--<node args="/base_camera/rgb/points /fused_pointclouds" name="base_camera_to_fused_pointclouds" pkg="topic_tools" type="relay" /> -->
              <node args="/camera/rgb/points /fused_pointclouds" name="camera_to_fused_pointclouds" pkg="topic_tools" type="relay" />
         </group>
-        
-        <!-- Start the node that converts the laser data to a pointcloud -->
-        <node pkg="tue_laser_to_pointcloud" type="laser_to_pointcloud" name="laser_to_pointcloud" machine="$(arg machine)"/>    
-    
+       
     </launch>
     
