@@ -2,18 +2,15 @@
 
 <launch>
 
-  <include file="$(find amigo_machine_files)/machines/amigo1.machine" />
-  <include file="$(find amigo_machine_files)/machines/amigo2.machine" />
-  <include file="$(find amigo_machine_files)/machines/amigo3.machine" />
-  <include file="$(find amigo_machine_files)/machines/amigo4.machine" />
+    <arg if="$(optenv ROBOT_REAL false)" name="machine" default="amigo1"/>
+    <arg unless="$(optenv ROBOT_REAL false)" name="machine" default="localhost"/>
+    <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" /> 
   
-    <arg name="machine" value="amigo1"/>
-
-    <!-- The nodelet manager -->
-    <!-- <node pkg="nodelet" type="nodelet" name="manager" args="manager" output="screen" machine="amigo1"/> -->
+   <!-- The nodelet manager -->
+    <!-- <node pkg="nodelet" type="nodelet" name="manager" args="manager" output="screen" machine="$(arg machine)"/> -->
 
     <!-- Openni driver nodelet -->
-    <!--<node pkg="nodelet" type="nodelet" name="driver" args="load openni_camera/OpenNINodelet manager" machine="amigo1">
+    <!--<node pkg="nodelet" type="nodelet" name="driver" args="load openni_camera/OpenNINodelet manager" machine="$(arg machine)">
       <param name="device_id" value="#1"/>
       <param name="rgb_frame_id" value="openni_rgb_optical_frame" />
       <param name="depth_frame_id" value="openni_depth_optical_frame" />
@@ -31,7 +28,7 @@
     </include>
 
     <!-- throttling -->
-    <node pkg="nodelet" type="nodelet" name="pointcloud_throttle" respawn="true" args="load pointcloud_to_laserscan/CloudThrottle camera_nodelet_manager" machine="amigo1">
+    <node pkg="nodelet" type="nodelet" name="pointcloud_throttle" respawn="true" args="load pointcloud_to_laserscan/CloudThrottle camera_nodelet_manager" machine="$(arg machine)">
       <param name="max_rate" value="10.0"/> <!-- This number is terribly inaccurate.  20 seems to produce outputs of 15Hz; 30Hz in produces 20Hz out -->
       <remap from="cloud_in" to="/camera/depth_registered/points" />
       <remap from="cloud_out" to="/camera/depth/points_throttled" />
@@ -39,7 +36,7 @@
 
     <!-- voxel: super CPU intensive, do not use? -->
     <!-- The CPU usage very much depends on the leaf_size.  It's acceptable with some throttling and at 0.01.  Without throttling or set to something ridiuclous like 0.001, the number of checks become insane. -->
-    <node pkg="nodelet" type="nodelet" name="voxel_grid_nodelet" respawn="true" args="load pcl/VoxelGrid camera_nodelet_manager" output="screen" machine="amigo1">
+    <node pkg="nodelet" type="nodelet" name="voxel_grid_nodelet" respawn="true" args="load pcl/VoxelGrid camera_nodelet_manager" output="screen" machine="$(arg machine)">
       <remap from="~input" to="/camera/depth/points_throttled" />
       <remap from="~output" to="/camera/depth/points_throttled_and_voxelized" />
       <rosparam>
@@ -53,14 +50,14 @@
     </node>
 
     <!-- Fake Laser - Just for fun because it's cool. -->
-    <!--<node pkg="nodelet" type="nodelet" name="kinect_laser" respawn="true" args="load pointcloud_to_laserscan/CloudToScan manager" machine="amigo1">
+    <!--<node pkg="nodelet" type="nodelet" name="kinect_laser" respawn="true" args="load pointcloud_to_laserscan/CloudToScan manager" machine="$(arg machine)">
       <remap from="cloud" to="/camera/depth_registered/points_throttled/points_voxel"  />
       <remap from="scan" to="/kinect_scan" />
       <param name="output_frame_id" value="/camera_depth_optical_frame" />
     </node>-->
 
     <!-- Cool 3D visualisation window. Folder is located in ../user/rob -->
-    <!--<node pkg="nodelet" type="nodelet" name="TTKinect" args="load HelloNodelet/TTKinect manager" output="screen" machine="amigo1">
+    <!--<node pkg="nodelet" type="nodelet" name="TTKinect" args="load HelloNodelet/TTKinect manager" output="screen" machine="$(arg machine)">
       <remap from="cloud_in" to="/camera/depth_registered/points"/>
     </node>-->
 
