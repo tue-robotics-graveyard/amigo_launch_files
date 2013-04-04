@@ -7,5 +7,5 @@
     LEFT_ARM
     -s $(find amigo_pera_controller)/lpera.ops 
     -s $(find rtt_custom_components)/clean_exit.ops
-    --" output="screen" machine="amigo3"></node>   
+    --" output="screen" machine="amigo2"></node>   
 </launch>
