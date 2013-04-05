@@ -17,7 +17,7 @@
 		<include file="$(find pein_face_recognition)/launch/start.launch" />
 		
 		<!-- Template matching -->
-		<node pkg="pein_template_matching" type="detection_node" name="template_matching" machine="amigo1"/>		
+		<node pkg="pein_template_matching" type="detection_node" name="template_matching" args="-C Demo" machine="amigo1"/>		
 
 	</group>
 	
@@ -52,6 +52,9 @@
 
 	<!-- Node to attach world model object to gripper-->
 	<node pkg="obj_in_gripper" type="obj_in_gripper_pub" name="obj_in_gripper"/>
+
+	<node pkg="pein_template_matching" type="detection_node" name="template_matching" args="-C Simulation"/>		
+
 	
 	<!-- Start text to speech -->
     <include file="$(find amigo_launch_files)/launch/interaction/text_to_speech.launch" />	
