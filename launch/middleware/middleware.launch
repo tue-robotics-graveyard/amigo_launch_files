@@ -3,6 +3,7 @@
 <launch>
 
     <arg name="ROBOT_REAL" default="$(optenv ROBOT_REAL false)" />
+    <arg name="gmapping" default="false"/>
 	
 	<group if="$(arg ROBOT_REAL)">
 		<!-- REAL ROBOT -->
@@ -30,9 +31,17 @@
                	<node pkg="pein_template_matching" type="detection_node" name="template_matching" args="-C Simulation"/>
 		
 	</group>
-	
+
 	<!-- Localization -->
-	<include file="$(find amigo_launch_files)/launch/middleware/localization.launch" />
+    <group if="$(arg gmapping)">
+        <!-- GMAPPING -->
+    	<include file="$(find amigo_launch_files)/launch/middleware/gmapping.launch" />
+    </group>
+
+    <group unless="$(arg gmapping)">
+        <!-- AMCL -->
+    	<include file="$(find amigo_launch_files)/launch/middleware/localization.launch" />
+    </group>
 
 	<!-- Navigation -->
 	<include file="$(find amigo_launch_files)/launch/middleware/base_navigation.launch" />

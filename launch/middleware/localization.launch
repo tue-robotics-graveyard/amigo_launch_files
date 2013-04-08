@@ -2,14 +2,9 @@
 
 <launch>  
 
-    <include file="$(find amigo_machine_files)/machines/amigo1.machine" />
-    <include file="$(find amigo_machine_files)/machines/amigo2.machine" />
-    <include file="$(find amigo_machine_files)/machines/amigo3.machine" />
-    <include file="$(find amigo_machine_files)/machines/amigo4.machine" />
-    <include file="$(find amigo_machine_files)/machines/localhost.machine" />
-
-    <arg if="$(optenv ROBOT_REAL false)" name="machine" value="amigo3"/>
-    <arg unless="$(optenv ROBOT_REAL false)" name="machine" value="localhost"/>   
+    <arg if="$(optenv ROBOT_REAL false)" name="machine" default="amigo3"/>
+    <arg unless="$(optenv ROBOT_REAL false)" name="machine" default="localhost"/>
+    <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" /> 
 
     <arg name="ROBOT_MAP" default="$(optenv ROBOT_MAP robotics_testlab_A)" /> 
      
