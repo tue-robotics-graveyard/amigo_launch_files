@@ -4,28 +4,28 @@
 
     <arg name="ROBOT_REAL" default="$(optenv ROBOT_REAL false)" />
     <arg name="gmapping" default="false"/>
-	
+
 	<group if="$(arg ROBOT_REAL)">
 		<!-- REAL ROBOT -->
 
 		<!-- Start all sensors -->
 		<include file="$(find amigo_launch_files)/launch/sensors/sensors.launch" />	
-
-        <!-- Start all sensors -->
-		<include file="$(find amigo_launch_files)/launch/middleware/perception.launch" />	
-
 	</group>
+
+    <!-- DEFAULT PERCEPTION SETTINGS FOR REAL ROBOT -->
+    <arg if="$(optenv ROBOT_REAL false)" name="gazebo_perception" default="false"/>
+    <arg if="$(optenv ROBOT_REAL false)" name="pein_real" default="true"/>
+    
+    <!-- DEFAULT PERCEPTION SETTINGS FOR SIMULATION -->
+    <arg unless="$(optenv ROBOT_REAL false)" name="gazebo_perception" default="true"/>
+    <arg unless="$(optenv ROBOT_REAL false)" name="pein_real" default="false"/>
+
+    <!-- START PERCEPTION -->
+    <include file="$(find amigo_launch_files)/launch/middleware/perception.launch">
+        <arg name="gazebo_perception" value="$(arg gazebo_perception)" />            
+        <arg name="pein_real" value="$(arg pein_real)" />
+    </include>
 	
-	<group unless="$(arg ROBOT_REAL)">
-		<!-- SIMULATION -->
-		
-		<!-- Gazebo perception -->
-		<include file="$(find gazebo_perception)/launch/start.launch" />
-
-               	<node pkg="pein_template_matching" type="detection_node" name="template_matching" args="-C Simulation"/>
-		
-	</group>
-
 	<!-- Localization -->
     <group if="$(arg gmapping)">
         <!-- GMAPPING -->

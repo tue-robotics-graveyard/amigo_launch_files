@@ -6,13 +6,35 @@
     <arg unless="$(optenv ROBOT_REAL false)" name="machine" default="localhost"/>
     <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" /> 
 
-    <!-- PEIN Perception -->
-    <include file="$(find pein_supervisor)/launch/start.launch" />
+    <!-- PERCEPTION SETTINGS FOR REAL ROBOT -->
+    <arg if="$(optenv ROBOT_REAL false)" name="gazebo_perception" default="false"/>
+    <arg if="$(optenv ROBOT_REAL false)" name="pein_real" default="true"/>
+    
+    <!-- PERCEPTION SETTINGS FOR SIMULATION -->
+    <arg unless="$(optenv ROBOT_REAL false)" name="gazebo_perception" default="true"/>
+    <arg unless="$(optenv ROBOT_REAL false)" name="pein_real" default="false"/>   
 
-     <!-- face segmentation -->
-    <include file="$(find pein_face_recognition)/launch/start.launch" />
+    <group if="$(arg gazebo_perception)">
+	    <!-- Gazebo perception -->
+    	<include file="$(find gazebo_perception)/launch/start.launch" />
+    </group>
 
-    <!-- Template matching -->
-    <node pkg="pein_template_matching" type="detection_node" name="template_matching" args="-C Demo" machine="$(arg machine)"/>		
+    <group unless="$(arg gazebo_perception)">
+        <!-- PEIN Perception -->
+        <include file="$(find pein_supervisor)/launch/start.launch" />
+
+         <!-- face recognition -->
+        <include file="$(find pein_face_recognition)/launch/start.launch" />
+
+        <group if="$(arg pein_real)">
+            <!-- Template matching -->
+            <node pkg="pein_template_matching" type="detection_node" name="template_matching" args="-C Demo" machine="$(arg machine)"/>	
+        </group>
+
+        <group unless="$(arg pein_real)">
+            <!-- Template matching -->
+            <node pkg="pein_template_matching" type="detection_node" name="template_matching" args="-C Simulation" machine="$(arg machine)"/>            
+        </group>        
+    </group>    	
 
 </launch>
