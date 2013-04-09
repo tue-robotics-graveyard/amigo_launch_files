@@ -11,14 +11,8 @@
 		<!-- Start all sensors -->
 		<include file="$(find amigo_launch_files)/launch/sensors/sensors.launch" />	
 
-		<!-- PEIN Perception -->
-		<include file="$(find pein_supervisor)/launch/start.launch" />
-
-		 <!-- face segmentation -->
-		<include file="$(find pein_face_recognition)/launch/start.launch" />
-		
-		<!-- Template matching -->
-		<node pkg="pein_template_matching" type="detection_node" name="template_matching" args="-C Demo" machine="amigo1"/>		
+        <!-- Start all sensors -->
+		<include file="$(find amigo_launch_files)/launch/middleware/perception.launch" />	
 
 	</group>
 	

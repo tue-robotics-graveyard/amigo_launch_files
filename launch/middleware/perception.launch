@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <arg if="$(optenv ROBOT_REAL false)" name="machine" default="amigo1"/>
+    <arg unless="$(optenv ROBOT_REAL false)" name="machine" default="localhost"/>
+    <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" /> 
+
+    <!-- PEIN Perception -->
+    <include file="$(find pein_supervisor)/launch/start.launch" />
+
+     <!-- face segmentation -->
+    <include file="$(find pein_face_recognition)/launch/start.launch" />
+
+    <!-- Template matching -->
+    <node pkg="pein_template_matching" type="detection_node" name="template_matching" args="-C Demo" machine="$(arg machine)"/>		
+
+</launch>
