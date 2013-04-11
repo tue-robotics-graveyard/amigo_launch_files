@@ -6,7 +6,7 @@
     <arg unless="$(optenv ROBOT_REAL false)" name="machine" default="localhost"/>
     <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" /> 
 
-    <arg name="ROBOT_MAP" default="$(optenv ROBOT_MAP robotics_testlab_A)" /> 
+    <arg name="ROBOT_MAP" default="$(optenv ROBOT_MAP tue_msl_field_20130411)" /> 
      
     <node name="loc_map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(arg ROBOT_MAP)/loc/yaml" output="screen" machine="$(arg machine)">
 	<remap from="/map" to="/loc_map"/>
