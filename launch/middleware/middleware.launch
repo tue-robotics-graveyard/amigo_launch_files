@@ -4,6 +4,7 @@
 
     <arg name="ROBOT_REAL" default="$(optenv ROBOT_REAL false)" />
     <arg name="gmapping" default="false"/>
+    <arg name="3dnav" default="true"/>
 
 	<group if="$(arg ROBOT_REAL)">
 		<!-- REAL ROBOT -->
@@ -38,7 +39,15 @@
     </group>
 
 	<!-- Navigation -->
-	<include file="$(find amigo_launch_files)/launch/middleware/base_navigation.launch" />
+	<group unless="$(arg 3dnav)">
+		<!-- 2d -->
+		<include file="$(find amigo_launch_files)/launch/middleware/base_navigation.launch" />
+	</group>
+	
+	<group if="$(arg 3dnav)">
+		<!-- 3d -->
+		<include file="$(find amigo_launch_files)/launch/middleware/base_navigation_3d.launch" />
+	</group>
 	
 	<!-- Inverse reachability -->
 	<include file="$(find amigo_launch_files)/launch/middleware/inverse_reachability.launch" />
