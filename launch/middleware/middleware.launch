@@ -3,9 +3,11 @@
 <launch>
 
     <arg name="ROBOT_REAL" default="$(optenv ROBOT_REAL false)" />
-    <arg name="gmapping" default="false"/>
-    <arg name="3dnav" default="false"/>
-    <arg name="wbc" default="false"/>
+    <arg name="localization" default="true"/> <!-- if set to false, no localization is used at all -->
+    <arg name="gmapping" default="false"/>    <!-- default localization is amcl, if set to true: gmapping -->
+    <arg name="3dnav" default="false"/>       <!-- default navigation is based on 2d (laser) information -->
+    <arg name="wbc" default="false"/>         <!-- if set to true, use whole body control -->
+    <arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_A)"/>
 
 	<group if="$(arg ROBOT_REAL)">
 		<!-- REAL ROBOT -->
@@ -28,26 +30,36 @@
         <arg name="pein_real" value="$(arg pein_real)" />
     </include>
 	
-	<!-- Localization -->
-    <group if="$(arg gmapping)">
-        <!-- GMAPPING -->
-    	<include file="$(find amigo_launch_files)/launch/middleware/gmapping.launch" />
-    </group>
 
-    <group unless="$(arg gmapping)">
-        <!-- AMCL -->
-    	<include file="$(find amigo_launch_files)/launch/middleware/localization.launch" />
+    <group if="$(arg localization)">
+    	<!-- Localization -->
+        <group if="$(arg gmapping)">
+            <!-- GMAPPING -->
+       	    <include file="$(find amigo_launch_files)/launch/middleware/gmapping.launch" />
+        </group>
+
+        <group unless="$(arg gmapping)">
+            <!-- AMCL -->
+    	    <include file="$(find amigo_launch_files)/launch/middleware/localization.launch">
+                <arg name="env" value="$(arg env)"/>
+            </include>
+        </group>
     </group>
 
 	<!-- Navigation -->
 	<group unless="$(arg 3dnav)">
 		<!-- 2d -->
-		<include file="$(find amigo_launch_files)/launch/middleware/base_navigation.launch" />
+		<include file="$(find amigo_launch_files)/launch/middleware/base_navigation.launch">
+            <arg name="env" value="$(arg env)"/>
+        </include>
 	</group>
+
 	
 	<group if="$(arg 3dnav)">
 		<!-- 3d -->
-		<include file="$(find amigo_launch_files)/launch/middleware/base_navigation_3d.launch" />
+		<include file="$(find amigo_launch_files)/launch/middleware/base_navigation_3d.launch">
+            <arg name="env" value="$(arg env)"/>
+        </include>
 	</group>
 	
 	<!-- Inverse reachability -->
@@ -75,9 +87,6 @@
 
 	<!-- Node to attach world model object to gripper-->
 	<node pkg="obj_in_gripper" type="obj_in_gripper_pub" name="obj_in_gripper"/>
-
-		
-
 	
 	<!-- Start text to speech -->
     <include file="$(find amigo_launch_files)/launch/interaction/text_to_speech.launch" />	
