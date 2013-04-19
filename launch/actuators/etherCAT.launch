@@ -3,6 +3,5 @@
     
     <node name="etherCAT" pkg="ocl" type="deployer-gnulinux" args="
     -s $(find amigo_etherCAT)/soem.ops 
-    -s $(find rtt_custom_components)/clean_exit.ops
     --" output="screen" machine="amigo2"></node>   
 </launch>
