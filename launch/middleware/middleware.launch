@@ -9,6 +9,8 @@
     <arg name="3dnav" default="false"/>       <!-- default navigation is based on 2d (laser) information -->
     <arg name="wbc" default="false"/>         <!-- if set to true, use whole body control -->
     <arg name="env" default="$(optenv ROBOT_ENV rgo2013)"/>
+    <arg name="wire_frame" default="/map"/>
+    <arg name="wire_viz_frame" default="/map"/>
 
 	<group if="$(arg ROBOT_REAL)">
 		<!-- REAL ROBOT -->
@@ -86,7 +88,10 @@
 	</group>
 
 	<!-- Reasoner (including World Model) -->
-	<include file="$(find amigo_launch_files)/launch/middleware/reasoner.launch"/>
+	<include file="$(find amigo_launch_files)/launch/middleware/reasoner.launch">
+        <arg name="wire_viz_frame" value="$(arg wire_viz_frame)"/>
+        <arg name="wire_frame" value="$(arg wire_frame)"/>
+    </include>
 
 	<!-- Node to attach world model object to gripper-->
 	<node pkg="obj_in_gripper" type="obj_in_gripper_pub" name="obj_in_gripper"/>

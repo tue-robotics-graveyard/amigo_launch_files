@@ -3,9 +3,15 @@
 <launch>
 
     <arg name="args" default="" /> 
+    <arg name="wire_frame" default="/map" /> 
+    <arg name="wire_viz_frame" default="/map" /> 
 
-    <include file="$(find tue_reasoner_core)/launch/start.launch" />
+    <include file="$(find tue_reasoner_core)/launch/start.launch">
+        <arg name="wire_frame" value="$(arg wire_frame)"/>
+    </include>
 
-    <include file="$(find wire_viz)/launch/start.launch" />
+    <include file="$(find wire_viz)/launch/start.launch">
+        <arg name="wire_viz_frame" value="$(arg wire_viz_frame)"/>
+    </include>
 
 </launch>
