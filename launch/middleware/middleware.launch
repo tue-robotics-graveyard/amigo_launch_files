@@ -7,7 +7,7 @@
     <arg name="gmapping" default="false"/>    <!-- default localization is amcl, if set to true: gmapping -->
     <arg name="3dnav" default="false"/>       <!-- default navigation is based on 2d (laser) information -->
     <arg name="wbc" default="false"/>         <!-- if set to true, use whole body control -->
-    <arg name="env" default="$(optenv ROBOT_ENV tue_robotics_lab)"/>
+    <arg name="env" default="$(optenv ROBOT_ENV rgo2013)"/>
 
 	<group if="$(arg ROBOT_REAL)">
 		<!-- REAL ROBOT -->

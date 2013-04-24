@@ -7,7 +7,7 @@
     <arg unless="$(optenv ROBOT_REAL false)" name="machine" default="localhost"/>
     <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" /> 
     <arg name="gmapping" default="false"/>    <!-- default localization is amcl, if set to true: gmapping -->
-    <arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_A)" />
+    <arg name="env" default="$(optenv ROBOT_ENV rgo2013)" />
     
     <!-- map server should not be started if we are using gmapping -->
     <group unless="$(arg gmapping)">
