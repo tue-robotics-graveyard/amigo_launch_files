@@ -16,7 +16,7 @@
     <arg name="gui" default="true"/>
 
     <arg name="ROBOT_WORLD" default="$(optenv ROBOT_WORLD rgo2013)" />
-    <arg name="ROBOT_POSE" default="$(optenv ROBOT_POSE -x 2 -y 0 -Y 0)" />
+    <arg name="ROBOT_POSE" default="$(optenv ROBOT_POSE -x -0.6 -y 0 -Y 0)" />
     <arg name="ROBOT_REAL" default="$(optenv ROBOT_REAL false)" />
     <arg name="ROBOT_COMPLEXITY" default="$(optenv ROBOT_COMPLEXITY complex)" />
 
