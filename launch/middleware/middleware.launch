@@ -5,6 +5,7 @@
     <arg name="ROBOT_REAL" default="$(optenv ROBOT_REAL false)" />
     <arg name="localization" default="true"/> <!-- if set to false, no localization is used at all -->
     <arg name="gmapping" default="false"/>    <!-- default localization is amcl, if set to true: gmapping -->
+    <arg name="perception" default="true"/>
     <arg name="nav" default="true"/>          <!-- default navigation is used -->
     <arg name="3dnav" default="false"/>       <!-- default navigation is based on 2d (laser) information -->
     <arg name="wbc" default="false"/>         <!-- if set to true, use whole body control -->
@@ -19,19 +20,23 @@
 		<include file="$(find amigo_launch_files)/launch/sensors/sensors.launch" />	
 	</group>
 
-    <!-- DEFAULT PERCEPTION SETTINGS FOR REAL ROBOT -->
-    <arg if="$(optenv ROBOT_REAL false)" name="gazebo_perception" default="false"/>
-    <arg if="$(optenv ROBOT_REAL false)" name="pein_real" default="true"/>
-    
-    <!-- DEFAULT PERCEPTION SETTINGS FOR SIMULATION -->
-    <arg unless="$(optenv ROBOT_REAL false)" name="gazebo_perception" default="true"/>
-    <arg unless="$(optenv ROBOT_REAL false)" name="pein_real" default="false"/>
+    <group if="$(arg perception)">
 
-    <!-- START PERCEPTION -->
-    <include file="$(find amigo_launch_files)/launch/middleware/perception.launch">
-        <arg name="gazebo_perception" value="$(arg gazebo_perception)" />            
-        <arg name="pein_real" value="$(arg pein_real)" />
-    </include>
+        <!-- DEFAULT PERCEPTION SETTINGS FOR REAL ROBOT -->
+        <arg if="$(optenv ROBOT_REAL false)" name="gazebo_perception" default="false"/>
+        <arg if="$(optenv ROBOT_REAL false)" name="pein_real" default="true"/>
+        
+        <!-- DEFAULT PERCEPTION SETTINGS FOR SIMULATION -->
+        <arg unless="$(optenv ROBOT_REAL false)" name="gazebo_perception" default="true"/>
+        <arg unless="$(optenv ROBOT_REAL false)" name="pein_real" default="false"/>
+
+        <!-- START PERCEPTION -->
+        <include file="$(find amigo_launch_files)/launch/middleware/perception.launch">
+            <arg name="gazebo_perception" value="$(arg gazebo_perception)" />            
+            <arg name="pein_real" value="$(arg pein_real)" />
+        </include>
+
+    </group>
 	
 
     <group if="$(arg localization)">
