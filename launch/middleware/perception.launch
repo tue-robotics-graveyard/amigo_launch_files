@@ -21,10 +21,14 @@
 
     <group unless="$(arg gazebo_perception)">
         <!-- PEIN Perception -->
-        <include file="$(find pein_supervisor)/launch/start.launch" />
+        <include file="$(find pein_supervisor)/launch/start.launch">
+            <arg name="machine" value="$(arg machine)"/>
+	</include>
 
          <!-- face recognition -->
-        <include file="$(find pein_face_recognition)/launch/start.launch" />
+        <include file="$(find pein_face_recognition)/launch/start.launch">
+            <arg name="machine" value="$(arg machine)"/>
+        </include>
 
         <group if="$(arg pein_real)">
             <!-- Template matching -->
