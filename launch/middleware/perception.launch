@@ -14,6 +14,9 @@
     <arg unless="$(optenv ROBOT_REAL false)" name="gazebo_perception" default="true"/>
     <arg unless="$(optenv ROBOT_REAL false)" name="pein_real" default="false"/>   
 
+    <arg if="$(arg pein_real)" name="linemod_config" default="Demo"/>
+    <arg unless="$(arg pein_real)" name="linemod_config" default="Simulation"/>
+
     <group if="$(arg gazebo_perception)">
 	    <!-- Gazebo perception -->
     	<include file="$(find gazebo_perception)/launch/start.launch" />
@@ -30,15 +33,7 @@
             <arg name="machine" value="$(arg machine)"/>
         </include>
 
-        <group if="$(arg pein_real)">
-            <!-- Template matching -->
-            <node pkg="pein_template_matching" type="detection_node" name="template_matching" args="-C Demo" machine="$(arg machine)"/>	
-        </group>
-
-        <group unless="$(arg pein_real)">
-            <!-- Template matching -->
-            <node pkg="pein_template_matching" type="detection_node" name="template_matching" args="-C Simulation" machine="$(arg machine)"/>            
-        </group>        
+        <node pkg="pein_template_matching" type="detection_node" name="template_matching" args="-C $(arg linemod_config)" machine="$(arg machine)"/>	
     </group>    	
 
 </launch>
