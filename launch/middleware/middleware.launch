@@ -12,7 +12,7 @@
     <arg name="env" default="$(optenv ROBOT_ENV rgo2013)"/>
     <arg name="wire_frame" default="/map"/>
     <arg name="wire_viz_frame" default="/map"/>
-
+    
 	<group if="$(arg ROBOT_REAL)">
 		<!-- REAL ROBOT -->
 
@@ -29,11 +29,14 @@
         <!-- DEFAULT PERCEPTION SETTINGS FOR SIMULATION -->
         <arg unless="$(optenv ROBOT_REAL false)" name="gazebo_perception" default="true"/>
         <arg unless="$(optenv ROBOT_REAL false)" name="pein_real" default="false"/>
+        <arg if="$(arg pein_real)" name="linemod_config" default="Demo"/>
+        <arg unless="$(arg pein_real)" name="linemod_config" default="Simulation"/>
 
         <!-- START PERCEPTION -->
         <include file="$(find amigo_launch_files)/launch/middleware/perception.launch">
             <arg name="gazebo_perception" value="$(arg gazebo_perception)" />            
             <arg name="pein_real" value="$(arg pein_real)" />
+            <arg name="linemod_config" value="$(arg linemod_config)"/>
         </include>
 
     </group>
