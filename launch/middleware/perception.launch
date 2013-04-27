@@ -33,7 +33,7 @@
             <arg name="machine" value="$(arg machine)"/>
         </include>
 
-        <node pkg="pein_template_matching" type="detection_node" name="template_matching" args="-C $(arg linemod_config)" machine="$(arg machine)"/>	
+        <node pkg="pein_template_matching" type="detection_node" name="template_matching" args="-C $(arg linemod_config)" respawn="true" machine="$(arg machine)"/>	
     </group>    	
 
 </launch>
