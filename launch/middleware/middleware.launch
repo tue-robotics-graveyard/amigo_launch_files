@@ -9,7 +9,7 @@
     <arg name="nav" default="true"/>          <!-- default navigation is used -->
     <arg name="3dnav" default="false"/>       <!-- default navigation is based on 2d (laser) information -->
     <arg name="wbc" default="false"/>         <!-- if set to true, use whole body control -->
-    <arg name="env" default="$(optenv ROBOT_ENV rgo2013)"/>
+    <arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_A)"/>
     <arg name="wire_frame" default="/map"/>
     <arg name="wire_viz_frame" default="/map"/>
     
