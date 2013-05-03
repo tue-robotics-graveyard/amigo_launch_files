@@ -15,7 +15,7 @@
 
     <arg name="gui" default="true"/>
 
-    <arg name="ROBOT_WORLD" default="$(optenv ROBOT_WORLD robotics_testlab_A)" />
+    <arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_A)" />
     <arg name="ROBOT_POSE" default="$(optenv ROBOT_POSE -x 0.0 -y -3.0 -Y 1.57)" />
     <arg name="ROBOT_REAL" default="$(optenv ROBOT_REAL false)" />
     <arg name="ROBOT_COMPLEXITY" default="$(optenv ROBOT_COMPLEXITY complex)" />
@@ -57,7 +57,7 @@
         <param name="/use_sim_time" value="true"/>
 
         <!-- start world file (export HEADLESS to -r if you want to run gazebo headless, this is done on the Jenkins server, ask Rob J-->
-        <node name="gazebo" pkg="gazebo" type="gazebo" args="$(find amigo_maps)/worlds/$(arg ROBOT_WORLD).world" respawn="false" output="screen"/>
+        <node name="gazebo" pkg="gazebo" type="gazebo" args="$(find amigo_maps)/worlds/$(arg env).world" respawn="false" output="screen"/>
         
         <!-- Spawn dynamic objects (cokecans, plants, doors etc..) -->
        	<!--<include file="$(find amigo_maps)/objects/objects_$(optenv ROS_DISTRO).launch"/>-->
