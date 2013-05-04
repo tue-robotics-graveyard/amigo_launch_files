@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<launch>
+
+        <include file="$(find amigo_machine_files)/machines/amigo2.machine" />
+
+        <node pkg="hokuyo_node" type="hokuyo_node" name="torso_hokuyo_node" output="screen" machine="amigo2">
+            <remap from="scan" to="/top_scan"/>
+            <param name="frame_id" value="/torso_laser"/>
+        </node>
+
+        <node name="$(anon dynparam)" pkg="dynamic_reconfigure" type="dynparam" args="set_from_parameters torso_hokuyo_node" machine="amigo2">
+            <param name="min_ang" type="double" value="-2.0" />
+            <param name="max_ang" type="double" value="2.0" />
+        </node>
+
+</launch>
+  

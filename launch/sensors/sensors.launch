@@ -8,7 +8,9 @@
 
 	<!-- Back laser (only for real robot; in simulation base laser is loaded by Gazebo) -->
 	<!--include file="$(find amigo_launch_files)/launch/sensors/back_laser.launch"/-->
-
+	
+	<!-- Torso laser (only for real robot; in simulation torso laser is loaded by Gazebo) -->
+	<include file="$(find amigo_launch_files)/launch/sensors/torso_laser.launch"/>
 
 	<!-- Top Kinect (only for real robot; in simulation Kinect is loaded by Gazebo) -->
         <include file="$(find amigo_launch_files)/launch/sensors/top_kinect.launch"/>
