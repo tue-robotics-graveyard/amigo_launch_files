@@ -72,7 +72,7 @@
         <include file="$(find amigo_simulation_controllers)/controllers_$(arg ROBOT_COMPLEXITY).launch"/>
 
         <!-- push robot_description to factory and spawn robot in gazebo -->
-        <node name="spawn_amigo" pkg="gazebo" type="spawn_model" args="-gazebo_namespace gazebo -unpause -urdf -param robot_description -model amigo -x $(arg robot_init_x) -y $(arg robot_init_y) -Y $(arg robot_init_phi)" respawn="false" output="screen" />
+        <node name="spawn_amigo" pkg="gazebo" type="spawn_model" args="-gazebo_namespace gazebo -unpause -urdf -param robot_description -model amigo -x $(arg robot_init_x) -y $(arg robot_init_y) -Y $(arg robot_init_phi) -J spindle_joint 0.35 --skip-joint-limits" respawn="false" output="screen" />
 
         <!-- Launch Gazebo GUI -->
         <group if="$(arg gui)">
