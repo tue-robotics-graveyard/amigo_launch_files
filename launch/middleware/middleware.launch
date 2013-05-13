@@ -22,13 +22,16 @@
 
     <group if="$(arg perception)">
 
-        <!-- DEFAULT PERCEPTION SETTINGS FOR REAL ROBOT -->
+        <!-- DEFAULT PERCEPTION SETTINGS-->
         <arg if="$(optenv ROBOT_REAL false)" name="gazebo_perception" default="false"/>
         <arg if="$(optenv ROBOT_REAL false)" name="pein_real" default="true"/>
-        
-        <!-- DEFAULT PERCEPTION SETTINGS FOR SIMULATION -->
-        <arg unless="$(optenv ROBOT_REAL false)" name="gazebo_perception" default="true"/>
-        <arg unless="$(optenv ROBOT_REAL false)" name="pein_real" default="false"/>
+
+        <arg if="$(optenv SIM_GAZEBO true)" name="gazebo_perception" default="true"/>
+        <arg if="$(optenv SIM_GAZEBO true)" name="pein_real" default="false"/>
+
+        <arg if="$(optenv SIM_FAST false)" name="gazebo_perception" default="false"/>
+        <arg if="$(optenv SIM_FAST false)" name="pein_real" default="true"/>
+
         <arg if="$(arg pein_real)" name="linemod_config" default="Demo"/>
         <arg unless="$(arg pein_real)" name="linemod_config" default="Simulation"/>
 
@@ -43,17 +46,20 @@
 	
 
     <group if="$(arg localization)">
-    	<!-- Localization -->
-        <group if="$(arg gmapping)">
-            <!-- GMAPPING -->
-       	    <include file="$(find amigo_launch_files)/launch/middleware/gmapping.launch" />
-        </group>
+        <group unless="$(optenv SIM_FAST false)">
 
-        <group unless="$(arg gmapping)">
-            <!-- AMCL -->
-    	    <include file="$(find amigo_launch_files)/launch/middleware/localization.launch">
-                <arg name="env" value="$(arg env)"/>
-            </include>
+        	<!-- Localization -->
+            <group if="$(arg gmapping)">
+                <!-- GMAPPING -->
+           	    <include file="$(find amigo_launch_files)/launch/middleware/gmapping.launch" />
+            </group>
+
+            <group unless="$(arg gmapping)">
+                <!-- AMCL -->
+        	    <include file="$(find amigo_launch_files)/launch/middleware/localization.launch">
+                    <arg name="env" value="$(arg env)"/>
+                </include>
+            </group>
         </group>
     </group>
 
@@ -81,10 +87,18 @@
 	<!-- Head control -->
 	<include file="$(find amigo_launch_files)/launch/middleware/head.launch" />	
 	
-	<!-- Arm and torso planning -->
+	<!-- Arm and torso planning --> 
 	<group unless="$(arg wbc)">
 		<!-- Arm & gripper control -->
-		<include file="$(find amigo_launch_files)/launch/middleware/arms.launch" />
+        <group if="$(optenv SIM_GAZEBO true)">
+    		<include file="$(find amigo_launch_files)/launch/middleware/arms.launch" />
+        </group>
+
+        <group unless="$(optenv SIM_GAZEBO true)">
+    		<include file="$(find amigo_launch_files)/launch/middleware/arms.launch">
+                <arg name="ROBOT_COMPLEXITY" value="complex"/>
+            </include>
+        </group>
 
 		<!-- Spindle -->
 		<include file="$(find amigo_launch_files)/launch/middleware/spindle.launch" />	
@@ -95,8 +109,11 @@
 		<include file="$(find amigo_whole_body_controller)/launch/start.launch"/>
 	</group>
 
-	<!-- Reasoner (including World Model) -->
-	<include file="$(find amigo_launch_files)/launch/middleware/reasoner.launch">
+	<!-- Reasoner -->
+ 	<include file="$(find amigo_launch_files)/launch/middleware/reasoner.launch"/>
+
+    <!-- World Model -->
+ 	<include file="$(find amigo_launch_files)/launch/middleware/world_model.launch">
         <arg name="wire_viz_frame" value="$(arg wire_viz_frame)"/>
         <arg name="wire_frame" value="$(arg wire_frame)"/>
     </include>

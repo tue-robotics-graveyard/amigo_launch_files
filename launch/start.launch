@@ -29,7 +29,6 @@
     <!-- load robot joint group info -->
     <rosparam file="$(find amigo_robot_model)/description/joint_groups.yaml" command="load" />
 
-
     <group if="$(arg ROBOT_REAL)">
         <!-- REAL ROBOT -->
 
@@ -56,31 +55,38 @@
     <group unless="$(arg ROBOT_REAL)">
         <!-- SIMULATION -->
 
-        <!-- Required simulation parameter -->
-        <param name="/use_sim_time" value="true"/>
+        <group if="$(optenv SIM_GAZEBO true)">
 
-        <!-- start world file (export HEADLESS to -r if you want to run gazebo headless, this is done on the Jenkins server, ask Rob J-->
-        <node name="gazebo" pkg="gazebo" type="gazebo" args="$(find amigo_maps)/worlds/$(arg env).world" respawn="false" output="screen"/>
-        
-        <!-- Spawn dynamic objects (cokecans, plants, doors etc..) -->
-       	<!--<include file="$(find amigo_maps)/objects/objects_$(optenv ROS_DISTRO).launch"/>-->
+            <!-- Required simulation parameter -->
+            <param name="/use_sim_time" value="true"/>
 
-        <!-- start controller manager (rviz) -->
-        <include file="$(find pr2_controller_manager)/controller_manager.launch"/>
+            <!-- start world file (export HEADLESS to -r if you want to run gazebo headless, this is done on the Jenkins server, ask Rob J-->
+            <node name="gazebo" pkg="gazebo" type="gazebo" args="$(find amigo_maps)/worlds/$(arg env).world" respawn="false" output="screen"/>
+            
+            <!-- Spawn dynamic objects (cokecans, plants, doors etc..) -->
+           	<!--<include file="$(find amigo_maps)/objects/objects_$(optenv ROS_DISTRO).launch"/>-->
 
-        <!-- Simulation controllers -->
-        <include file="$(find amigo_simulation_controllers)/controllers_$(arg ROBOT_COMPLEXITY).launch"/>
+            <!-- start controller manager (rviz) -->
+            <include file="$(find pr2_controller_manager)/controller_manager.launch"/>
 
-        <!-- push robot_description to factory and spawn robot in gazebo -->
-        <node name="spawn_amigo" pkg="gazebo" type="spawn_model" args="-gazebo_namespace gazebo -unpause -urdf -param robot_description -model amigo -x $(arg robot_init_x) -y $(arg robot_init_y) -Y $(arg robot_init_phi) -J spindle_joint 0.35 --skip-joint-limits" respawn="false" output="screen" />
+            <!-- Simulation controllers -->
+            <include file="$(find amigo_simulation_controllers)/controllers_$(arg ROBOT_COMPLEXITY).launch"/>
 
-        <!-- Launch Gazebo GUI -->
-        <group if="$(arg gui)">
-            <node name="gazebo_gui" pkg="gazebo" type="gui" respawn="false" output="screen"/>
+            <!-- push robot_description to factory and spawn robot in gazebo -->
+            <node name="spawn_amigo" pkg="gazebo" type="spawn_model" args="-gazebo_namespace gazebo -unpause -urdf -param robot_description -model amigo -x $(arg robot_init_x) -y $(arg robot_init_y) -Y $(arg robot_init_phi) -J spindle_joint 0.35 --skip-joint-limits" respawn="false" output="screen" />
+
+            <!-- Launch Gazebo GUI -->
+            <group if="$(arg gui)">
+                <node name="gazebo_gui" pkg="gazebo" type="gui" respawn="false" output="screen"/>
+            </group>
+
+        </group>
+
+        <group unless="$(optenv SIM_GAZEBO true)">
+            <include file="$(find fast_simulator)/launch/start.launch"/>    
         </group>
         
     </group>
-
 
     <!-- launch node that converts sensor_msgs/JointState to amigo_msgs/arm_joints -->
     <include file="$(find amigo_joint_interface_converter)/launch/start.launch"/>

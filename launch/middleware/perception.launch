@@ -2,9 +2,8 @@
 
 <launch>
 
-    <arg if="$(optenv ROBOT_REAL false)" name="machine" default="amigo1"/>
-    <arg unless="$(optenv ROBOT_REAL false)" name="machine" default="localhost"/>
-    <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" /> 
+    <arg name="machine" value="$(optenv MACHINE_PERCEPTION localhost)"/>
+    <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" />
 
     <!-- PERCEPTION SETTINGS FOR REAL ROBOT -->
     <arg if="$(optenv ROBOT_REAL false)" name="gazebo_perception" default="false"/>

@@ -2,10 +2,9 @@
 
 <launch>
 
+    <arg name="machine" value="$(optenv MACHINE_BASE_NAVIGATION localhost)"/>
+    <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" />
     <arg name="ROBOT_REAL" default="$(optenv ROBOT_REAL false)" />
-    <arg if="$(optenv ROBOT_REAL false)" name="machine" default="amigo4"/>
-    <arg unless="$(optenv ROBOT_REAL false)" name="machine" default="localhost"/>
-    <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" /> 
     <arg name="gmapping" default="false"/>    <!-- default localization is amcl, if set to true: gmapping -->
     <arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_A)" />
     

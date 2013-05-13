@@ -2,16 +2,18 @@
 
 <launch>  
 
-    <arg name="models" default="$(find amigo_launch_files)/parameters/world_object_models.xml" />
+    <arg name="wire_frame" default="/map" />
+    <arg name="wire_viz_frame" default="/map" />
 
-    <node pkg="wire_core" type="wire_server_node" respawn="false" name="wire_server" output="screen" >
-        <rosparam file="$(find wire_core)/parameters/world_model.yaml" command="load" ns=""/>
-        <param name="knowledge_filename" value="$(arg models)"/>   
-    </node>
+    <include file="$(find wire_core)/launch/start.launch">
+        <arg name="models" value="$(find tue_knowledge)/models/wire_models.xml" />
+        <arg name="database_save_interval" value="0"/> <!-- do not use database files -->
+        <arg name="wire_frame" value="$(arg wire_frame)"/>
+    </include>
 
-    <include file="$(find wire_viz)/launch/start.launch" />
+    <include file="$(find wire_viz)/launch/start.launch">
+        <arg name="wire_viz_frame" value="$(arg wire_viz_frame)"/>
+    </include>
      
 </launch>
-
-
 

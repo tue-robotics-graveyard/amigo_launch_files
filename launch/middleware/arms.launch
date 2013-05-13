@@ -2,7 +2,11 @@
 
 <launch>
 
-    <include file="$(find amigo_arm_navigation)/start.launch" />
+    <arg name="ROBOT_COMPLEXITY" default="$(optenv ROBOT_COMPLEXITY complex)" />
+
+    <include file="$(find amigo_arm_navigation)/start.launch">
+        <arg name="ROBOT_COMPLEXITY" value="$(arg ROBOT_COMPLEXITY)"/>
+    </include>
 
     <include file="$(find amigo_gripper_server)/launch/start.launch" />
     

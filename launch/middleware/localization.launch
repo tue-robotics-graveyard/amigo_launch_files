@@ -2,9 +2,8 @@
 
 <launch>  
 
-    <arg if="$(optenv ROBOT_REAL false)" name="machine" default="amigo3"/>
-    <arg unless="$(optenv ROBOT_REAL false)" name="machine" default="localhost"/>
-    <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" /> 
+    <arg name="machine" value="$(optenv MACHINE_LOCALIZATION localhost)"/>
+    <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" />
 
     <arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_A)" /> 
     <arg name="robot_init_x" default="$(optenv ROBOT_INIT_X 0)"/>
