@@ -4,10 +4,13 @@
     <include file="$(find amigo_machine_files)/machines/amigo2.machine" />
     <include file="$(find amigo_machine_files)/machines/amigo3.machine" />
     <include file="$(find amigo_machine_files)/machines/amigo4.machine" />
+    
+    <arg name="use_2d" default="true" />
 
     <group if="$(optenv ROBOT_REAL false)">
         <!-- REAL ROBOT -->
         <node pkg="amigo_inverse_reachability" type="amigo_inverse_reachability" respawn="true" name="inverse_reachability" machine="amigo1">
+            <param name="use_2d" value="$(arg use_2d)" type="bool"/>
             <param name="number_samples" value="30" type="int"/>
         </node>
     </group>
@@ -15,6 +18,7 @@
     <group unless="$(optenv ROBOT_REAL false)">
         <!-- SIMULATION -->
         <node pkg="amigo_inverse_reachability" type="amigo_inverse_reachability" respawn="true" name="inverse_reachability" output="screen">
+            <param name="use_2d" value="$(arg use_2d)" type="bool"/>
             <param name="number_samples" value="30" type="int"/>
         </node>
     </group>

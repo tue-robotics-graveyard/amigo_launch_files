@@ -71,6 +71,9 @@
 	            <arg name="env" value="$(arg env)"/>
 	            <arg name="gmapping" value="$(arg gmapping)"/>
 	        </include>
+	        <<include file="$(find amigo_launch_files)/launch/middleware/inverse_reachability.launch" >
+				<arg name="use_2d" value="true"/>
+	        </include>
 		</group>
 		
 		<group if="$(arg 3dnav)">
@@ -78,12 +81,12 @@
 			<include file="$(find amigo_launch_files)/launch/middleware/base_navigation_3d.launch">
 	            <arg name="env" value="$(arg env)"/>
 	        </include>
+	        <include file="$(find amigo_launch_files)/launch/middleware/inverse_reachability.launch" >
+				<arg name="use_2d" value="false"/>
+	        </include>
 		</group>
 	</group>
-	
-	<!-- Inverse reachability -->
-	<include file="$(find amigo_launch_files)/launch/middleware/inverse_reachability.launch" />
-	
+		
 	<!-- Head control -->
 	<include file="$(find amigo_launch_files)/launch/middleware/head.launch" />	
 	
