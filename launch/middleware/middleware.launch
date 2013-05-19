@@ -71,7 +71,7 @@
 	            <arg name="env" value="$(arg env)"/>
 	            <arg name="gmapping" value="$(arg gmapping)"/>
 	        </include>
-	        <<include file="$(find amigo_launch_files)/launch/middleware/inverse_reachability.launch" >
+	        <include file="$(find amigo_launch_files)/launch/middleware/inverse_reachability.launch" >
 				<arg name="use_2d" value="true"/>
 	        </include>
 		</group>
