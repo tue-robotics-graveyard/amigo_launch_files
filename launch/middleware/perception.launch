@@ -35,6 +35,8 @@
         <node pkg="pein_template_matching" type="detection_node" name="template_matching" args="-C $(arg linemod_config)" respawn="true" machine="$(arg machine)"/>	
         
         <include file="$(find object_detector_2d)/launch/start.launch"/>
+        
+        <include file="$(find pein_tabletop_segmentation)/launch/start.launch"/>
 
     </group>
 
