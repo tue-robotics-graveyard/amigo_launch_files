@@ -6,11 +6,7 @@
     <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" />
     <arg name="ROBOT_REAL" default="$(optenv ROBOT_REAL false)" />
     <arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_A)" />
-    
-    <node name="nav_map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(arg env)/nav/yaml" output="screen" machine="$(arg machine)">         
-        <remap from="/map" to="/nav_map"/>
-    </node>  
-    
+        
     <!-- Start tue_move_base with the projected map from tue_map_3d (octomap) -->
     <node pkg="tue_move_base_3d" type="move_base_3d" respawn="true" name="move_base_3d" output="screen" machine="$(arg machine)">
         <!-- local and global planner parameters -->        
