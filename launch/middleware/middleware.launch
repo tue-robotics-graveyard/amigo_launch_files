@@ -127,4 +127,10 @@
 	<!-- Start text to speech -->
     <include file="$(find amigo_launch_files)/launch/interaction/text_to_speech.launch" />	
 
+    <!-- Start speech recognition -->
+    <include file="$(find amigo_launch_files)/launch/interaction/speech_recognition.launch" />	
+
+    <!-- Start speech interpreter -->
+    <include file="$(find amigo_launch_files)/launch/interaction/speech_interpreter.launch" />	
+
 </launch>
