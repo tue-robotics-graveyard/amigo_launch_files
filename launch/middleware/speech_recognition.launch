@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<launch>  
+
+    <arg if="$(optenv ROBOT_REAL false)" name="input_device" default="plughw"/>
+    <arg unless="$(optenv ROBOT_REAL false)" name="input_device" default="default"/>
+
+    <!-- Old version -->
+    <!-- include file="$(find create_speech_files)/output_folder/speech.launch"/ -->
+
+    <!-- New version -->
+    <include  file="$(find tue_pocketsphinx)/launch/start.launch">
+        <arg name="input_device" value="$(arg input_device)"/>
+    </include>
+     
+</launch>
+
