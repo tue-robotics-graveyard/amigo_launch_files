@@ -1,6 +1,0 @@
-<launch>
-    <node name="amigo_etherCAT_hardware" pkg="ocl" type="deployer-gnulinux" args="
-    -s $(find amigo_etherCAT)/soemE2.ops 
-    -s $(find amigo_pera_controller)/erpera3.ops
-    --" ></node>   
-</launch>
