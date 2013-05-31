@@ -3,15 +3,10 @@
     <include file="$(find amigo_machine_files)/machines/amigo2.machine" />
     <include file="$(find amigo_machine_files)/machines/amigo3.machine" />
     
-    <arg name="clean" default="true"/>
-    
-    <arg if="$(arg clean) name="clean_exit_ops" value="-s $(find rtt_custom_components)/clean_exit.ops"/>
-    <arg unless="$(arg clean) name="clean_exit_ops" value=""/>
-        
     <node name="amigo_rgb_controller" machine="amigo2" pkg="ocl" type="deployer-gnulinux" args="
     -s $(find amigo_etherCAT)/soem.ops 
     -s $(find rgb_lights)/rgb_lights.ops 
-    $(arg clean_exit_ops)
+    -s $(find rtt_custom_components)/clean_exit.ops
     --" output="screen"></node>           
     <node name="rgb_lights_manager" pkg="rgb_lights_manager" type="rgb_lights_manager" output="screen" />
 </launch>

@@ -3,11 +3,6 @@
     <include file="$(find amigo_machine_files)/machines/amigo2.machine" />
     <include file="$(find amigo_machine_files)/machines/amigo3.machine" />
     
-    <arg name="clean" default="true"/>
-    
-    <arg if="$(arg clean) name="clean_exit_ops" value="-s $(find rtt_custom_components)/clean_exit.ops"/>
-    <arg unless="$(arg clean) name="clean_exit_ops" value=""/>
-    
     <node name="amigo_etherCAT_hardware" pkg="ocl" type="deployer-gnulinux" args="
     ETHERCAT_HARDWARE
     -s $(find amigo_etherCAT)/soem.ops 
@@ -16,6 +11,6 @@
     -s $(find amigo_head_controller)/head_controller.ops 
     -s $(find rgb_lights)/rgb_lights.ops
     -s $(find amigo_pera_controller)/erpera.ops
-    $(arg clean_exit_ops)
+    -s $(find rtt_custom_components)/clean_exit.ops    
     --" output="screen" machine="amigo2"></node>   
 </launch>
