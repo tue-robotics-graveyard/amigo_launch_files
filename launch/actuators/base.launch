@@ -3,9 +3,15 @@
     <include file="$(find amigo_machine_files)/machines/amigo2.machine" />
     <include file="$(find amigo_machine_files)/machines/amigo3.machine" />
     
+    <arg name="clean" default="true"/>
+    
+    <arg if="$(arg clean) name="clean_exit_ops" value="-s $(find rtt_custom_components)/clean_exit.ops"/>
+    <arg unless="$(arg clean) name="clean_exit_ops" value=""/>
+    
     <node name="amigo_base_controller" pkg="ocl" type="deployer-gnulinux" args="
     ETHERCAT_HARDWARE
     -s $(find amigo_etherCAT)/soem.ops 
     -s $(find amigo_base_controller)/base_controller.ops 
+    $(arg clean_exit_ops)
     --" output="screen" machine="amigo2"></node>           
 </launch>
