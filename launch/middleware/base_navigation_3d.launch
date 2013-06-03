@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-
+    
 <launch>
 
     <arg name="machine" value="$(optenv MACHINE_BASE_NAVIGATION_3D localhost)"/>
@@ -29,7 +29,16 @@
     <!-- <node pkg="tue_laser_to_pointcloud" type="laser_to_pointcloud" name="laser_to_pointcloud" machine="$(arg machine)"/> -->
     <node pkg="scan_to_cloud_converter" type="scan_to_cloud_converter_node" name="scan_to_cloud_converter_node" machine="$(arg machine)">
         <remap from="/scan" to="/base_scan" /> 
-        <remap from="/cloud" to="/base_scan_pointcloud" />
+        <remap from="/cloud" to="/fused_pointclouds" />
+    </node>  
+    
+    <!-- Start the node that constructs a pointcloud from a depth image -->
+    <node pkg="depth_map_to_point_cloud" type="depth_map_to_point_cloud_node" name="depth_map_to_point_cloud_node" machine="$(arg machine)">
+        <remap from="/camera_info" to="/camera/rgb/camera_info" />
+        <remap from="/depth_image" to="/camera/depth_registered/image" />
+        <remap from="/point_cloud" to="/fused_pointclouds" />
+        <param name="/max_range" value="4" />
+        <param name="/sub_sample_factor" value="0.2" />
     </node>  
             
     <!-- REAL ROBOT: use throttled and voxelized topics -->
@@ -37,17 +46,17 @@
     <!-- Base Kinect (only for real robot; in simulation Kinect is loaded by Gazebo) -->
         <!--<include file="$(find amigo_launch_files)/launch/sensors/base_kinect.launch"/>-->
     <!-- Relay laser, base- and head kinect pointclouds to fused_pointclouds topic -->
-         <node args="/base_scan_pointcloud /fused_pointclouds" name="base_scan_to_fused_pointclouds" pkg="topic_tools" type="relay" />
+         <!-- <node args="/base_scan_pointcloud /fused_pointclouds" name="base_scan_to_fused_pointclouds" pkg="topic_tools" type="relay" /> -->
          <!-- <node args="/base_camera/depth/points_throttled_and_voxelized /fused_pointclouds" name="base_camera_to_fused_pointclouds" pkg="topic_tools" type="relay" /> -->
-         <node args="/camera/depth/points_throttled_and_voxelized /fused_pointclouds" name="camera_to_fused_pointclouds" pkg="topic_tools" type="relay" /> 
+         <!-- <node args="/camera/depth/points_throttled_and_voxelized /fused_pointclouds" name="camera_to_fused_pointclouds" pkg="topic_tools" type="relay" />-->
     </group>
     
     <!-- SIMULATION: use original topics, note that the camera namespace is absent for base_camera! (must be fixed in urdf model) -->
     <group unless="$(arg ROBOT_REAL)">
     <!-- Relay laser, base- and head kinect pointclouds to fused_pointclouds topic -->
-         <node args="/base_scan_pointcloud /fused_pointclouds" name="base_scan_to_fused_pointclouds" pkg="topic_tools" type="relay" /> 
+         <!-- <node args="/base_scan_pointcloud /fused_pointclouds" name="base_scan_to_fused_pointclouds" pkg="topic_tools" type="relay" /> -->
          <!--<node args="/base_camera/rgb/points /fused_pointclouds" name="base_camera_to_fused_pointclouds" pkg="topic_tools" type="relay" /> -->
-         <node args="/camera/rgb/points /fused_pointclouds" name="camera_to_fused_pointclouds" pkg="topic_tools" type="relay" />
+         <!--<node args="/camera/rgb/points /fused_pointclouds" name="camera_to_fused_pointclouds" pkg="topic_tools" type="relay" /> -->
     </group>
    
 </launch>
