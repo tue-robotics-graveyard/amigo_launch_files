@@ -41,6 +41,7 @@
   <depend package="pein_tabletop_segmentation"/>
   <depend package="pein_template_matching"/>
   <depend package="gazebo_perception"/>
+  <depend package="laser_ppl_detection"/>
 
   <!-- servers -->
   <depend package="amigo_gripper_server"/>
