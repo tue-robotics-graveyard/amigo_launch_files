@@ -8,7 +8,7 @@
  
     <node name="gmapping_node" pkg="gmapping" type="slam_gmapping" respawn="true" machine="$(arg machine)" >
         <remap to="base_scan" from="scan"/>
-        <remap from="/map" to="/loc_map"/>
+        <remap from="/map" to="/nav_map"/>
         <param name="delta" value="0.025" />
 
 	<param name="xmin" value="-10" />
