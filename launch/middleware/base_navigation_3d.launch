@@ -39,11 +39,14 @@
     <!-- Start the node that constructs a pointcloud from a depth image -->
     <node pkg="depth_map_to_point_cloud" type="depth_map_to_point_cloud_node" name="depth_map_to_point_cloud_node" machine="$(arg machine)">
         <remap from="/camera_info" to="/camera/rgb/camera_info" />
-        <remap from="/depth_image" to="/camera/depth_registered/image" />
+        <remap from="/depth_image" to="/camera/depth_registered/image_self_filtered" />
         <remap from="/point_cloud" to="/fused_pointclouds" />
         <param name="/max_range" value="4" />
         <param name="/sub_sample_factor" value="0.2" />
-    </node>  
+    </node> 
+
+    <!-- Node that filters the arms out of the depth image -->
+    <node pkg="depth_map_self_filter" type="self_filter" name="depth_map_self_filter" machine="$(arg machine)"/>
             
     <!-- REAL ROBOT: use throttled and voxelized topics -->
     <group if="$(arg ROBOT_REAL)">

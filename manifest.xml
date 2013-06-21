@@ -42,6 +42,7 @@
   <depend package="pein_template_matching"/>
   <depend package="gazebo_perception"/>
   <depend package="laser_ppl_detection"/>
+  <depend package="depth_map_self_filter"/>
 
   <!-- servers -->
   <depend package="amigo_gripper_server"/>
