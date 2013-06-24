@@ -25,6 +25,8 @@
 
     <!-- Used by fast_simulator: set to true to instantly move to goals while navigating -->
     <arg name="teleport" default="false"/>
+    
+    <arg name="kinect_raytracing" default="true"/>
 
     <!-- load robot -->
     <param name="robot_description" command="$(find xacro)/xacro.py '$(find amigo_robot_model)/description/robot_$(arg ROBOT_COMPLEXITY).urdf.xacro' " />
@@ -88,6 +90,7 @@
         <group unless="$(optenv SIM_GAZEBO true)">
             <include file="$(find fast_simulator)/launch/start.launch">
                 <arg name="teleport" value="$(arg teleport)"/>
+                <arg name="kinect_raytracing" value="$(arg kinect_raytracing)"/>
             </include> 
         </group>
         
