@@ -23,6 +23,9 @@
     <arg name="ROBOT_REAL" default="$(optenv ROBOT_REAL false)" />
     <arg name="ROBOT_COMPLEXITY" default="$(optenv ROBOT_COMPLEXITY complex)" />
 
+    <!-- Used by fast_simulator: set to true to instantly move to goals while navigating -->
+    <arg name="teleport" default="false"/>
+
     <!-- load robot -->
     <param name="robot_description" command="$(find xacro)/xacro.py '$(find amigo_robot_model)/description/robot_$(arg ROBOT_COMPLEXITY).urdf.xacro' " />
 
@@ -83,7 +86,9 @@
         </group>
 
         <group unless="$(optenv SIM_GAZEBO true)">
-            <include file="$(find fast_simulator)/launch/start.launch"/>    
+            <include file="$(find fast_simulator)/launch/start.launch">
+                <arg name="teleport" value="$(arg teleport)"/>
+            </include> 
         </group>
         
     </group>
