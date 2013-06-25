@@ -11,14 +11,25 @@
         <remap from="/map" to="/nav_map"/>
         <param name="delta" value="0.025" />
 
-	<param name="xmin" value="-10" />
-	<param name="ymin" value="-10" />
-	<param name="xmax" value="10" />
-	<param name="ymax" value="10" />
+    <!-- Initial map size -->
+	<param name="xmin" value="-1" />
+	<param name="ymin" value="-3" />
+	<param name="xmax" value="5" />
+	<param name="ymax" value="3" />
+	
+	<!-- The maximum usable range of the laser -->
+	<param name ="maxUrange" value = "8" />
+	
 <!--	<param name="srr"  value="10" />	
 	<param name="srt"  value="10" />
 	<param name="str"  value="10" />
 	<param name="stt"  value="10" /> -->
+	
+	<!-- Number of beams to skip in each scan (default 0) -->
+	<param name ="lskip" value = "0" />
+	
+	<!-- Process a scan each time the robot translates/rotates this far (default 1.0, 0.5)-->
+	<param name="linearUpdate"  value="1.0" />
 	<param name="angularUpdate"  value="0.5" />
 
     </node>
