@@ -43,6 +43,8 @@
 
         <include file="$(find pein_tabletop_segmentation)/launch/start.launch"/>
 
+        <node pkg="table_detector_2d" type="table_detector" name="table_detector" machine="$(arg machine)" />
+
     </group>
 
 </launch>
