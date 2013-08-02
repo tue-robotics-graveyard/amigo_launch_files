@@ -1,19 +1,35 @@
 <?xml version="1.0"?>
 
-<launch>  
+<launch>
+    <arg name="machine" value="$(optenv MACHINE_WORLD_MODEL localhost)"/>
+    <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" />
 
-    <arg name="wire_frame" default="/map" />
+    <arg name="gdb" default="false"/>
+    <arg if="$(arg gdb)" name="launch-prefix" value="gdb -ex run --args"/>
+    <arg unless="$(arg gdb)" name="launch-prefix" value=""/>
+
+    <arg name="models" default="$(find tue_knowledge)/models/wire_models.xml" />
+    <arg name="database_in" default="$(find wire_core)/wire.psi"/>
+    <arg name="database_out" default="$(find wire_core)/wire_out.psi"/>
+    <arg name="database_save_interval" default="0"/> <!-- 0 = don't store in database -->
+    <arg name="wire_frame" default="/map"/>
+
+    <node pkg="wire_core" type="wire_server_node" respawn="false" name="wire_server" output="screen" launch-prefix="$(arg launch-prefix)" machine="$(arg machine)" >
+        <param name="world_model_frame" value="$(arg wire_frame)"/>   
+        <param name="knowledge_filename" value="$(arg models)"/>   
+        <param name="database_in" value="$(arg database_in)"/>
+        <param name="database_out" value="$(arg database_out)"/>
+        <param name="database_save_interval" value="$(arg database_save_interval)"/>
+    </node>
+
+    <node pkg="tf" type="static_transform_publisher" name="tf_wire_map" args="0 0 0 0 0 0 /wire /map 10" machine="$(arg machine)" />
+
+    <!-- visualization -->
+
     <arg name="wire_viz_frame" default="/map" />
 
-    <include file="$(find wire_core)/launch/start.launch">
-        <arg name="models" value="$(find tue_knowledge)/models/wire_models.xml" />
-        <arg name="database_save_interval" value="0"/> <!-- do not use database files -->
-        <arg name="wire_frame" value="$(arg wire_frame)"/>
-    </include>
+    <node pkg="wire_viz" type="visualization" respawn="false" name="wire_viz" output="screen" machine="$(arg machine)">
+        <param name="marker_frame" value="$(arg wire_viz_frame)"/>
+    </node>
 
-    <include file="$(find wire_viz)/launch/start.launch">
-        <arg name="wire_viz_frame" value="$(arg wire_viz_frame)"/>
-    </include>
-     
 </launch>
-
