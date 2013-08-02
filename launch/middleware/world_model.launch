@@ -20,6 +20,7 @@
         <param name="database_in" value="$(arg database_in)"/>
         <param name="database_out" value="$(arg database_out)"/>
         <param name="database_save_interval" value="$(arg database_save_interval)"/>
+        <param name="config_file" value="$(find tue_knowledge)/prolog/wire.pl"/>
     </node>
 
     <node pkg="tf" type="static_transform_publisher" name="tf_wire_map" args="0 0 0 0 0 0 /wire /map 10" machine="$(arg machine)" />
