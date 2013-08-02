@@ -30,6 +30,7 @@
 
     <node pkg="wire_viz" type="visualization" respawn="false" name="wire_viz" output="screen" machine="$(arg machine)">
         <param name="marker_frame" value="$(arg wire_viz_frame)"/>
+        <param name="config_file" value="$(find tue_knowledge)/prolog/wire_viz.pl"/>
     </node>
 
 </launch>
