@@ -32,6 +32,8 @@
 
         <!-- Static costmap settings -->
         <rosparam file="$(find tue_move_base)/parameters/costmap_static_params.yaml" command="load" />
+
+        <remap from="cmd_vel" to="/amigo/base/references"/>
         
     </node>
 
