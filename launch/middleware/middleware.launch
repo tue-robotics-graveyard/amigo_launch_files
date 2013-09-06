@@ -96,17 +96,17 @@
 	<group unless="$(arg wbc)">
 		<!-- Arm & gripper control -->
         <group if="$(optenv SIM_GAZEBO true)">
-    		<include file="$(find amigo_launch_files)/launch/middleware/arms.launch" />
+    		<!--include file="$(find amigo_launch_files)/launch/middleware/arms.launch" /-->
         </group>
 
         <group unless="$(optenv SIM_GAZEBO true)">
-    		<include file="$(find amigo_launch_files)/launch/middleware/arms.launch">
+    		<!--include file="$(find amigo_launch_files)/launch/middleware/arms.launch">
                 <arg name="ROBOT_COMPLEXITY" value="complex"/>
-            </include>
+            </include-->
         </group>
 
 		<!-- Spindle -->
-		<include file="$(find amigo_launch_files)/launch/middleware/spindle.launch" />	
+		<!--include file="$(find amigo_launch_files)/launch/middleware/spindle.launch" /-->	
 	</group>
 	
 	<group if="$(arg wbc)">

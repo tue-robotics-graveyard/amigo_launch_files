@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="gui" default="true"/>
+    <arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_A)" />
+    <arg name="robot_init_x" default="$(optenv GAZEBO_ROBOT_INIT_X 0)"/>
+    <arg name="robot_init_y" default="$(optenv GAZEBO_ROBOT_INIT_Y 0)"/>
+    <arg name="robot_init_phi" default="$(optenv GAZEBO_ROBOT_INIT_PHI 0)"/>
+    <arg name="ROBOT_COMPLEXITY" default="$(optenv ROBOT_COMPLEXITY complex)" />
+    <arg name="teleport" default="false"/>    
+    <arg name="kinect_raytracing" default="true"/>
+
+    <node name="gazebo" pkg="amigo_launch_files" type="gazebo_with_world.bash" args="$(find tue_gazebo_worlds)/worlds/$(arg env).sdf" respawn="false" output="screen"/>
+
+    <include file="$(find amigo_gazebo)/launch/amigo.launch"/>
+
+    <!-- Fake localization (fixed tf is fine because simulated odom is perfect) -->
+    <node pkg="tf" type="static_transform_publisher" name="tf_fake_localization" args="0 0 0 0 0 0 /map /amigo/odom 20" />
+
+
+</launch>
