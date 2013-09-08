@@ -56,5 +56,4 @@
     <!-- Required simulation parameter -->
     <param name="/use_sim_time" value="false"/>
 
-    <include file="$(find amigo_joint_interface_converter)/launch/start.launch"/>
 </launch>
