@@ -50,7 +50,10 @@
     </node> 
 
     <!-- Node that filters the arms out of the depth image -->
-    <node pkg="depth_map_self_filter" type="self_filter" name="depth_map_self_filter" machine="$(arg machine)"/>
+    <node pkg="depth_map_self_filter" type="self_filter" name="depth_map_self_filter" machine="$(arg machine)">
+		<remap from="/camera_info" to="/amigo/top_kinect/rgb/camera_info" />
+        <remap from="/depth_image" to="/amigo/top_kinect/depth_registered/image" />
+	</node>
             
     <!-- REAL ROBOT: use throttled and voxelized topics -->
     <group if="$(arg ROBOT_REAL)">
