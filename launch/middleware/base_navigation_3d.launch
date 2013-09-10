@@ -24,23 +24,26 @@
         
         <!-- Set correct map topics for tue_map_3d node -->
         <param name="octomap_dir" value="$(find amigo_maps)/octomaps/" />
-        <param name="octomap_filename" value="$(arg env).ot" />
+        <param name="octomap_filename" value="$(arg env).ot" /> 
         <remap from="/cloud_in" to="/fused_pointclouds" /> 
         <remap from="/map" to="/octree_map" />
         
+        <!-- Set correct map topic for velocoity that is sent to the base -->
+        <remap from="cmd_vel" to="/amigo/base/references"/>
+          
     </node>
     
     <!-- Start the node that converts the laser data to a pointcloud -->
     <!-- <node pkg="tue_laser_to_pointcloud" type="laser_to_pointcloud" name="laser_to_pointcloud" machine="$(arg machine)"/> -->
     <node pkg="scan_to_cloud_converter" type="scan_to_cloud_converter_node" name="scan_to_cloud_converter_node" machine="$(arg machine)">
-        <remap from="/scan" to="/base_scan" /> 
+        <remap from="/scan" to="amigo/base_front_laser" /> 
         <remap from="/cloud" to="/fused_pointclouds" />
-    </node>  
+    </node> 
     
     <!-- Start the node that constructs a pointcloud from a depth image -->
     <node pkg="depth_map_to_point_cloud" type="depth_map_to_point_cloud_node" name="depth_map_to_point_cloud_node" machine="$(arg machine)">
-        <remap from="/camera_info" to="/camera/rgb/camera_info" />
-        <remap from="/depth_image" to="/camera/depth_registered/image_self_filtered" />
+        <remap from="/camera_info" to="/amigo/top_kinect/rgb/camera_info" />
+        <remap from="/depth_image" to="/amigo/top_kinect/depth_registered/image_self_filtered" />
         <remap from="/point_cloud" to="/fused_pointclouds" />
         <param name="/max_range" value="4" />
         <param name="/sub_sample_factor" value="0.2" />
