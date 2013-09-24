@@ -45,6 +45,7 @@
   <depend package="depth_map_self_filter"/>
   <depend package="bin_detector"/>
   <depend package="table_detector_2d"/>
+  <depend package="object_detector_2d"/>
 
   <!-- servers -->
   <depend package="amigo_gripper_server"/>

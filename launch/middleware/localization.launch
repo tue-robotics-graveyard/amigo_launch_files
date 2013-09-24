@@ -17,10 +17,11 @@
 
      <!-- AMCL -->
      <node pkg="amcl" type="amcl" respawn="true" name="amcl" machine="$(arg machine)">
-         <remap from="/scan" to="/base_scan" />
+         <remap from="/scan" to="/amigo/base_front_laser" />
 	 <remap from="/map" to="/loc_map" />
+	 <remap from="/initialpose" to="/amigo/initialpose" />
          <!-- Publish scans from best pose at a max of 10 Hz -->
-         <param name="base_frame_id" value="/base_link"/>
+         <param name="base_frame_id" value="/amigo/base_link"/>
          <param name="odom_model_type" value="omni"/>
          <param name="gui_publish_rate" value="10.0"/>
          <param name="laser_max_beams" value="30"/>
@@ -48,7 +49,7 @@
          <param name="laser_likelihood_max_dist" value="10.0"/>
          <param name="update_min_d" value="0.025"/>
          <param name="update_min_a" value="0.025"/>
-         <param name="odom_frame_id" value="/odom"/>
+         <param name="odom_frame_id" value="/amigo/odom"/>
          <param name="resample_interval" value="1"/>
          <param name="transform_tolerance" value="0.1"/>
          <param name="recovery_alpha_slow" value="0.2"/>
