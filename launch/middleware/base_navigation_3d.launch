@@ -27,6 +27,7 @@
         <param name="octomap_filename" value="$(arg env).ot" /> 
         <remap from="/cloud_in" to="/fused_pointclouds" /> 
         <remap from="/map" to="/octree_map" />
+        <remap from="/cmd_vel" to="/amigo/base/references"/>
         
         <!-- Set correct map topic for velocoity that is sent to the base -->
         <remap from="cmd_vel" to="/amigo/base/references"/>
