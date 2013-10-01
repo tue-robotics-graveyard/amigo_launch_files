@@ -40,7 +40,6 @@
   <depend package="pein_face_segmentation"/>
   <depend package="pein_tabletop_segmentation"/>
   <depend package="pein_template_matching"/>
-  <depend package="gazebo_perception"/>
   <depend package="laser_ppl_detection"/>
   <depend package="depth_map_self_filter"/>
   <depend package="bin_detector"/>
@@ -69,7 +68,6 @@
   <!--depend package="amigo_pera_controller"/-->
   <!--depend package="amigo_head_controller"/-->
   <!--depend package="amigo_controller_enabler"/-->
- <depend package="amigo_simulation_controllers"/>
 
   <!-- world model -->
   <depend package="wire_core"/>
