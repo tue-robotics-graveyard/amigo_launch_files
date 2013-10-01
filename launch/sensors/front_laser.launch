@@ -5,8 +5,8 @@
         <include file="$(find amigo_machine_files)/machines/amigo1.machine" />
 
         <node pkg="hokuyo_node" type="hokuyo_node" name="front_hokuyo_node" output="screen" machine="amigo1">
-            <remap from="scan" to="/base_scan"/>
-            <param name="frame_id" value="/front_laser"/>
+            <remap from="scan" to="/amigo/base_front_laser"/>
+            <param name="frame_id" value="/amigo/front_laser"/>
         </node>
 
         <node name="$(anon dynparam)" pkg="dynamic_reconfigure" type="dynparam" args="set_from_parameters front_hokuyo_node" machine="amigo1">
