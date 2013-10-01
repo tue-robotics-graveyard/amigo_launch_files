@@ -6,7 +6,7 @@
 
         <node pkg="hokuyo_node" type="hokuyo_node" name="front_hokuyo_node" output="screen" machine="amigo1">
             <remap from="scan" to="/amigo/base_front_laser"/>
-            <param name="frame_id" value="/amigo/front_laser"/>
+            <param name="frame_id" value="/amigo/base_laser"/>
         </node>
 
         <node name="$(anon dynparam)" pkg="dynamic_reconfigure" type="dynparam" args="set_from_parameters front_hokuyo_node" machine="amigo1">

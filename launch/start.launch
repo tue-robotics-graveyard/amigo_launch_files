@@ -28,7 +28,7 @@
     <arg name="kinect_raytracing" default="true"/>
 
     <!-- load robot -->
-    <param name="/amigo/robot_description" command="$(find xacro)/xacro.py '$(find amigo_robot_model)/description/robot_$(arg ROBOT_COMPLEXITY).urdf.xacro' " />
+    <param name="/amigo/robot_description" textfile="$(find amigo_description)/urdf/amigo.urdf" />
 
     <!-- load robot joint group info -->
     <rosparam file="$(find amigo_robot_model)/description/joint_groups.yaml" command="load" />
@@ -54,7 +54,8 @@
         <!-- Amplifier enabler -->
         <node name="amplifier_enabler" pkg="amigo_amplifier_enabler" type="amplifier_enabler" output="screen" />
 
-        <include file="$(find amigo_joint_interface_converter)/launch/start.launch"/>
+		<!--OBSOLETE -->
+        <!--<include file="$(find amigo_joint_interface_converter)/launch/start.launch"/>-->
     </group>
 
     <group unless="$(arg ROBOT_REAL)">
