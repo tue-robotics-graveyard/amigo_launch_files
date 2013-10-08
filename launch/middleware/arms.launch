@@ -7,7 +7,6 @@
 
     <include file="$(find amigo_gripper_server)/launch/start.launch" />
     
-    <!--<include file="$(find amigo_marker_detection)/launch/amigo_gripper_detection.launch" />-->
     <include file="$(find pein_ar_pose)/launch/start.launch"/>
       
 </launch>
