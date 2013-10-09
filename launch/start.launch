@@ -33,14 +33,16 @@
     <!-- load robot joint group info -->
     <rosparam file="$(find amigo_robot_model)/description/joint_groups.yaml" command="load" />
 
+	<!-- DIAGNOSTICS -->
+	<include file="$(find amigo_launch_files)/launch/diagnostics/diagnostics.launch">
+		<arg name="ROBOT_REAL" value="$(arg ROBOT_REAL)"/>
+	</include>
+
     <group if="$(arg ROBOT_REAL)">
         <!-- REAL ROBOT -->
 
         <!-- GRAPHICAL USER INTERFACE -->
         <!--<include file="$(find amigo_launch_files)/launch/interaction/webui.launch" />-->
-
-        <!-- DIAGNOSTICS -->
-        <include file="$(find amigo_launch_files)/launch/diagnostics/diagnostics.launch" />
              
         <!-- robot model & integration with low level encoder data-->
         <include file="$(find amigo_state_publisher)/start.launch" />
