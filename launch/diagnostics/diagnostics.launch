@@ -1,16 +1,28 @@
+<?xml version="1.0"?>
+
 <launch>
 
-  <include file="$(find amigo_diagnostics)/launch/aggregator.launch" />
-  <!-- Nobody is taking note of it anyway :(
-  <include file="$(find amigo_diagnostics)/launch/cpu_monitor.launch" />-->
-  <include file="$(find amigo_diagnostics)/launch/ntp_monitor.launch" />    
-  
-  <!-- BATTERY -->
-  <include file="$(find amigo_battery_manager)/start.launch" />
-  
-  <!-- EMERGENCY BUTTON -->
-  <include file="$(find amigo_emergency_speakup)/start.launch" />
+    <arg name="ROBOT_REAL" />
 
+	<!-- Collects all the diagnostics messages -->
+	<include file="$(find amigo_diagnostics)/launch/aggregator.launch">
+		<arg name="ROBOT_REAL" value="$(arg ROBOT_REAL)"/>
+	</include>
+
+	<!-- Checks if nodes are still running -->
+	<include file="$(find node_alive)/launch/server.launch" />
+
+    <group if="$(arg ROBOT_REAL)">
+		<!-- Nobody is taking note of it anyway :(
+		<include file="$(find amigo_diagnostics)/launch/cpu_monitor.launch" />-->
+		<include file="$(find amigo_diagnostics)/launch/ntp_monitor.launch" />    
+	
+		<!-- BATTERY -->
+		<include file="$(find amigo_battery_manager)/start.launch" />
+	
+		<!-- EMERGENCY BUTTON -->
+		<include file="$(find amigo_emergency_speakup)/start.launch" />
+	</group>
 
 </launch>
 
