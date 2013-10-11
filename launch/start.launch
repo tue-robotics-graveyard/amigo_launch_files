@@ -16,9 +16,6 @@
     <arg name="gui" default="true"/>
 
     <arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_A)" />
-    <arg name="robot_init_x" default="$(optenv GAZEBO_ROBOT_INIT_X 0)"/>
-    <arg name="robot_init_y" default="$(optenv GAZEBO_ROBOT_INIT_Y 0)"/>
-    <arg name="robot_init_phi" default="$(optenv GAZEBO_ROBOT_INIT_PHI 0)"/>
 
     <arg name="ROBOT_REAL" default="$(optenv ROBOT_REAL false)" />
     <arg name="ROBOT_COMPLEXITY" default="$(optenv ROBOT_COMPLEXITY complex)" />
@@ -65,9 +62,6 @@
         <include file="$(find amigo_launch_files)/launch/simulator/$(optenv SIMULATOR).launch">
             <arg name="gui" value="$(arg gui)"/>
             <arg name="env" value="$(arg env)"/>
-            <arg name="robot_init_x" value="$(arg robot_init_x)"/>
-            <arg name="robot_init_y" value="$(arg robot_init_y)"/>
-            <arg name="robot_init_phi" value="$(arg robot_init_phi)"/>
             <arg name="teleport" value="$(arg teleport)"/>
             <arg name="kinect_raytracing" value="$(arg kinect_raytracing)"/>
         </include>     
