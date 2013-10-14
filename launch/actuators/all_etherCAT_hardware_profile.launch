@@ -3,9 +3,14 @@
     <include file="$(find amigo_machine_files)/machines/amigo2.machine" />
     <include file="$(find amigo_machine_files)/machines/amigo3.machine" />
     
+    <arg name="wbc" default="false"/>    
+    <arg if="$(arg wbc)" name="wbc_ops" value="-s $(find amigo_etherCAT)/wbcistrue.ops"/>
+    <arg unless="$(arg wbc)" name="wbc_ops" value="-s $(find amigo_etherCAT)/wbcisfalse.ops"/>
+    
     <node launch-prefix="env LD_PRELOAD='/usr/local/lib/libprofiler.so' CPUPROFILE='/home/amigo/hardware.prof' CPUPROFILE_FREQUENCY=1000000 CPUPROFILESIGNAL=18" name="amigo_etherCAT_hardware" pkg="ocl" type="deployer-gnulinux" args="
     ETHERCAT_HARDWARE
     -s $(find amigo_etherCAT)/soem.ops 
+    $(arg wbc_ops)
     -s $(find amigo_base_controller)/base_controller.ops
     -s $(find amigo_spindle_controller)/spindle_controller.ops
     -s $(find amigo_pera_controller)/erpera.ops

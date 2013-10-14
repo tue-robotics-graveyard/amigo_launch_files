@@ -8,6 +8,7 @@
     <arg unless="$(arg clean)" name="clean_exit_ops" value=""/>
     
     <node name="amigo_rgb_controller" machine="amigo2" pkg="ocl" type="deployer-gnulinux" args="
+    ETHERCAT_HARDWARE
     -s $(find amigo_etherCAT)/soem.ops 
     -s $(find rgb_lights)/rgb_lights.ops 
     $(arg clean_exit_ops)
