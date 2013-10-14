@@ -1,10 +1,4 @@
 <deps>
-    <!-- Needed for laser_scan_matcher -->
-    <stack name="scan_tools"
-           type="git"
-           source="https://github.com/ccny-ros-pkg/scan_tools.git"
-           local-path="ccny-ros-pkg"/>
-
     <package name="SnapMapICP"
              type="svn"
              source="http://svn.code.sf.net/p/tum-ros-pkg/code/highlevel/SnapMapICP"
