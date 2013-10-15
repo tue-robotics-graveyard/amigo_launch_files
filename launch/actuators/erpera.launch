@@ -3,7 +3,7 @@
     <include file="$(find amigo_machine_files)/machines/amigo2.machine" />
     <include file="$(find amigo_machine_files)/machines/amigo3.machine" />
     
-    <arg name="clean" default="true"/>    
+	<arg name="clean" default="true"/>    
     <arg if="$(arg clean)" name="clean_exit_ops" value="-s $(find rtt_custom_components)/clean_exit.ops"/>
     <arg unless="$(arg clean)" name="clean_exit_ops" value=""/>
     
@@ -17,5 +17,6 @@
     $(arg wbc_ops)
     -s $(find amigo_pera_controller)/erpera.ops
     $(arg clean_exit_ops)
-    --" output="screen" machine="amigo2"></node>   
+    --" output="screen" machine="amigo2">
+    </node>   
 </launch>
