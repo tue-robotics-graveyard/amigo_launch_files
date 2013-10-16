@@ -7,8 +7,10 @@
     <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" />
  
     <node name="gmapping_node" pkg="gmapping" type="slam_gmapping" respawn="true" machine="$(arg machine)" >
-        <remap to="base_scan" from="scan"/>
-        <remap from="/map" to="/nav_map"/>
+        <remap from="scan" to="/amigo/base_front_laser"/>
+        <remap from="map" to="/nav_map"/>
+        <param name="odom_frame" value="/amigo/odom"/>
+        <param name="base_frame" value="/amigo/base_link"/>
         <param name="delta" value="0.025" />
 
     <!-- Initial map size -->
