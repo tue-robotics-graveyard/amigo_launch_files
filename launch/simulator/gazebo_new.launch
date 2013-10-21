@@ -11,7 +11,11 @@
 
     <node name="gazebo" pkg="amigo_launch_files" type="gazebo_with_world.bash" args="$(find tue_gazebo_worlds)/worlds/$(arg env).sdf" respawn="false" output="screen"/>
 
-    <include file="$(find amigo_gazebo)/launch/amigo.launch"/>
+    <include file="$(find amigo_gazebo)/launch/amigo.launch">
+        <arg name="robot_init_x" value="$(arg robot_init_x)"/>
+        <arg name="robot_init_y" value="$(arg robot_init_y)"/>
+        <arg name="robot_init_phi" value="$(arg robot_init_phi)"/>
+    </include>
 
     <!-- Fake localization (fixed tf is fine because simulated odom is perfect) -->
     <node pkg="tf" type="static_transform_publisher" name="tf_fake_localization" args="0 0 0 0 0 0 /map /amigo/odom 20" />
