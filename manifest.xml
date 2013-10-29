@@ -28,7 +28,7 @@
   <!-- arm navigation -->
   <depend package="amigo_arm_navigation"/>
   <depend package="amigo_whole_body_controller"/>
-  <depend package="pein_ar_pose"/>
+  <!--<depend package="pein_ar_pose"/>--><!-- STILL DOES NOT BUILD -->
 
   <!-- perception -->
   <depend package="amigo_laser"/>
