@@ -28,7 +28,7 @@
     <param name="/amigo/robot_description" textfile="$(find amigo_description)/urdf/amigo.urdf" />
 
     <!-- load robot joint group info -->
-    <rosparam file="$(find amigo_robot_model)/description/joint_groups.yaml" command="load" />
+    <rosparam file="$(find amigo_description)/custom/joint_groups.yaml" command="load" />
 
 	<!-- DIAGNOSTICS -->
 	<include file="$(find amigo_launch_files)/launch/diagnostics/diagnostics.launch">
