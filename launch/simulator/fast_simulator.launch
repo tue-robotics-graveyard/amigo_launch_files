@@ -10,7 +10,7 @@
     <arg unless="$(arg gdb)" name="launch-prefix" value=""/>
 
     <arg name="teleport" default="false"/>
-    <arg name="localization" default="true"/>
+    <arg name="localization" default="$(optenv SIM_PERFECT_LOCALIZATION true)"/>
     <arg name="kinect_raytracing" default="true"/>
 
     <arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_A)" />
@@ -21,7 +21,7 @@
     <arg name="init_pos_args" value="--x $(arg robot_init_x) --y $(arg robot_init_y) --rz $(arg robot_init_phi)"/>
 
     <arg if="$(arg localization)" name="localization_arg" value=""/>
-    <arg unless="$(arg localization)" name="localization_arg" value="no-loc"/>
+    <arg unless="$(arg localization)" name="localization_arg" value="--no-localization"/>
 
     <arg name="simulator_args" value="$(arg localization_arg) $(arg init_pos_args) --world $(arg env)"/>
 
