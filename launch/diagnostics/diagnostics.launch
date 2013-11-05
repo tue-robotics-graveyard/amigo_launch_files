@@ -10,18 +10,20 @@
 	</include>
 
 	<!-- Checks if nodes are still running -->
-	<include file="$(find node_alive)/launch/server.launch" />
+	<rosparam command="load" file="$(find amigo_launch_files)/launch/diagnostics/parameters/neglect_nodes.yaml" />
+	<node name="node_alive_server" type="node_alive_server" pkg="node_alive" />
 
     <group if="$(arg ROBOT_REAL)">
 		<!-- Nobody is taking note of it anyway :(
 		<include file="$(find amigo_diagnostics)/launch/cpu_monitor.launch" />-->
-		<include file="$(find amigo_diagnostics)/launch/ntp_monitor.launch" />    
+		<include file="$(find amigo_launch_files)/launch/diagnostics/ntp_monitor.launch" />    
 	
 		<!-- BATTERY -->
 		<include file="$(find amigo_battery_manager)/start.launch" />
 	
 		<!-- EMERGENCY BUTTON -->
-		<include file="$(find amigo_emergency_speakup)/start.launch" />
+		<node pkg="emergency_speakup" type="emergency_speakup" respawn="true" name="emergency_speakup">
+			
 	</group>
 
 </launch>
