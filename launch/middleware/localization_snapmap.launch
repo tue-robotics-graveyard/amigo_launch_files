@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<launch>  
+
+    <arg name="machine" value="$(optenv MACHINE_LOCALIZATION localhost)"/>
+    <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" />
+
+    <arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_A)" /> 
+    <arg name="robot_init_x" default="$(optenv ROBOT_INIT_X 0)"/>
+    <arg name="robot_init_y" default="$(optenv ROBOT_INIT_Y 0)"/>
+    <arg name="robot_init_phi" default="$(optenv ROBOT_INIT_PHI 0)"/>
+     
+    <node name="loc_map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(arg env)/loc/yaml" output="screen" machine="$(arg machine)">
+    	<remap from="/map" to="/loc_map"/>
+    </node>
+
+     <!-- AMCL -->
+     <node pkg="snapmap_icp_fast" type="snapmap_node" name="snapmap" machine="$(arg machine)" output="screen">         
+         <param name="odom_frame_id" value="/amigo/odom"/>
+         <param name="base_frame_id" value="/amigo/base_link"/>
+         <param name="laser_topic" value="/amigo/base_front_laser"/>
+         <param name="init_pose_topic" value="/amigo/initialpose"/>
+         <param name="map_topic" value="/loc_map"/>
+     </node>
+
+</launch>
+
+
+
