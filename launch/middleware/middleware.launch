@@ -2,7 +2,7 @@
 
 <launch>
 
-    <arg name="ROBOT_REAL" default="false" />
+    <arg name="ROBOT_REAL" default="$(optenv ROBOT_REAL false)" />
     <arg name="localization" default="true"/> <!-- if set to false, no localization is used at all -->
     <arg name="snapmap" default="false"/>
     <arg name="gmapping" default="false"/>    <!-- default localization is amcl, if set to true: gmapping -->
