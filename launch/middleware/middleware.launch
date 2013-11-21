@@ -8,7 +8,7 @@
     <arg name="gmapping" default="false"/>    <!-- default localization is amcl, if set to true: gmapping -->
     <arg name="perception" default="true"/>
     <arg name="nav" default="true"/>          <!-- default navigation is used -->
-    <arg name="3dnav" default="false"/>       <!-- default navigation is based on 2d (laser) information -->
+    <arg name="3dnav" default="true"/>       <!-- default navigation is based on 2d (laser) information -->
     <arg name="wbc" default="false"/>         <!-- if set to true, use whole body control -->
     <arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_A)"/>
     <arg name="wire_frame" default="/map"/>
@@ -21,29 +21,29 @@
 		<include file="$(find amigo_launch_files)/launch/sensors/sensors.launch" />	
 	</group>
 
-    <group if="$(arg perception)">
+<!--    <group if="$(arg perception)">-->
 
         <!-- DEFAULT PERCEPTION SETTINGS-->
-        <arg if="$(optenv ROBOT_REAL false)" name="gazebo_perception" default="false"/>
-        <arg if="$(optenv ROBOT_REAL false)" name="pein_real" default="true"/>
+<!--        <arg if="$(optenv ROBOT_REAL false)" name="gazebo_perception" default="false"/>-->
+<!--        <arg if="$(optenv ROBOT_REAL false)" name="pein_real" default="true"/>-->
 
-        <arg if="$(optenv SIM_GAZEBO true)" name="gazebo_perception" default="true"/>
-        <arg if="$(optenv SIM_GAZEBO true)" name="pein_real" default="false"/>
+<!--        <arg if="$(optenv SIM_GAZEBO true)" name="gazebo_perception" default="true"/>-->
+<!--        <arg if="$(optenv SIM_GAZEBO true)" name="pein_real" default="false"/>-->
 
-        <arg if="$(optenv SIM_FAST false)" name="gazebo_perception" default="false"/>
-        <arg if="$(optenv SIM_FAST false)" name="pein_real" default="true"/>
+<!--        <arg if="$(optenv SIM_FAST false)" name="gazebo_perception" default="false"/>-->
+<!--        <arg if="$(optenv SIM_FAST false)" name="pein_real" default="true"/>-->
 
-        <arg if="$(arg pein_real)" name="linemod_config" default="Demo"/>
-        <arg unless="$(arg pein_real)" name="linemod_config" default="Simulation"/>
+<!--        <arg if="$(arg pein_real)" name="linemod_config" default="Demo"/>-->
+<!--        <arg unless="$(arg pein_real)" name="linemod_config" default="Simulation"/>-->
 
         <!-- START PERCEPTION -->
-        <include file="$(find amigo_launch_files)/launch/middleware/perception.launch">
-            <arg name="gazebo_perception" value="$(arg gazebo_perception)" />            
-            <arg name="pein_real" value="$(arg pein_real)" />
-            <arg name="linemod_config" value="$(arg linemod_config)"/>
-        </include>
+<!--        <include file="$(find amigo_launch_files)/launch/middleware/perception.launch">-->
+<!--            <arg name="gazebo_perception" value="$(arg gazebo_perception)" />            -->
+<!--            <arg name="pein_real" value="$(arg pein_real)" />-->
+<!--            <arg name="linemod_config" value="$(arg linemod_config)"/>-->
+<!--        </include>-->
 
-    </group>
+<!--    </group>-->
 	
 
     <group if="$(arg localization)">
@@ -90,25 +90,25 @@
 	</group>
 		
 	<!-- Head control -->
-	<include file="$(find amigo_launch_files)/launch/middleware/head.launch" />	
+<!--	<include file="$(find amigo_launch_files)/launch/middleware/head.launch" />	-->
 	
 	<!-- Arm and torso planning --> 
-	<group unless="$(arg wbc)">
+<!--	<group unless="$(arg wbc)">-->
 		<!-- Arm & gripper control -->
-        <group if="$(optenv SIM_GAZEBO true)">
-    		<include file="$(find amigo_launch_files)/launch/middleware/arms.launch" />
-        </group>
+<!--        <group if="$(optenv SIM_GAZEBO true)">-->
+<!--    		<include file="$(find amigo_launch_files)/launch/middleware/arms.launch" />-->
+<!--        </group>-->
 
-        <group unless="$(optenv SIM_GAZEBO true)">
-    		<include file="$(find amigo_launch_files)/launch/middleware/arms.launch">
-            </include>
-        </group>
+<!--        <group unless="$(optenv SIM_GAZEBO true)">-->
+<!--    		<include file="$(find amigo_launch_files)/launch/middleware/arms.launch">-->
+<!--            </include>-->
+<!--        </group>-->
 
 		<!-- Spindle -->
-		<include file="$(find amigo_launch_files)/launch/middleware/spindle.launch" />	
-	</group>
+<!--		<include file="$(find amigo_launch_files)/launch/middleware/spindle.launch" />	-->
+<!--	</group>-->
 	
-	<group if="$(arg wbc)">
+<!--	<group if="$(arg wbc)">-->
 		<!-- Whole body controller -->
 		<!--<include file="$(find amigo_whole_body_controller)/launch/start.launch"/>-->
 		<!--<include file="$(find whole_body_planner)/start.launch"/>-->
@@ -116,24 +116,24 @@
 	</group>
 
 	<!-- Reasoner -->
- 	<include file="$(find amigo_launch_files)/launch/middleware/reasoner.launch"/>
+<!-- 	<include file="$(find amigo_launch_files)/launch/middleware/reasoner.launch"/>-->
 
     <!-- World Model -->
- 	<include file="$(find amigo_launch_files)/launch/middleware/world_model.launch">
-        <arg name="wire_viz_frame" value="$(arg wire_viz_frame)"/>
-        <arg name="wire_frame" value="$(arg wire_frame)"/>
-    </include>
+<!-- 	<include file="$(find amigo_launch_files)/launch/middleware/world_model.launch">-->
+<!--        <arg name="wire_viz_frame" value="$(arg wire_viz_frame)"/>-->
+<!--        <arg name="wire_frame" value="$(arg wire_frame)"/>-->
+<!--    </include>-->
 
 	<!-- Node to attach world model object to gripper-->
-	<node pkg="obj_in_gripper" type="obj_in_gripper_pub" name="obj_in_gripper"/>
+<!--	<node pkg="obj_in_gripper" type="obj_in_gripper_pub" name="obj_in_gripper"/>-->
 	
 	<!-- Start text to speech -->
-    <include file="$(find amigo_launch_files)/launch/interaction/text_to_speech.launch" />	
+<!--    <include file="$(find amigo_launch_files)/launch/interaction/text_to_speech.launch" />	-->
 
     <!-- Start speech recognition -->
-    <include file="$(find amigo_launch_files)/launch/interaction/speech_recognition.launch" />	
+<!--    <include file="$(find amigo_launch_files)/launch/interaction/speech_recognition.launch" />	-->
 
     <!-- Start speech interpreter -->
-    <include file="$(find amigo_launch_files)/launch/interaction/speech_interpreter.launch" />	
+<!--    <include file="$(find amigo_launch_files)/launch/interaction/speech_interpreter.launch" />	-->
 
 </launch>
