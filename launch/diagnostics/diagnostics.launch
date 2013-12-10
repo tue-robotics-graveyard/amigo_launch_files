@@ -19,7 +19,7 @@
 		<include file="$(find amigo_launch_files)/launch/diagnostics/ntp_monitor.launch" />    
 	
 		<!-- BATTERY -->
-		<include file="$(find amigo_battery_manager)/start.launch" />
+		<include file="$(find amigo_launch_files)/launch/diagnostics/battery_manager.launch" />
 	
 		<!-- EMERGENCY BUTTON -->
 		<node pkg="emergency_speakup" type="emergency_speakup" respawn="true" name="emergency_speakup"/>
