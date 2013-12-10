@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <launch>
-
     <arg name="gui" default="true"/>
     <arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_A)" />
     <arg name="robot_init_x" default="$(optenv GAZEBO_ROBOT_INIT_X 0)"/>
@@ -10,29 +9,16 @@
     <arg name="teleport" default="false"/>    
     <arg name="kinect_raytracing" default="true"/>
 
-    <!-- Required simulation parameter -->
-    <param name="/use_sim_time" value="true"/>
+    <node name="gazebo" pkg="amigo_launch_files" type="gazebo_with_world.bash" args="$(find tue_gazebo_worlds)/worlds/$(arg env).sdf" respawn="false" output="screen"/>
 
-    <!-- start world file (export HEADLESS to -r if you want to run gazebo headless, this is done on the Jenkins server, ask Rob J-->
-    <node name="gazebo" pkg="gazebo" type="gazebo" args="$(find amigo_maps)/worlds/$(arg env).world" respawn="false" output="screen"/>
+    <include file="$(find amigo_gazebo)/launch/amigo.launch">
+        <arg name="robot_init_x" value="$(arg robot_init_x)"/>
+        <arg name="robot_init_y" value="$(arg robot_init_y)"/>
+        <arg name="robot_init_phi" value="$(arg robot_init_phi)"/>
+    </include>
 
-    <!-- Spawn dynamic objects (cokecans, plants, doors etc..) -->
-    <!--<include file="$(find amigo_maps)/objects/objects_$(optenv ROS_DISTRO).launch"/>-->
+    <!-- Fake localization (fixed tf is fine because simulated odom is perfect) -->
+    <node pkg="tf" type="static_transform_publisher" name="tf_fake_localization" args="0 0 0 0 0 0 /map /amigo/odom 20" />
 
-    <!-- start controller manager (rviz) -->
-    <include file="$(find pr2_controller_manager)/controller_manager.launch"/>
-
-    <!-- Simulation controllers -->
-    <include file="$(find amigo_simulation_controllers)/controllers_$(arg ROBOT_COMPLEXITY).launch"/>
-
-    <!-- push robot_description to factory and spawn robot in gazebo -->
-    <node name="spawn_amigo" pkg="gazebo" type="spawn_model" args="-gazebo_namespace gazebo -unpause -urdf -param /amigo/robot_description -model amigo -x $(arg robot_init_x) -y $(arg robot_init_y) -Y $(arg robot_init_phi) -J spindle_joint 0.35 --skip-joint-limits" respawn="false" output="screen" />
-
-    <!-- Launch Gazebo GUI -->
-    <group if="$(arg gui)">
-        <node name="gazebo_gui" pkg="gazebo" type="gui" respawn="false" output="screen"/>
-    </group>
-
-    <include file="$(find amigo_joint_interface_converter)/launch/start.launch"/>
 
 </launch>
