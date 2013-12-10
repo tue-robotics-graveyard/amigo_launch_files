@@ -10,17 +10,5 @@
     <arg name="kinect_raytracing" default="true"/>
     <arg name="fake_localization" default="true"/>
 
-    <node name="gazebo" pkg="amigo_launch_files" type="gazebo_with_world.bash" args="$(find tue_gazebo_worlds)/worlds/$(arg env).sdf" respawn="false" output="screen"/>
-
-    <include file="$(find amigo_gazebo)/launch/amigo.launch">
-        <arg name="robot_init_x" value="$(arg robot_init_x)"/>
-        <arg name="robot_init_y" value="$(arg robot_init_y)"/>
-        <arg name="robot_init_phi" value="$(arg robot_init_phi)"/>
-    </include>
-
-    <!-- Fake localization (fixed tf is fine because simulated odom is perfect) -->
-    <group if="$(arg fake_localization)">
-      <node pkg="tf" type="static_transform_publisher" name="tf_fake_localization" args="0 0 0 0 0 0 /map /amigo/odom 20" />
-    </group>
-
+    <node pkg="common_admin_files" type="print_error.py" name="print_error" args="'Please run rsettings, and change the line *export SIMULATOR=gazebo_new* into *export SIMULATOR=gazebo*. Sorry for the inconvenience! If you cannot get it to work, please ask Sjoerd.'"/>
 </launch>

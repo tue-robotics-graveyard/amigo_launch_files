@@ -8,6 +8,7 @@
     <arg name="ROBOT_COMPLEXITY" default="$(optenv ROBOT_COMPLEXITY complex)" />
     <arg name="teleport" default="false"/>    
     <arg name="kinect_raytracing" default="true"/>
+    <arg name="fake_localization" default="true"/>
 
     <node name="gazebo" pkg="amigo_launch_files" type="gazebo_with_world.bash" args="$(find tue_gazebo_worlds)/worlds/$(arg env).sdf" respawn="false" output="screen"/>
 
@@ -18,7 +19,8 @@
     </include>
 
     <!-- Fake localization (fixed tf is fine because simulated odom is perfect) -->
-    <node pkg="tf" type="static_transform_publisher" name="tf_fake_localization" args="0 0 0 0 0 0 /map /amigo/odom 20" />
-
+    <group if="$(arg fake_localization)">
+      <node pkg="tf" type="static_transform_publisher" name="tf_fake_localization" args="0 0 0 0 0 0 /map /amigo/odom 20" />
+    </group>
 
 </launch>
