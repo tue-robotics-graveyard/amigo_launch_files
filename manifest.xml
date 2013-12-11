@@ -59,7 +59,7 @@
   <!-- monitoring -->
   <depend package="amigo_diagnostics"/>
   <depend package="amigo_emergency_speakup"/>
-  <depend package="amigo_battery_manager"/>
+  <depend package="battery_manager"/>
 
   <!-- controllers -->
   <!--depend package="dynamixel"/ -->
