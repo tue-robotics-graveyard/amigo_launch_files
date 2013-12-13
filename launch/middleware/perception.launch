@@ -6,11 +6,9 @@
     <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" />
 
     <!-- PERCEPTION SETTINGS FOR REAL ROBOT -->
-    <arg if="$(optenv ROBOT_REAL false)" name="gazebo_perception" default="false"/>
     <arg if="$(optenv ROBOT_REAL false)" name="pein_real" default="true"/>
 
     <!-- PERCEPTION SETTINGS FOR SIMULATION -->
-    <arg unless="$(optenv ROBOT_REAL false)" name="gazebo_perception" default="true"/>
     <arg unless="$(optenv ROBOT_REAL false)" name="pein_real" default="false"/>   
 
     <arg if="$(arg pein_real)" name="linemod_config" default="Demo_cn"/>
@@ -19,32 +17,26 @@
     <!-- People detection using top laser-->
     <include file="$(find laser_ppl_detection)/launch/detect_ppl.launch" />
 
-    <group if="$(arg gazebo_perception)">
-        <!-- Gazebo perception -->
-        <include file="$(find gazebo_perception)/launch/start.launch" />
-    </group>
 
-    <group unless="$(arg gazebo_perception)">
-        <!-- PEIN Perception -->
-        <include file="$(find pein_supervisor)/launch/start.launch">
-            <arg name="machine" value="$(arg machine)"/>
-        </include>
+    <!-- PEIN Perception -->
+    <include file="$(find pein_supervisor)/launch/start.launch">
+        <arg name="machine" value="$(arg machine)"/>
+    </include>
 
-        <!-- face recognition -->
-        <include file="$(find pein_face_recognition)/launch/start.launch">
-            <arg name="machine" value="$(arg machine)"/>
-        </include>
+    <!-- face recognition -->
+    <include file="$(find pein_face_recognition)/launch/start.launch">
+        <arg name="machine" value="$(arg machine)"/>
+    </include>
 
-        <node pkg="pein_template_matching" type="detection_node" name="template_matching" args="-C $(arg linemod_config)" respawn="false" machine="$(arg machine)"/>	
+    <node pkg="pein_template_matching" type="detection_node" name="template_matching" args="-C $(arg linemod_config)" respawn="false" machine="$(arg machine)"/>	
 
-		<include file="$(find bin_detector)/launch/start.launch"/>
+	<include file="$(find bin_detector)/launch/start.launch"/>
 
-        <include file="$(find object_detector_2d)/launch/start.launch"/>
+    <include file="$(find object_detector_2d)/launch/start.launch"/>
 
-        <include file="$(find pein_tabletop_segmentation)/launch/start.launch"/>
+    <include file="$(find pein_tabletop_segmentation)/launch/start.launch"/>
 
-        <node pkg="table_detector_2d" type="table_detector_2d" name="table_detector_2d" machine="$(arg machine)" />
+    <node pkg="table_detector_2d" type="table_detector_2d" name="table_detector_2d" machine="$(arg machine)" />
 
-    </group>
 
 </launch>

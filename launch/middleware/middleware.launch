@@ -22,27 +22,18 @@
 	</group>
 
     <group if="$(arg perception)">
-
         <!-- DEFAULT PERCEPTION SETTINGS-->
-        <arg if="$(optenv ROBOT_REAL false)" name="gazebo_perception" default="false"/>
-        <arg if="$(optenv ROBOT_REAL false)" name="pein_real" default="true"/>
-
-        <arg if="$(optenv SIM_GAZEBO true)" name="gazebo_perception" default="true"/>
-        <arg if="$(optenv SIM_GAZEBO true)" name="pein_real" default="false"/>
-
-        <arg if="$(optenv SIM_FAST false)" name="gazebo_perception" default="false"/>
-        <arg if="$(optenv SIM_FAST false)" name="pein_real" default="true"/>
-
+        <arg if="$(optenv SIM_GAZEBO false)" name="pein_real" default="false"/>        
+        <arg unless="$(optenv SIM_GAZEBO false)" name="pein_real" default="true"/>
+   
         <arg if="$(arg pein_real)" name="linemod_config" default="Demo"/>
         <arg unless="$(arg pein_real)" name="linemod_config" default="Simulation"/>
 
         <!-- START PERCEPTION -->
         <include file="$(find amigo_launch_files)/launch/middleware/perception.launch">
-            <arg name="gazebo_perception" value="$(arg gazebo_perception)" />            
             <arg name="pein_real" value="$(arg pein_real)" />
             <arg name="linemod_config" value="$(arg linemod_config)"/>
         </include>
-
     </group>
 	
 
