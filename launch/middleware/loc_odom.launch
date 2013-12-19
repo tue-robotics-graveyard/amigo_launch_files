@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<!-- LOCALIZATION: ODOM -->
+
+<launch>  
+
+    <node pkg="tf" type="static_transform_publisher" name="tf_fake_localization" args="0 0 0 0 0 0 /map /amigo/odom 20" />
+
+</launch>

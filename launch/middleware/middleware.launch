@@ -3,12 +3,10 @@
 <launch>
 
     <arg name="ROBOT_REAL" default="$(optenv ROBOT_REAL false)" />
-    <arg name="localization" default="true"/> <!-- if set to false, no localization is used at all -->
     <arg name="snapmap" default="false"/>
-    <arg name="gmapping" default="false"/>    <!-- default localization is amcl, if set to true: gmapping -->
     <arg name="perception" default="true"/>
     <arg name="nav" default="true"/>          <!-- default navigation is used -->
-    <arg name="3dnav" default="false"/>       <!-- default navigation is based on 2d (laser) information -->
+    <arg name="3dnav" default="$(optenv AMIGO_3DNAV false)"/>       <!-- default navigation is based on 2d (laser) information -->
     <arg name="wbc" default="false"/>         <!-- if set to true, use whole body control -->
     <arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_A)"/>
     <arg name="wire_frame" default="/map"/>
@@ -35,26 +33,11 @@
             <arg name="linemod_config" value="$(arg linemod_config)"/>
         </include>
     </group>
-	
 
-    <group if="$(arg localization)">
-        <group unless="$(optenv SIM_FAST false)">
 
-        	<!-- Localization -->
-            <group if="$(arg gmapping)">
-                <!-- GMAPPING -->
-           	    <include file="$(find amigo_launch_files)/launch/middleware/gmapping.launch" />
-            </group>
+    <!-- LOCALIZATION -->
+    <include file="$(find amigo_launch_files)/launch/middleware/localization.launch"/>
 
-            <group unless="$(arg gmapping)">
-                <!-- AMCL -->
-        	    <include file="$(find amigo_launch_files)/launch/middleware/localization.launch">
-                    <arg name="env" value="$(arg env)"/>
-                    <arg name="snapmap" value="$(arg snapmap)"/>
-                </include>
-            </group>
-        </group>
-    </group>
 
 	<!-- Navigation -->
 	<group if="$(arg nav)">	

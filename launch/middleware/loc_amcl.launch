@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+
+<launch>  
+
+    <arg name="machine" value="$(optenv MACHINE_LOCALIZATION localhost)"/>
+    <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" />
+
+    <arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_A)" /> 
+    <arg name="robot_init_x" default="$(optenv ROBOT_INIT_X 0)"/>
+    <arg name="robot_init_y" default="$(optenv ROBOT_INIT_Y 0)"/>
+    <arg name="robot_init_phi" default="$(optenv ROBOT_INIT_PHI 0)"/>
+    <arg name="snapmap" default="false"/>
+     
+    <node name="loc_map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(arg env)/loc/yaml" output="screen" machine="$(arg machine)">
+    	<remap from="/map" to="/loc_map"/>
+    </node>
+
+     <!-- AMCL -->
+     <node pkg="amcl" type="amcl" name="amcl" machine="$(arg machine)" output="screen">
+         <remap from="/scan" to="/amigo/base_front_laser" />
+	 <remap from="/map" to="/loc_map" />
+	 <remap from="/initialpose" to="/amigo/initialpose" />
+         <!-- Publish scans from best pose at a max of 10 Hz -->
+         <param name="odom_frame_id" value="/amigo/odom"/>
+         <param name="base_frame_id" value="/amigo/base_link"/>
+         <param name="odom_model_type" value="omni"/>
+         <param name="gui_publish_rate" value="10.0"/>
+         <param name="laser_max_beams" value="30"/>
+         <param name="min_particles" value="500"/>
+         <param name="max_particles" value="1000"/>
+         <param name="kld_err" value="0.01"/>
+         <param name="kld_z" value="0.99"/>
+         <!-- rotation error from rotation -->
+         <param name="odom_alpha1" value="23.5"/><!--0.2-->
+         <param name="odom_alpha2" value="25.5"/><!--0.2-->
+         <!-- translation std dev, m -->
+         <!-- translation error from translation -->
+         <param name="odom_alpha3" value="10.5"/><!--0.8-->
+         <param name="odom_alpha4" value="10.5 "/><!--0.2-->
+         <param name="odom_alpha5" value="10.5"/><!--0.1-->
+         <param name="laser_z_hit" value="0.5"/>
+         <param name="laser_z_short" value="0.05"/>
+         <param name="laser_z_max" value="0.05"/>
+         <param name="laser_z_rand" value="0.5"/>
+         <param name="laser_sigma_hit" value="0.2"/>
+         <param name="laser_lambda_short" value="0.1"/>
+         <param name="laser_lambda_short" value="0.1"/>
+         <param name="laser_model_type" value="likelihood_field"/>
+         <!-- <param name="laser_model_type" value="beam"/> -->
+         <param name="laser_likelihood_max_dist" value="10.0"/>
+         <param name="update_min_d" value="0.025"/>
+         <param name="update_min_a" value="0.025"/>
+
+         <param name="resample_interval" value="1"/>
+         <param name="transform_tolerance" value="0.1"/>
+         <param name="recovery_alpha_slow" value="0.2"/>
+         <param name="recovery_alpha_fast" value="0.2"/>
+
+         <param name="initial_pose_x" value="$(arg robot_init_x)"/>
+         <param name="initial_pose_y" value="$(arg robot_init_y)"/>
+         <param name="initial_pose_a" value="$(arg robot_init_phi)"/>
+
+         <param name="initial_cov_xx" value="0.001"/>
+         <param name="initial_cov_yy" value="0.001"/>
+         <param name="initial_cov_aa" value="0.001"/>
+         <param name="use_map_topic"  value="true"/>
+	 <param name="first_map_only" value="false"/>
+     </node>
+
+     <!-- SnapMapICP -->
+    <group if="$(arg snapmap)">
+     <node name="SnapMapICP" pkg="SnapMapICP" type="SnapMapICP" respawn="false" machine="$(arg machine)">
+        <remap from="/map" to="/loc_map" />
+        <param name="scan_rate" value="4"/>
+        <param name="odom_frame" value="/odom"/>
+        <param name="base_laser_frame" value="/base_laser"/>
+        <param name="icp_fitness_threshold" value="100.0"/>
+        <param name="age_threshold" value="10.0"/>
+        <param name="angle_upper_threshold" value="1.0"/>
+        <param name="angle_threshold" value="0.01"/>
+        <param name="update_age_threshold" value="1.0"/>
+        <param name="dist_threshold" value="0.01"/>
+        <param name="icp_inlier_threshold" value="0.7"/>
+        <param name="icp_inlier_dist" value="0.1"/>
+        <param name="icp_num_iter" value="250"/>
+        <param name="pose_covariance_trans" value="0.5"/>
+     </node>
+    </group>
+
+</launch>
+
+
+
