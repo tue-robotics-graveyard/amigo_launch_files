@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <arg name="machine" value="$(optenv MACHINE_BASE_NAVIGATION localhost)"/>
+    <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" />
+
+    <arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_A)" />
+    <arg name="loc" default="$(optenv AMIGO_LOC amcl)"/>
+
+    <arg name="gdb" default="false"/>
+    <arg if="$(arg gdb)" name="launch-prefix" value="gdb -ex run --args"/>
+    <arg unless="$(arg gdb)" name="launch-prefix" value=""/>
+    
+    <!-- map server should not be started if we are using gmapping -->
+    <include file="$(find amigo_launch_files)/launch/middleware/nav_2d_$(arg loc).launch"/>
+
+    <node pkg="tue_move_base" type="move_base" respawn="true" name="move_base" output="screen" machine="$(arg machine)" launch-prefix="$(arg launch-prefix)">
+        <!-- local and global planner parameters -->        
+        <rosparam file="$(find tue_move_base)/parameters/move_base.yaml" command="load" />
+
+        <!-- Common costmap parameters -->        
+        <rosparam file="$(find tue_move_base)/parameters/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find tue_move_base)/parameters/costmap_common_params.yaml" command="load" ns="static_costmap" /> 
+
+        <!-- Global costmap settings -->
+        <rosparam file="$(find tue_move_base)/parameters/costmap_global_params.yaml" command="load" />
+
+        <!-- Static costmap settings -->
+        <rosparam file="$(find tue_move_base)/parameters/costmap_static_params.yaml" command="load" />
+
+        <remap from="cmd_vel" to="/amigo/base/references"/>
+        
+    </node>
+
+    <!-- Inverse reachability -->
+    <include file="$(find amigo_launch_files)/launch/middleware/inverse_reachability.launch" >
+		<arg name="use_2d" value="true"/>
+    </include>
+
+</launch>

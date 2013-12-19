@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<!-- NAVIGATION -->
+
+<launch>  
+
+    <arg name="nav" default="$(optenv AMIGO_NAV 2d)"/>
+
+    <include file="$(find amigo_launch_files)/launch/middleware/nav_$(arg nav).launch"/>
+
+</launch>
