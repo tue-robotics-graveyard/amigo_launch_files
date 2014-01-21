@@ -1,19 +1,9 @@
 <?xml version="1.0"?>
 
 <launch>
-	    
-    <group if="$(optenv ROBOT_REAL false)">    
-        <!-- REAL ROBOT -->    
-        <include file="$(find text_to_speech_philips)/launch/start.launch" />
-        <!-- Temporarily use the original text-to-speech -->
-        <!--<include file="$(find text_to_speech)/start.launch" /> -->
-        
-    </group>
-
-    <group unless="$(optenv ROBOT_REAL false)">    
-        <!-- SIMULATION -->
-        <!-- Why different from real robot? And does text to speech even work in simulation? -->
-        <include file="$(find text_to_speech)/start.launch" /> 
-    </group>
-		
+    
+    <include file="$(find text_to_speech)/launch/start.launch"> 
+        <arg name="tts_module" value="festival"/>
+    </include>
+	   		
 </launch>
