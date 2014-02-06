@@ -53,6 +53,8 @@
         <!-- Amplifier enabler -->
         <node name="amplifier_enabler" pkg="amigo_amplifier_enabler" type="amplifier_enabler" output="screen" />
 
+	<include file="$(find amigo_launch_files)/launch/recording/rec_amigo_top_kinect.launch"/>
+
 		<!-- Phone UI --> <!-- only works with groovy, commented for now -->
 		<!--include file="$(find amigo_mobile_ui)/launch/start.launch" /-->
 		
