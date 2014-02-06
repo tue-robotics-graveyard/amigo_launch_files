@@ -38,7 +38,7 @@
     <group if="$(arg ROBOT_REAL)">
         <!-- REAL ROBOT -->
 
-        <!-- GRAPHICAL USER INTERFACE -->
+        <!-- (old) GRAPHICAL USER INTERFACE -->
         <!--<include file="$(find amigo_launch_files)/launch/interaction/webui.launch" />-->
              
         <!-- robot model & integration with low level encoder data-->
@@ -55,8 +55,8 @@
 
 	<include file="$(find amigo_launch_files)/launch/recording/rec_amigo_top_kinect.launch"/>
 
-		<!-- Phone UI --> <!-- only works with groovy, commented for now -->
-		<!--include file="$(find amigo_mobile_ui)/launch/start.launch" /-->
+	<!-- Phone UI --> <!-- only works with groovy -->
+	<include file="$(find amigo_mobile_ui)/launch/start.launch"/>
 		
     </group>
 
