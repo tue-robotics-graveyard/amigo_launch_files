@@ -70,6 +70,9 @@
         </include>     
     </group>
 
+    <!-- TF Server: advertises services for looking up transformations -->
+    <node name="tf_server" pkg="tf_server" type="tf_server" output="screen" />
+
     <!-- launch node that converts sensor_msgs/JointState to amigo_msgs/arm_joints -->
 
     <!-- Self filter (robots self removed from Kinect pointcloud on topic /camera/depth/points_self_filtered) -->

@@ -9,6 +9,9 @@
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/amigo_launch_files</url>
 
+  <!-- general -->
+  <depend package="tf_server"/>  
+
   <!-- localization -->
   <depend package="gmapping"/>
   <depend package="amcl"/>
