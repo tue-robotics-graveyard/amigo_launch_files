@@ -34,7 +34,11 @@
 
     <include file="$(find object_detector_2d)/launch/start.launch"/>
 
+	<!-- New perception pipeline modules -->
     <include file="$(find pein_tabletop_segmentation)/launch/start.launch"/>
+    <include file="$(find pein_pcl_matcher)/launch/start.launch"/>
+    <include file="$(find pein_color_matcher)/launch/start.launch"/>
+    <include file="$(find pein_wire_interface)/launch/start.launch"/>
 
     <node pkg="table_detector_2d" type="table_detector_2d" name="table_detector_2d" machine="$(arg machine)" />
 
