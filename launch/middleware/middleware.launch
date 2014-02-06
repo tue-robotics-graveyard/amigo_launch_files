@@ -89,4 +89,7 @@
     <!-- Start speech interpreter -->
     <include file="$(find amigo_launch_files)/launch/interaction/speech_interpreter.launch" />	
 
+	<!-- Skill Server -->
+	<node pkg="amigo_skill_server" type="amigo_skill_server.py" name="amigo_skill_server"/>
+
 </launch>
