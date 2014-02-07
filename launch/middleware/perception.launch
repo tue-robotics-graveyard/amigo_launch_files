@@ -39,6 +39,7 @@
     <include file="$(find pein_pcl_matcher)/launch/start.launch"/>
     <include file="$(find pein_color_matcher)/launch/start.launch"/>
     <include file="$(find pein_wire_interface)/launch/start.launch"/>
+    <include file="$(find pein_odufinder)/launch/detect_objects.launch"/>
 
     <node pkg="table_detector_2d" type="table_detector_2d" name="table_detector_2d" machine="$(arg machine)" />
 
