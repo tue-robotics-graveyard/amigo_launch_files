@@ -33,6 +33,9 @@
 	<include file="$(find bin_detector)/launch/start.launch"/>
 
     <include file="$(find object_detector_2d)/launch/start.launch"/>
+    
+    <!-- People tracking -->
+    <include file="$(find human_tracking)/launch/tracking.launch"/>
 
 	<!-- New perception pipeline modules -->
     <include file="$(find pein_tabletop_segmentation)/launch/start.launch"/>
