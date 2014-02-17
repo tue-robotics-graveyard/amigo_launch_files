@@ -48,6 +48,7 @@
   <depend package="bin_detector"/>
   <depend package="table_detector_2d"/>
   <depend package="object_detector_2d"/>
+  <depend package="human_tracking"/>
 
   <!-- servers -->
   <depend package="amigo_gripper_server"/>
