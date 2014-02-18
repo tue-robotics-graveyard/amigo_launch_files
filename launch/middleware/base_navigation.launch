@@ -14,7 +14,7 @@
     
     <!-- map server should not be started if we are using gmapping -->
     <group unless="$(arg gmapping)">
-        <node name="nav_map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/FinalMergedImage_nav.yaml" output="screen" machine="$(arg machine)"> 
+        <node name="nav_map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(arg env)/nav/yaml" output="screen" machine="$(arg machine)"> 
             <remap from="/map" to="/nav_map"/> 
         </node> 
     </group>
