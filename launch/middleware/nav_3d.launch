@@ -6,7 +6,7 @@
     <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" />
     <arg name="ROBOT_REAL" default="$(optenv ROBOT_REAL false)" />
     <arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_A)" />
-    <arg name="load_octomap" default="false" />
+    <arg name="load_octomap" default="true" />
     <arg name="use_self_filter" default="true" />
         
     <arg name="gdb" default="false"/>
