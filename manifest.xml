@@ -16,7 +16,7 @@
   <depend package="gmapping"/>
   <depend package="amcl"/>
   <depend package="map_server"/>
-  <depend package="laser_scan_matcher"/>
+  <!--depend package="laser_scan_matcher"/-->
   <!--<depend package="SnapMapICP"/>-->
   <!--<depend package="amigo_snapmap_icp"/>-->
 
