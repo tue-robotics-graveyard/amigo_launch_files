@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <arg name="machine" value="$(optenv MACHINE_BASE_NAVIGATION localhost)"/>
+    <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" />
+    <arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_A)" />
+    
+    <arg name="gdb" default="false"/>
+    <arg if="$(arg gdb)" name="launch-prefix" value="gdb -ex run --args"/>
+    <arg unless="$(arg gdb)" name="launch-prefix" value=""/>
+    
+	<!-- Start tue_move_base with the projected map from tue_map_3d (octomap) -->
+    <node pkg="tue_move_base_3d" type="move_base_3d" respawn="true" name="move_base_3d" output="screen" machine="$(arg machine)" launch-prefix="$(arg launch-prefix)">
+        <!-- local and global planner parameters -->        
+        <rosparam file="$(find tue_move_base_3d)/parameters/move_base_3d.yaml" command="load" />
+
+        <!-- Map parameters for octomap -->        
+        <rosparam file="$(find tue_move_base_3d)/parameters/map3d_params.yaml" command="load" />
+
+        <!-- Projected map settings for octomap -->
+        <rosparam file="$(find tue_move_base_3d)/parameters/projected_map_params.yaml" command="load" />
+        
+        <!-- Set correct map topics for tue_map_3d node -->
+        <param name="load_octomap" value="false" />
+        <param name="octomap_dir" value="$(find amigo_maps)/octomaps/" />
+        <param name="octomap_filename" value="$(arg env).ot" /> 
+        <remap from="/cloud_in" to="/fused_pointclouds" /> 
+        <remap from="/map" to="/octree_map" />
+        <remap from="/cmd_vel" to="/amigo/base/references"/>
+        
+        <!-- Set correct map topic for velocoity that is sent to the base -->
+        <remap from="cmd_vel" to="/amigo/base/references"/>
+          
+    </node>
+    
+</launch>

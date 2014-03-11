@@ -39,8 +39,9 @@
     <include file="$(find amigo_launch_files)/launch/middleware/localization.launch"/>
 
 	<!-- NAVIGATION -->
-    <include file="$(find amigo_launch_files)/launch/middleware/navigation.launch"/>
-
+	<group if="$(arg nav)">
+		<include file="$(find amigo_launch_files)/launch/middleware/navigation.launch"/>
+	</group>
 		
 	<!-- Head control -->
 	<include file="$(find amigo_launch_files)/launch/middleware/head.launch" />	

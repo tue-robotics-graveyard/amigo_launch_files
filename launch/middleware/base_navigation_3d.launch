@@ -51,7 +51,7 @@
         <remap unless="$(arg use_self_filter)" from="/depth_image" to="/amigo/top_kinect/depth_registered/image" />
         <remap from="/point_cloud" to="/fused_pointclouds" />
         <param name="/max_range" value="4" />
-        <param name="/sub_sample_factor" value="0.2" />
+        <param name="/sub_sample_factor" value="0.25" />
     </node> 
 
     <group if="$(arg use_self_filter)">
