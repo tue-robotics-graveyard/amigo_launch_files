@@ -18,7 +18,4 @@
     <!-- Global Planner -->
     <include file="$(find cb_global_planner)/launch/gp.launch" />
 
-    <!-- Navigation Interface node (simple) -->
-    <node name="simple_pose_listener" pkg="navigation_interface" type="pose_listener.py" output="screen"/>
-
 </launch>
