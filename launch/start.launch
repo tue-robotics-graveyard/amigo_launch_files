@@ -55,9 +55,6 @@
 
 	<include file="$(find amigo_launch_files)/launch/recording/rec_amigo_top_kinect.launch"/>
 
-	<!-- Phone UI --> <!-- only works with groovy -->
-	<include file="$(find amigo_mobile_ui)/launch/start.launch"/>
-		
     </group>
 
     <group unless="$(arg ROBOT_REAL)">
@@ -81,5 +78,8 @@
     <!-- Start ps3 teleop -->
     <!--<include file="$(find amigo_launch_files)/launch/interaction/teleop_ps3_joystick.launch" />-->
 
+    <!-- Phone UI --> <!-- only works with groovy -->
+    <include file="$(find amigo_mobile_ui)/launch/start.launch"/>
+		
  </launch>
   
