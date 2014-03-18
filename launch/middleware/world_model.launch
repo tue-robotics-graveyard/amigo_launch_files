@@ -23,7 +23,7 @@
         <param name="config_file" value="$(find tue_knowledge)/prolog/wire.pl"/>
     </node>
 
-    <node pkg="tf" type="static_transform_publisher" name="tf_wire_map" args="0 0 0 0 0 0 /wire /map 10" machine="$(arg machine)" />
+    <!--node pkg="tf" type="static_transform_publisher" name="tf_wire_map" args="0 0 0 0 0 0 /wire /map 10" machine="$(arg machine)" /-->
 
     <!-- visualization -->
 
