@@ -25,4 +25,6 @@
 </deps>
 
 
-
+<deps ros_distro="groovy">
+    <stack name="slam_gmapping" type="system" source="ros-groovy-slam-gmapping"/>
+</deps>
