@@ -61,7 +61,7 @@
 
   <!-- monitoring -->
   <depend package="amigo_diagnostics"/>
-  <depend package="amigo_emergency_speakup"/>
+  <depend package="emergency_speakup"/>
   <depend package="battery_manager"/>
   <depend package="node_alive"/>
 
