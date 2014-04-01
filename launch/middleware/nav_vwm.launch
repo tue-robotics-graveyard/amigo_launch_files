@@ -12,10 +12,7 @@
     <arg if="$(arg gdb)" name="launch-prefix" value="gdb -ex run --args"/>
     <arg unless="$(arg gdb)" name="launch-prefix" value=""/>
     
-    <!-- Local Planner -->
-    <include file="$(find cb_local_planner)/launch/lp.launch" />
-
-    <!-- Global Planner -->
-    <include file="$(find cb_global_planner)/launch/gp.launch" />
+    <!-- CB Base Navigation-->
+    <include file="$(find cb_base_navigation)/launch/base_navigation.launch" />
 
 </launch>

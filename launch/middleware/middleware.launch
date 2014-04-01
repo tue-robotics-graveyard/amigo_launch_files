@@ -4,7 +4,7 @@
 
     <arg name="ROBOT_REAL" default="$(optenv ROBOT_REAL false)" />
     <arg name="snapmap" default="false"/>
-    <arg name="perception" default="true"/>
+    <arg name="perception" default="$(optenv AMIGO_PERCEPTION true)"/>
     <arg name="nav" default="true"/>          <!-- default navigation is used -->
     <arg name="3dnav" default="$(optenv AMIGO_3DNAV true)"/>       <!-- default navigation is based on 2d (laser) information -->
     <arg name="wbc" default="false"/>         <!-- if set to true, use whole body control -->
