@@ -1,9 +1,13 @@
 <?xml version="1.0"?>
 
 <launch>
+	
+	<arg name="ROBOT_REAL" default="$(optenv ROBOT_REAL false)"/>
+	<arg if="$(arg ROBOT_REAL)" name="tts_module" value="philips"/>        
+	<arg unless="$(arg ROBOT_REAL)" name="tts_module" value="festival"/>        
     
     <include file="$(find text_to_speech)/launch/start.launch"> 
-        <arg name="tts_module" value="festival"/>
+        <arg name="tts_module" value="$(arg tts_module)"/>
     </include>
 	   		
 </launch>
