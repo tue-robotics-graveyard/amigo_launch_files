@@ -13,6 +13,9 @@
 	<rosparam command="load" file="$(find amigo_launch_files)/launch/diagnostics/parameters/neglect_nodes.yaml" />
 	<node name="node_alive_server" type="node_alive_server" pkg="node_alive" />
 
+    <!-- Start challenge logger -->
+	<node name="challenge_logger" type="challenge_logger.py" pkg="challenge_logger" />
+
     <group if="$(arg ROBOT_REAL)">
 		<!-- Nobody is taking note of it anyway :(
 		<include file="$(find amigo_diagnostics)/launch/cpu_monitor.launch" />-->
