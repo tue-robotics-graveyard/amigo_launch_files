@@ -16,6 +16,7 @@
 
     <!-- People detection using top laser-->
     <include file="$(find laser_ppl_detection)/launch/detect_ppl.launch" />
+    <include file="$(find laser_ppl_detection)/launch/detect_ppl_generic.launch" />
 
 
     <!-- PEIN Perception -->
