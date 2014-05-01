@@ -12,4 +12,5 @@ battery_manager:
     - fuse2
     - fuse3
     - fuse4
-  battery_sub: battery_value
+  battery_sub: /amigo/battery_value
+  battery_pub: /amigo/battery_percentage
