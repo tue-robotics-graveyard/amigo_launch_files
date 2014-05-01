@@ -2,7 +2,7 @@
 
 <launch>
 
-    <arg name="ROBOT_REAL" />
+	<arg name="ROBOT_REAL" />
 
 	<!-- Collects all the diagnostics messages -->
 	<include file="$(find amigo_diagnostics)/launch/aggregator.launch">
@@ -13,20 +13,22 @@
 	<rosparam command="load" file="$(find amigo_launch_files)/launch/diagnostics/parameters/neglect_nodes.yaml" />
 	<node name="node_alive_server" type="node_alive_server" pkg="node_alive" />
 
-    <!-- Start challenge logger -->
+	<!-- Start challenge logger -->
 	<node name="challenge_logger" type="challenge_logger.py" pkg="challenge_logger" />
 
-    <group if="$(arg ROBOT_REAL)">
-		<!-- Nobody is taking note of it anyway :(
-		<include file="$(find amigo_diagnostics)/launch/cpu_monitor.launch" />-->
-		<include file="$(find amigo_launch_files)/launch/diagnostics/ntp_monitor.launch" />    
-	
+	<!-- The challenge_logger needs cpu_monitor information -->
+	<include file="$(find amigo_diagnostics)/launch/cpu_monitor.launch" />
+	<include file="$(find amigo_diagnostics)/launch/hd_monitor.launch" />
+	<include file="$(find amigo_diagnostics)/launch/ntp_monitor.launch" />
+
+	<group if="$(arg ROBOT_REAL)">
+
 		<!-- BATTERY -->
 		<include file="$(find amigo_launch_files)/launch/diagnostics/battery_manager.launch" />
-	
+
 		<!-- EMERGENCY BUTTON -->
 		<node pkg="emergency_speakup" type="emergency_speakup" respawn="true" name="emergency_speakup"/>
-			
+
 	</group>
 
 </launch>
