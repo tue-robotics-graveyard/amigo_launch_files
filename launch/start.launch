@@ -48,7 +48,10 @@
         <include file="$(find amigo_launch_files)/launch/actuators/controller_enabler.launch" />
 
         <!-- RGB lights manager -->
-        <node name="rgb_lights_manager" pkg="rgb_lights_manager" type="rgb_lights_manager" output="screen" />
+        <node name="rgb_lights_manager" pkg="rgb_lights_manager" type="rgb_lights_manager" output="screen">
+            <remap from="/hardware_status" to="/amigo/hardware_status" />
+            <remap from="/emergency_switch" to="/amigo/emergency_switch" />
+        </node>
 
         <!-- Amplifier enabler -->
         <node name="amplifier_enabler" pkg="amigo_amplifier_enabler" type="amplifier_enabler" output="screen" />
