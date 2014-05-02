@@ -12,7 +12,7 @@
 	<node name="node_alive_server" type="node_alive_server" pkg="node_alive" />
 
 	<!-- Start challenge logger -->
-	<node name="challenge_logger" type="challenge_logger.py" pkg="challenge_logger" />
+	<include file="$(find challenge_logger)/launch/start.launch" />
 
 	<!-- The challenge_logger needs cpu_monitor information -->
 	<include file="$(find amigo_diagnostics)/launch/cpu_monitor.launch" />
