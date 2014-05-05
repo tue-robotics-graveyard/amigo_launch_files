@@ -8,9 +8,6 @@
           - Self filtering
           - Diagnostics
           - Text to speech
-
-        On the real robot, the hardware controllers are NOT started (only the controller enabler).
-        These can be started seperately through the amigo dashboard.
     -->
 
     <arg name="gui" default="true"/>
@@ -30,10 +27,10 @@
     <!-- load robot joint group info -->
     <rosparam file="$(find amigo_description)/custom/joint_groups.yaml" command="load" />
 
-	<!-- DIAGNOSTICS -->
-	<include file="$(find amigo_launch_files)/launch/diagnostics/diagnostics.launch">
-		<arg name="ROBOT_REAL" value="$(arg ROBOT_REAL)"/>
-	</include>
+    <!-- DIAGNOSTICS -->
+    <include file="$(find amigo_launch_files)/launch/diagnostics/diagnostics.launch">
+        <arg name="ROBOT_REAL" value="$(arg ROBOT_REAL)"/>
+    </include>
 
     <group if="$(arg ROBOT_REAL)">
         <!-- REAL ROBOT -->
