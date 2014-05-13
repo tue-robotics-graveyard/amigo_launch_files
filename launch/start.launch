@@ -67,7 +67,7 @@
     <!--<include file="$(find amigo_self_filter)/start_filter.launch"/>-->
 
     <!-- Phone UI --> <!-- only works with groovy -->
-    <include file="$(find amigo_mobile_ui)/launch/start.launch"/>
+    <include file="$(find amigo_mobile_ui)/launch/amigo.launch"/>
 		
  </launch>
   
