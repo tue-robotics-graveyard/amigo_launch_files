@@ -25,7 +25,9 @@
 		<include file="$(find amigo_launch_files)/launch/diagnostics/battery_manager.launch" />
 
 		<!-- EMERGENCY BUTTON -->
-		<node pkg="emergency_speakup" type="emergency_speakup" respawn="true" name="emergency_speakup"/>
+		<node pkg="emergency_speakup" type="emergency_speakup" respawn="true" name="emergency_speakup">
+            <remap from="/emergency_switch" to="/amigo/emergency_switch"/>
+        </node>
 
 	</group>
 

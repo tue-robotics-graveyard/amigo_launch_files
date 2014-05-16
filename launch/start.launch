@@ -44,9 +44,7 @@
             <remap from="/emergency_switch" to="/amigo/emergency_switch" />
         </node>
 
-        <!-- Amplifier enabler -->
-        <node name="amplifier_enabler" pkg="amigo_amplifier_enabler" type="amplifier_enabler" output="screen" />
-
+        <!-- Top kinect recorder -->
         <include file="$(find amigo_launch_files)/launch/recording/rec_amigo_top_kinect.launch"/>
     </group>
 
