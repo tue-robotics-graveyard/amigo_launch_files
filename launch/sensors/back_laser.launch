@@ -5,7 +5,7 @@
         <include file="$(find amigo_machine_files)/machines/amigo3.machine" />
 
         <node pkg="hokuyo_node" type="hokuyo_node" name="back_hokuyo_node" output="screen" machine="amigo3">
-            <remap from="scan" to="/amigo/base_scan"/>
+            <remap from="scan" to="/amigo/base_back_laser"/>
             <param name="frame_id" value="/amigo/back_laser"/>
         </node>
 
