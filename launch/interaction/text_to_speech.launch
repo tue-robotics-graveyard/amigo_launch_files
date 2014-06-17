@@ -6,8 +6,6 @@
 	<arg if="$(arg ROBOT_REAL)" name="tts_module" value="philips"/>        
 	<arg unless="$(arg ROBOT_REAL)" name="tts_module" value="festival"/>        
     
-    <include file="$(find text_to_speech)/launch/start.launch"> 
-        <arg name="tts_module" value="$(arg tts_module)"/>
-    </include>
-	   		
+    <include file="$(find amigo_launch_files/launch/interaction/text_to_speech_$(arg tts_module).launch"/> 
+        	   		
 </launch>

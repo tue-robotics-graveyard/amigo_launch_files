@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <arg name="machine" value="$(optenv MACHINE_TEXT_TO_SPEECH localhost)"/>
+    <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" />
+	    
+    <rosparam file="$(find text_to_speech)/parameters/text_to_speech.yaml" command="load" />
+
+    <node pkg="text_to_speech" type="text_to_speech.py" respawn="false" name="text_to_speech" machine="$(arg machine)" output="screen">
+        <param name="tts_module" value="festival"/>
+    </node>
+
+</launch>
