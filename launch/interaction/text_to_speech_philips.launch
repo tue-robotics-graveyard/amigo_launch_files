@@ -10,6 +10,7 @@
     <node pkg="text_to_speech" type="text_to_speech.py" respawn="false" name="text_to_speech" machine="$(arg machine)" output="screen">
         <param name="tts_module" value="philips"/>
         <param name="philips_executable" value="$(find text_to_speech)/exec/ptts_v911.exe"/>
+        <param name="key" textfile="$(find philips_text_to_speech)/key"/>
     </node>
 
 </launch>
