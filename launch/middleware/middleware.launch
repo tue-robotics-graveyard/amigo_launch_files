@@ -11,6 +11,8 @@
     <arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_A)"/>
     <arg name="wire_frame" default="/map"/>
     <arg name="wire_viz_frame" default="/map"/>
+
+    <arg name="head_control" default="$(optenv AMIGO_HEAD_CONTROL head)"/>
     
 	<group if="$(arg ROBOT_REAL)">
 		<!-- REAL ROBOT -->
@@ -44,7 +46,7 @@
 	</group>
 		
 	<!-- Head control -->
-	<include file="$(find amigo_launch_files)/launch/middleware/head.launch" />	
+	<include file="$(find amigo_launch_files)/launch/middleware/$(arg head_control).launch" />	
 	
 	<!-- Arm and torso planning --> 
 	<group unless="$(arg wbc)">
