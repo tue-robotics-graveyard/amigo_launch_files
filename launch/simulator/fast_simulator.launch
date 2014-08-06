@@ -40,7 +40,7 @@
     <!-- spawn amigo -->
     <node pkg="fast_simulator" type="spawn" name="spawn_amigo" args="-i amigo -m amigo -x $(arg robot_init_x) -y $(arg robot_init_y) -Z $(arg robot_init_phi)" output="screen"/>
 
-    <node if="$(arg teleport)" name="amigo_teleporter" pkg="fast_simulator" type="amigo_teleporter"/>
+    <node if="$(arg teleport)" name="amigo_teleporter" pkg="fast_simulator" type="robot_teleporter" ns="$(arg robot_name)"/>
 
     <!-- Robot state publisher -->
     <node pkg="robot_state_publisher" type="state_publisher" name="$(arg robot_name)_state_publisher" ns="$(arg robot_name)">

@@ -54,6 +54,7 @@
   <depend package="amigo_gripper_server"/>
   <depend package="amigo_spindle_server"/>
   <depend package="amigo_head_ref"/>
+  <depend package="head_ref"/>
   <depend package="rgb_lights_manager"/>
 
   <!-- human robot interaction -->
