@@ -7,7 +7,7 @@
 	    
     <rosparam file="$(find text_to_speech)/parameters/text_to_speech.yaml" command="load" />
 
-    <node pkg="text_to_speech" type="text_to_speech.py" respawn="false" name="text_to_speech" machine="$(arg machine)" output="screen">
+    <node pkg="text_to_speech" type="text_to_speech_node.py" respawn="false" name="text_to_speech" machine="$(arg machine)" output="screen">
         <param name="tts_module" value="festival"/>
     </node>
 
