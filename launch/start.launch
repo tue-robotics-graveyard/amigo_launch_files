@@ -16,6 +16,8 @@
 
     <arg name="ROBOT_REAL" default="$(optenv ROBOT_REAL false)" />
     <arg name="ROBOT_COMPLEXITY" default="$(optenv ROBOT_COMPLEXITY complex)" />
+    
+    <arg name="robot_name" default="amigo"/>
 
     <!-- Used by fast_simulator: set to true to instantly move to goals while navigating -->
     <arg name="teleport" default="false"/>    
@@ -35,8 +37,12 @@
     <group if="$(arg ROBOT_REAL)">
         <!-- REAL ROBOT -->
 
-        <!-- robot model & integration with low level encoder data-->
-        <include file="$(find amigo_state_publisher)/start.launch" />
+        <!-- Robot state publisher -->
+        <node pkg="robot_state_publisher" type="state_publisher" name="$(arg robot_name)_state_publisher" ns="$(arg robot_name)">
+            <param name="publish_frequency" type="double" value="50.0" />
+            <param name="tf_prefix" type="string" value="$(arg robot_name)" />
+            <remap from="joint_states" to="/$(arg robot_name)/joint_states"/>
+        </node>
 
         <!-- RGB lights manager -->
         <node name="rgb_lights_manager" pkg="rgb_lights_manager" type="rgb_lights_manager" output="screen">
