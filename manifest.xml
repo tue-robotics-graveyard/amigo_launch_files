@@ -36,7 +36,6 @@
   <!-- perception -->
   <depend package="amigo_laser"/>
   <depend package="amigo_laser_filter"/>
-  <depend package="amigo_self_filter"/>
   <depend package="tue_filters"/>
   <depend package="pein_supervisor"/>
   <depend package="pein_face_recognition"/>

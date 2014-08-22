@@ -67,9 +67,6 @@
     <!-- TF Server: advertises services for looking up transformations -->
     <node name="tf_server" pkg="tf_server" type="tf_server" output="screen" />
 
-    <!-- Self filter (robots self removed from Kinect pointcloud on topic /camera/depth/points_self_filtered) -->
-    <!--<include file="$(find amigo_self_filter)/start_filter.launch"/>-->
-
     <!-- Phone UI --> <!-- only works with groovy -->
     <include file="$(find amigo_mobile_ui)/launch/amigo.launch"/>
 		
