@@ -9,7 +9,11 @@
   <license>TODO</license>
 
   <buildtool_depend>catkin</buildtool_depend>
+
   <build_depend>amigo_description</build_depend>
   <run_depend>amigo_description</run_depend>
+
+  <build_depend>amigo_diagnostics</build_depend>
+  <run_depend>amigo_diagnostics</run_depend>
 
 </package>
