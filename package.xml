@@ -16,4 +16,7 @@
   <build_depend>amigo_diagnostics</build_depend>
   <run_depend>amigo_diagnostics</run_depend>
 
+  <build_depend>challenge_logger</build_depend>
+  <run_depend>challenge_logger</run_depend>
+
 </package>
