@@ -19,4 +19,8 @@
   <build_depend>challenge_logger</build_depend>
   <run_depend>challenge_logger</run_depend>
 
+  <build_depend>amigo_machine_files</build_depend>
+  <run_depend>amigo_machine_files</run_depend>
+
+
 </package>
