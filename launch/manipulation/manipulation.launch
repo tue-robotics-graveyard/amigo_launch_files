@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="machine" value="$(optenv MACHINE_ARM_NAVIGATION localhost)"/>
+
+    <group if="$(optenv ARM_NAV_REF false)">
+        <include file="$(find amigo_launch_files)/launch/manipulation/reference_generator.launch">
+            <arg name="machine" value="$(arg machine)" />
+        </include>
+    </group>
+
+     <group unless="$(optenv ARM_NAV_REF false)">
+        <include file="$(find amigo_launch_files)/launch/manipulation/joint_trajectory_action.launch">
+            <arg name="machine" value="$(arg machine)" />
+        </include>
+    </group>
+    
+    <include file="$(find amigo_launch_files)/launch/manipulation/grasp_precompute_action.launch" >
+	    <arg name="machine" value="$(arg machine)" />
+    </include>
+
+</launch>

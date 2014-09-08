@@ -34,7 +34,7 @@
 	<include file="$(find amigo_launch_files)/launch/middleware/$(arg head_control).launch" />	
 	
 	<!-- Arm and torso planning --> 
-    <!-- ... -->
+	<include file="$(find amigo_launch_files)/launch/manipulation/manipulation.launch" />	
 
 	<!-- Reasoner -->
  	<include file="$(find amigo_launch_files)/launch/middleware/reasoner.launch"/>
