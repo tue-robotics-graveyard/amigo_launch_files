@@ -5,7 +5,7 @@
     <arg name="machine" value="$(optenv MACHINE_LOCALIZATION localhost)"/>
     <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" />
 
-    <arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_A)" /> 
+    <arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_B)" /> 
     <arg name="robot_init_x" default="$(optenv ROBOT_INIT_X 0)"/>
     <arg name="robot_init_y" default="$(optenv ROBOT_INIT_Y 0)"/>
     <arg name="robot_init_phi" default="$(optenv ROBOT_INIT_PHI 0)"/>
