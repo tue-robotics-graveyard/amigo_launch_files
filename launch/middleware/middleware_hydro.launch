@@ -22,7 +22,8 @@
 	</group>
 
     <!-- PERCEPTION -->
-    <!-- ... -->
+    <include file="$(find amigo_launch_files)/launch/middleware/perception.launch">
+    </include>
 
     <!-- LOCALIZATION -->
     <include file="$(find amigo_launch_files)/launch/middleware/localization.launch"/>
