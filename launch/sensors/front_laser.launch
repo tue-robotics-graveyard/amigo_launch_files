@@ -5,13 +5,29 @@
         <include file="$(find amigo_machine_files)/machines/amigo1.machine" />
 
         <node pkg="hokuyo_node" type="hokuyo_node" name="front_hokuyo_node" output="screen" machine="amigo1">
-            <remap from="scan" to="/amigo/base_front_laser"/>
+            <remap from="scan" to="/amigo/base_front_laser_raw"/>
             <param name="frame_id" value="/amigo/base_laser"/>
         </node>
 
         <node name="$(anon dynparam)" pkg="dynamic_reconfigure" type="dynparam" args="set_from_parameters front_hokuyo_node" machine="amigo1">
             <param name="min_ang" type="double" value="-2.0" />
             <param name="max_ang" type="double" value="2.0" />
+        </node>
+
+        <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="front_laser_scan_to_scan_filter_chain">
+            <rosparam>
+                scan_filter_chain:
+                - name: shadows
+                  type: ScanShadowsFilter
+                  params:
+                    min_angle: 10
+                    max_angle: 170
+                    neighbors: 20
+                    window: 1
+            </rosparam>
+
+            <remap from="scan" to="/amigo/base_front_laser_raw" />
+            <remap from="scan_filtered" to="/amigo/base_front_laser" />
         </node>
 
 </launch>
