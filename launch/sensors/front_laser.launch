@@ -16,14 +16,29 @@
 
         <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="front_laser_scan_to_scan_filter_chain">
             <rosparam>
-                scan_filter_chain:
-                - name: shadows
-                  type: ScanShadowsFilter
-                  params:
-                    min_angle: 10
-                    max_angle: 170
-                    neighbors: 1
-                    window: 1
+                shadow_filter_chain:
+                  - name: shadows
+                    type: ScanShadowsFilter
+                    params:
+                      min_angle: 80
+                      max_angle: 100
+                      neighbors: 1
+                      window: 1
+
+                array_filter_chain:
+                  - type: LaserArrayFilter
+                    name: laser_median_filter
+                    params: 
+                      range_filter_chain:
+                        - name: median_2
+                          type: MultiChannelMeanFilterFloat 
+                          params:
+                            number_of_observations: 3
+                      intensity_filter_chain:
+                        - name: median_2
+                          type: MultiChannelMeanFilterFloat
+                          params:
+                            number_of_observations: 3
             </rosparam>
 
             <remap from="scan" to="/amigo/base_front_laser_raw" />
