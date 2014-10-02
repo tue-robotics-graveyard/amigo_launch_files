@@ -15,7 +15,7 @@
         </include>
     </group>
     
-    <include file="$(find amigo_launch_files)/launch/manipulation/grasp_precompute_action.launch" >
+	<include file="$(find amigo_launch_files)/launch/manipulation/grasp_precompute_action.launch" >
 	    <arg name="machine" value="$(arg machine)" />
     </include>
 
