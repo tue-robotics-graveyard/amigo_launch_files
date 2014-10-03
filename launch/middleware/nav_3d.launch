@@ -24,7 +24,7 @@
     <node pkg="depth_map_to_point_cloud" type="depth_map_to_point_cloud_node" name="depth_map_to_point_cloud_node" machine="$(arg machine)">
         <remap from="/camera_info" to="/amigo/top_kinect/rgb/camera_info" />
         <remap if="$(arg use_self_filter)" from="/depth_image" to="/amigo/top_kinect/depth_registered/image_self_filtered" />
-        <remap unless="$(arg use_self_filter)" from="/depth_image" to="/amigo/top_kinect/depth_registered/image" />
+		<remap unless="$(arg use_self_filter)" from="/depth_image" to="/amigo/top_kinect/depth_registered/hw_registered/image_rect_raw" />
         <remap from="/point_cloud" to="/fused_pointclouds" />
         <param name="/max_range" value="4" />
         <param name="/sub_sample_factor" value="0.2" />
@@ -34,7 +34,7 @@
         <!-- Node that filters the arms out of the depth image -->
         <node pkg="depth_map_self_filter" type="self_filter" name="depth_map_self_filter" machine="$(arg machine)">
             <remap from="/camera_info" to="/amigo/top_kinect/rgb/camera_info" />
-            <remap from="/depth_image" to="/amigo/top_kinect/depth_registered/image" />
+			<remap from="/depth_image" to="/amigo/top_kinect/depth_registered/hw_registered/image_rect_raw" />
         </node>
     </group>
             
