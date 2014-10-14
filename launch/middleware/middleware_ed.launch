@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<launch>
+   
+    <arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_B)" />
+
+    <!-- Localization -->
+    <include file="$(find amigo_launch_files)/launch/middleware/localization.launch" />
+
+    <!-- Navigation -->
+    <include file="$(find cb_base_navigation)/launch/local_planner.launch" />
+    <include file="$(find cb_base_navigation)/launch/global_planner.launch" />
+
+    <!-- Head movement -->
+    <include file="$(find head_ref)/launch/head_ref.launch" />
+
+    <!-- RGBD (Kinect) server -->
+    <include file="$(find rgbd)/launch/top_kinect_server.launch" />
+
+    <!-- World Model -->
+    <node name="ed_server" pkg="ed" type="ed_server" output="screen" />
+
+    <!-- Action server -->
+    <node name="action_server" pkg="action_server" type="action_server_main" output="screen" />
+
+</launch>
