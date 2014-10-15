@@ -5,48 +5,66 @@
     <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" />
 
 	<node pkg="tue_manipulation" type="grasp_precompute_action" name="grasp_precompute_left" output="screen" machine="$(arg machine)">
-    	<remap from="/get_ik_solver_info" to="/amigo/left_arm_kinematics/get_ik_solver_info"/>
-    	<remap from="/get_constraint_aware_ik" to="/amigo/left_arm_kinematics/get_constraint_aware_ik"/>
+        <!-- Side -->
+    	<param name="side" value="left"/>
+
+        <!-- Measurement topics -->
     	<remap from="/joint_measurements" to="/amigo/left_arm/measurements"/>
     	<remap from="/spindle_measurement" to="/amigo/torso/measurements" />
     	<remap from="/spindle_reference" to="/amigo/torso/references"/>
 
+        <!-- IK solver parameters -->
+        <param name="ik_max_iterations" value="500"/>
+
+        <!-- Chain information -->
         <param name="root_link" value="base_link"/>
         <param name="tip_link" value="grippoint_left"/>
         <param name="robot_description" textfile="$(find amigo_description)/urdf/amigo.urdf"/>        
 
-    	<param name="side" value="left"/>
-
+        <!-- Pre-grasping parameters -->
         <param name="max_yaw_delta" value="2.0"/>
         <param name="yaw_sampling_step" value="0.05"/> <!-- [rad] -->
         <param name="spindle_sampling_step" value="0.05"/> <!-- [m] -->
         <param name="pre_grasp_delta" value="0.20"/>
         <param name="pre_grasp_inbetween_sampling_steps" value="20"/>
+
+        <!-- (Additional) joint limits -->
         <param name="spindle_min" value="0.1"/>
         <param name="spindle_max" value="0.4"/>
+
+        <!-- TF parameters -->
         <param name="tf_prefix" value="amigo"/>
     </node>
     
     <node pkg="tue_manipulation" type="grasp_precompute_action" name="grasp_precompute_right" output="screen" machine="$(arg machine)">
-    	<remap from="/get_ik_solver_info" to="/amigo/right_arm_kinematics/get_ik_solver_info"/>
-    	<remap from="/get_constraint_aware_ik" to="/amigo/right_arm_kinematics/get_constraint_aware_ik"/>
-    	<remap from="/joint_measurements" to="/amigo/right_arm/measurements"/>
+        <!-- Side -->
+    	<param name="side" value="right"/>
+
+        <!-- Measurement topics -->
+    	<remap from="/joint_measurements" to="/amigo/left_arm/measurements"/>
     	<remap from="/spindle_measurement" to="/amigo/torso/measurements" />
     	<remap from="/spindle_reference" to="/amigo/torso/references"/>
 
+        <!-- IK solver parameters -->
+        <param name="ik_max_iterations" value="500"/>
+
+        <!-- Chain information -->
         <param name="root_link" value="base_link"/>
-        <param name="tip_link" value="grippoint_right"/>
-        <param name="robot_description" textfile="$(find amigo_description)/urdf/amigo.urdf"/>  
+        <param name="tip_link" value="grippoint_left"/>
+        <param name="robot_description" textfile="$(find amigo_description)/urdf/amigo.urdf"/>        
 
-    	<param name="side" value="right"/>
-
-    	<param name="max_yaw_delta" value="2.0"/>
+        <!-- Pre-grasping parameters -->
+        <param name="max_yaw_delta" value="2.0"/>
         <param name="yaw_sampling_step" value="0.05"/> <!-- [rad] -->
         <param name="spindle_sampling_step" value="0.05"/> <!-- [m] -->
         <param name="pre_grasp_delta" value="0.20"/>
         <param name="pre_grasp_inbetween_sampling_steps" value="20"/>
+
+        <!-- (Additional) joint limits -->
         <param name="spindle_min" value="0.1"/>
         <param name="spindle_max" value="0.4"/>
+
+        <!-- TF parameters -->
         <param name="tf_prefix" value="amigo"/>
     </node>
 
