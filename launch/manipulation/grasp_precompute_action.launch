@@ -41,7 +41,7 @@
     	<param name="side" value="right"/>
 
         <!-- Measurement topics -->
-    	<remap from="/joint_measurements" to="/amigo/left_arm/measurements"/>
+    	<remap from="/joint_measurements" to="/amigo/right_arm/measurements"/>
     	<remap from="/spindle_measurement" to="/amigo/torso/measurements" />
     	<remap from="/spindle_reference" to="/amigo/torso/references"/>
 
@@ -50,7 +50,7 @@
 
         <!-- Chain information -->
         <param name="root_link" value="base_link"/>
-        <param name="tip_link" value="grippoint_left"/>
+        <param name="tip_link" value="grippoint_right"/>
         <param name="robot_description" textfile="$(find amigo_description)/urdf/amigo.urdf"/>        
 
         <!-- Pre-grasping parameters -->
