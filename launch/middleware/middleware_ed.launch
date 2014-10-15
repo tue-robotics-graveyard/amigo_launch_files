@@ -21,7 +21,13 @@
     <include file="$(find cb_base_navigation)/launch/global_planner.launch" />
 
     <!-- Head movement -->
-    <include file="$(find head_ref)/launch/head_ref.launch" />
+	<include file="$(find head_ref)/launch/head_ref.launch" />
+
+    <!-- Manipulation -->
+    <include file="$(find amigo_launch_files)/launch/manipulation/manipulation.launch" />
+
+	<!-- Gripper -->
+    <include file="$(find amigo_gripper_server)/launch/start.launch" />
 
     <!-- RGBD (Kinect) server -->
     <include file="$(find rgbd)/launch/top_kinect_server.launch" />
@@ -31,5 +37,6 @@
 
     <!-- Action server -->
     <node name="action_server" pkg="action_server" type="action_server_main" output="screen" />
+    <node name="action_server_py" pkg="action_server" type="main.py" output="screen" />
 
 </launch>
