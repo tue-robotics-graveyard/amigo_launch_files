@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 
 <launch>
+
+	<param name="/use_ed" value="true"/>
    
 	<arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_B)" />
 	<arg name="ROBOT_REAL" default="$(optenv ROBOT_REAL false)" />
@@ -37,7 +39,20 @@
     <include file="$(find rgbd)/launch/top_kinect_server.launch" />
 
     <!-- World Model -->
-    <node name="ed_server" pkg="ed" type="ed_server" output="screen" />
+	<node name="ed_server" pkg="ed" type="ed_server" output="screen" />
+
+	<!-- Reasoner -->
+	<param name="/reasoner/world_model_type" value="ed"/>
+    <include file="$(find tue_reasoner_core)/launch/start.launch" />
+
+	<!-- Start text to speech -->
+    <include file="$(find amigo_launch_files)/launch/interaction/text_to_speech.launch" />	
+
+    <!-- Start speech recognition -->
+    <include file="$(find amigo_launch_files)/launch/interaction/speech_recognition.launch" />	
+
+    <!-- Start speech interpreter -->
+    <include file="$(find amigo_launch_files)/launch/interaction/speech_interpreter.launch" />	
 
     <!-- Action server -->
 	<node name="action_server" pkg="action_server" type="action_server_main" output="screen" />

@@ -2,6 +2,9 @@
 
 <launch>
 
+    <!-- State that we wont use ED as world model -->
+    <param name="/use_ed" value="false"/>
+
     <arg name="ROBOT_REAL" default="$(optenv ROBOT_REAL false)" />
     <arg name="snapmap" default="false"/>
     <arg name="perception" default="$(optenv AMIGO_PERCEPTION true)"/>
