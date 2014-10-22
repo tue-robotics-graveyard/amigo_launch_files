@@ -39,7 +39,7 @@
     <include file="$(find rgbd)/launch/top_kinect_server.launch" />
 
     <!-- World Model -->
-	<node name="ed_server" pkg="ed" type="ed_server" output="screen" />
+	<node name="ed_server" pkg="ed" type="ed_server" args="$(find ed)/config/config_amigo.yml" output="screen" />
 
 	<!-- Reasoner -->
 	<param name="/reasoner/world_model_type" value="ed"/>
