@@ -63,8 +63,6 @@
             </include>
         </group>
 
-		<!-- Torso -->
-		<include file="$(find amigo_launch_files)/launch/middleware/torso.launch" />	
 	</group>
 	
 	<group if="$(arg wbc)">

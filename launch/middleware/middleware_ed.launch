@@ -47,9 +47,6 @@
 	<!-- Gripper -->
     <include file="$(find amigo_gripper_server)/launch/start.launch" />
 
-	<!-- Spindle -->
-	<include file="$(find amigo_launch_files)/launch/middleware/torso.launch" />	
-
     <!-- RGBD (Kinect) server -->
     <include file="$(find rgbd)/launch/top_kinect_server.launch" />
 
