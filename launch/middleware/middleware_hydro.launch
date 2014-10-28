@@ -40,8 +40,8 @@
 	<!-- Arm and torso planning --> 
 	<include file="$(find amigo_launch_files)/launch/manipulation/manipulation.launch" />	
 
-	<!-- Spindle -->
-	<include file="$(find amigo_launch_files)/launch/middleware/spindle.launch" />
+	<!-- Torso -->
+	<include file="$(find amigo_launch_files)/launch/middleware/torso.launch" />
 
 	<!-- Gripper -->
     <include file="$(find amigo_gripper_server)/launch/start.launch" />

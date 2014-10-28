@@ -63,8 +63,8 @@
             </include>
         </group>
 
-		<!-- Spindle -->
-		<include file="$(find amigo_launch_files)/launch/middleware/spindle.launch" />	
+		<!-- Torso -->
+		<include file="$(find amigo_launch_files)/launch/middleware/torso.launch" />	
 	</group>
 	
 	<group if="$(arg wbc)">

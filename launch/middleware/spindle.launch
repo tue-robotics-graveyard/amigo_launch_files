@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-
-<launch>
-
-    <include file="$(find amigo_spindle_server)/launch/start.launch" />
-      
-</launch>
