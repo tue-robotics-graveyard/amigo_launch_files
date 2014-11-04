@@ -13,6 +13,8 @@ constraints:
         intermediate_goal: 0.02
         trajectory: 0.4
         final_goal: 0.01
+        min_pos: 0.0
+        max_pos: 0.41
         max_vel: 0.2
         max_acc: 0.2
    shoulder_yaw_joint_left:

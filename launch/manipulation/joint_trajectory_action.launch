@@ -7,7 +7,9 @@
     	<rosparam command="load" file="$(find amigo_launch_files)/launch/manipulation/joints_left.yaml" />
         <remap from="joint_trajectory_action" to="joint_trajectory_action_left" />
         <remap from="measurements" to="/amigo/left_arm/measurements" />
-	    <remap from="references" to="/amigo/left_arm/references" />
+	<remap from="references" to="/amigo/left_arm/references" />
+        <remap from="torso/references" to="/amigo/torso/references"/>
+        <remap from="torso/measurements" to="/amigo/torso/measurements"/>
         <param name="tf_prefix" value="amigo"/>
     </node>
 
@@ -15,7 +17,9 @@
 	    <rosparam command="load" file="$(find amigo_launch_files)/launch/manipulation/joints_right.yaml" />
         <remap from="joint_trajectory_action" to="joint_trajectory_action_right" />
         <remap from="measurements" to="/amigo/right_arm/measurements" />
-	    <remap from="references" to="/amigo/right_arm/references" />
+	<remap from="references" to="/amigo/right_arm/references" />
+        <remap from="torso/references" to="/amigo/torso/references"/>
+        <remap from="torso/measurements" to="/amigo/torso/measurements"/>
         <param name="tf_prefix" value="amigo"/>
     </node>
 
