@@ -28,6 +28,9 @@
 
     <!-- load robot joint group info -->
     <rosparam file="$(find amigo_description)/custom/joint_groups.yaml" command="load" />
+    
+    <!-- Load robot specific skill parameters -->
+    <rosparam file="$(find amigo_description)/custom/skills.yaml" command="load" ns="/$(arg robot_name)/skills"/>
 
     <!-- DIAGNOSTICS -->
     <include file="$(find amigo_launch_files)/launch/diagnostics/diagnostics.launch">
