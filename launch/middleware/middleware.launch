@@ -69,7 +69,7 @@
 		<!-- Whole body controller -->
 		<!--<include file="$(find amigo_whole_body_controller)/launch/start.launch"/>-->
 		<!--<include file="$(find whole_body_planner)/start.launch"/>-->
-		<include file="$(find amigo_launch_files)/launch/manipulation/grippers.launch" />
+		<include file="$(find amigo_gripper_server)/launch/start.launch" />
 	</group>
 
 	<!-- Reasoner -->
