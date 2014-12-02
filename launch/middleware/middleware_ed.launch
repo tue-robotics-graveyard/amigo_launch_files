@@ -44,9 +44,6 @@
     <!-- Manipulation -->
     <include file="$(find amigo_launch_files)/launch/manipulation/manipulation.launch" />
 
-	<!-- Gripper -->
-    <include file="$(find amigo_gripper_server)/launch/start.launch" />
-
     <!-- RGBD (Kinect) server -->
     <include file="$(find rgbd)/launch/top_kinect_server.launch" />
 
