@@ -24,7 +24,7 @@
 	    <arg name="machine" value="$(arg machine)" />
     </include>
     
-    <include file="$(find amigo_launch_files)/launch/manipulation/grippers.launch"/>
+    <include file="$(find amigo_launch_files)/launch/manipulation/grippers.launch">
         <arg name="machine" value="$(arg machine)"/>
     </include>
 
