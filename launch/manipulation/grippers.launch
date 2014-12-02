@@ -2,7 +2,7 @@
 
 <launch>
 
-    <arg name="machine" value="$(optenv MACHINE_GRIPPER_SERVER localhost)"/>
+    <arg name="machine" default="localhost"/>
     <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" />
 
     <node pkg="tue_manipulation" type="gripper_server" respawn="false" name="gripper_server_left" output="screen" machine="$(arg machine)">
