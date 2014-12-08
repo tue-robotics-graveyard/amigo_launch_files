@@ -48,7 +48,7 @@
     <include file="$(find amigo_launch_files)/launch/sensors/top_kinect_rgbd.launch" />
 
     <!-- World Model -->
-	<node name="ed_server" pkg="ed" type="ed_server" args="$(find ed)/config/config_amigo.yml" output="screen" />
+	<node name="ed_server" pkg="ed" type="ed_server" args="$(find ed)/config/$(optenv ED_CONFIG amigo).yaml" output="screen" />
 
 	<!-- Reasoner -->
 	<param name="/reasoner/world_model_type" value="ed"/>
