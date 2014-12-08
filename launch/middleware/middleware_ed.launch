@@ -45,7 +45,7 @@
     <include file="$(find amigo_launch_files)/launch/manipulation/manipulation.launch" />
 
     <!-- RGBD (Kinect) server -->
-    <include file="$(find rgbd)/launch/top_kinect_server.launch" />
+    <include file="$(find amigo_launch_files)/launch/sensors/top_kinect_rgbd.launch" />
 
     <!-- World Model -->
 	<node name="ed_server" pkg="ed" type="ed_server" args="$(find ed)/config/config_amigo.yml" output="screen" />
