@@ -5,6 +5,10 @@
     <arg name="machine" value="$(optenv MACHINE_SPEECH_TO_TEXT localhost)"/>
     <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" />
 
+    <!-- server -->
+    <node ns="amigo" name="speech_client" pkg="dragonfly_speech_recognition" type="vbox.py" machine="$(arg machine)" output="screen" />
+
+    <!-- client -->
     <node ns="amigo" name="speech_client" pkg="dragonfly_speech_recognition" type="client.py" machine="$(arg machine)" output="screen">
         <param name="ip" value="192.168.2.99" />
     </node>
