@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <node ns="amigo" name="speech_client" pkg="dragonfly_speech_recognition" type="client_dummy.py" output="screen" />
+
+</launch>
