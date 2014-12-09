@@ -6,7 +6,7 @@
     <include file="$(find amigo_machine_files)/machines/$(arg machine).machine" />
 
     <!-- server -->
-    <node ns="amigo" name="speech_client" pkg="dragonfly_speech_recognition" type="vbox.py" machine="$(arg machine)" output="screen" />
+    <node ns="amigo" name="speech_server" pkg="dragonfly_speech_recognition" type="vbox.py" machine="$(arg machine)" output="screen" />
 
     <!-- client -->
     <node ns="amigo" name="speech_client" pkg="dragonfly_speech_recognition" type="client.py" machine="$(arg machine)" output="screen">
