@@ -68,7 +68,7 @@
     <node name="tf_server" pkg="tf_server" type="tf_server" output="screen" />
 
     <!-- Phone UI --> <!-- only works with groovy -->
-    <include file="$(find amigo_mobile_ui)/launch/amigo.launch"/>
+<!--    <include file="$(find amigo_mobile_ui)/launch/amigo.launch"/> -->
 		
  </launch>
   
