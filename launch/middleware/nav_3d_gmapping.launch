@@ -23,7 +23,7 @@
         
         <!-- Set correct map topics for tue_map_3d node -->
         <param name="load_octomap" value="false" />
-        <param name="octomap_dir" value="$(find amigo_maps)/octomaps/" />
+        <param name="octomap_dir" value="$(find tue_maps)/octomaps/" />
         <param name="octomap_filename" value="$(arg env).ot" /> 
         <remap from="/cloud_in" to="/fused_pointclouds" /> 
         <remap from="/map" to="/octree_map" />

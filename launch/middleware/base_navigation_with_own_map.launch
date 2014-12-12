@@ -11,7 +11,7 @@
     <arg if="$(optenv ROBOT_REAL false)" name="machine" value="amigo3"/>
     <arg unless="$(optenv ROBOT_REAL false)" name="machine" value="localhost"/>
 
-    <node name="map_server_navigation" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(optenv ROBOT_MAP hospital_room).yaml">
+    <node name="map_server_navigation" pkg="map_server" type="map_server" args="$(find tue_maps)/maps/$(optenv ROBOT_MAP hospital_room).yaml">
         <remap from="/map" to="/map_navigation"/>
     </node>
 

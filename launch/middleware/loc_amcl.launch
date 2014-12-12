@@ -11,7 +11,7 @@
     <arg name="robot_init_phi" default="$(optenv ROBOT_INIT_PHI 0)"/>
     <arg name="snapmap" default="false"/>
      
-    <node name="loc_map_server" pkg="map_server" type="map_server" args="$(find amigo_maps)/maps/$(arg env)/loc/yaml" output="screen" machine="$(arg machine)">
+    <node name="loc_map_server" pkg="map_server" type="map_server" args="$(find tue_maps)/maps/$(arg env)/loc/yaml" output="screen" machine="$(arg machine)">
     	<remap from="/map" to="/loc_map"/>
     </node>
 
