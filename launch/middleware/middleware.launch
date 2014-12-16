@@ -65,9 +65,6 @@
         <include file="$(find amigo_launch_files)/launch/interaction/df_speech_recognition_dummy.launch" />	
     </group>
 
-    <!-- Start speech interpreter -->
-    <include file="$(find amigo_launch_files)/launch/interaction/speech_interpreter.launch" />	
-
     <!-- Action server -->
 	<node name="action_server" pkg="action_server" type="action_server_main" output="screen" />
 	<node name="action_server_py" pkg="action_server" type="main.py" output="screen" />
