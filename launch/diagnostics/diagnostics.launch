@@ -15,9 +15,11 @@
 	<include file="$(find challenge_logger)/launch/start.launch" />
 
 	<!-- The challenge_logger needs cpu_monitor information -->
+    <!--
 	<include file="$(find amigo_diagnostics)/launch/cpu_monitor.launch" />
 	<include file="$(find amigo_diagnostics)/launch/hd_monitor.launch" />
 	<include file="$(find amigo_diagnostics)/launch/ntp_monitor.launch" />
+    -->
 
 	<group if="$(arg ROBOT_REAL)">
 
