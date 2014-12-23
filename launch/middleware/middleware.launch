@@ -67,6 +67,6 @@
 
     <!-- Action server -->
 	<node name="action_server" pkg="action_server" type="action_server_main" output="screen" />
-	<node name="action_server_py" pkg="action_server" type="main.py" output="screen" />
+	<node name="action_server_py" args="amigo" pkg="action_server" type="main.py" output="screen" />
 
 </launch>
