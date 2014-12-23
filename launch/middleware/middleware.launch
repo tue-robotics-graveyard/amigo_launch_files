@@ -38,7 +38,7 @@
     </node>
 
     <!-- Head movement -->
-	<include file="$(find head_ref)/launch/head_ref.launch" />
+    <include file="$(find amigo_launch_files)/launch/manipulation/head_ref.launch" />
     <node name="head_ref_ed_client" pkg="head_ref_ed_client" type="head_ref_ed_client" output="screen" />
 
     <!-- Manipulation -->
@@ -66,7 +66,7 @@
     </group>
 
     <!-- Action server -->
-	<node name="action_server" pkg="action_server" type="action_server_main" output="screen" />
-	<node name="action_server_py" pkg="action_server" type="main.py" output="screen" />
+    <node name="action_server" pkg="action_server" type="action_server_main" output="screen" />
+    <node name="action_server_py" pkg="action_server" type="main.py" output="screen" />
 
 </launch>

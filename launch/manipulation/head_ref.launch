@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <arg name="gdb" default="false"/>
+    <arg if="$(arg gdb)" name="launch-prefix" value="gdb -ex run --args"/>
+    <arg unless="$(arg gdb)" name="launch-prefix" value=""/>
+
+
+    <!-- HEAD REF SERVER -->
+    <node name="head_ref" pkg="head_ref" type="head_ref" output="screen" launch-prefix="$(arg launch-prefix)">
+        <remap from="/neck/references" to="/amigo/neck/references"/>
+        <remap from="/neck/measurements" to="/amigo/neck/measurements"/>
+        <param name="tf_prefix" value="amigo"/>
+    </node>
+
+    <node name="head_ref_client_look_around" pkg="head_ref" type="look_around_client" output="screen">
+        <rosparam file="$(find amigo_launch_files)/parameters/motion_planning/look_around.yaml" command="load" />
+    </node>
+    <node name="head_ref_client_cmd_vel" pkg="head_ref" type="cmd_vel_client" output="screen">
+        <rosparam file="$(find amigo_launch_files)/parameters/motion_planning/head_cmd_vel.yaml" command="load" />
+        <remap from="/cmd_vel" to="/amigo/base/references" />
+    </node>
+
+</launch>
