@@ -3,7 +3,7 @@
 <launch>
 
 	<param name="/use_ed" value="true"/>
-   
+
 	<arg name="env" default="$(optenv ROBOT_ENV robotics_testlab_B)" />
 	<arg name="ROBOT_REAL" default="$(optenv ROBOT_REAL false)" />
 
@@ -55,14 +55,14 @@
     <include file="$(find tue_reasoner_core)/launch/start.launch" />
 
 	<!-- Start text to speech -->
-    <include file="$(find amigo_launch_files)/launch/interaction/text_to_speech.launch" />	
+    <include file="$(find amigo_launch_files)/launch/interaction/text_to_speech.launch" />
 
     <!-- Start speech recognition -->
     <group if="$(arg ROBOT_REAL)">
-        <include file="$(find amigo_launch_files)/launch/interaction/df_speech_recognition.launch" />	
+        <include file="$(find amigo_launch_files)/launch/interaction/df_speech_recognition.launch" />
     </group>
     <group unless="$(arg ROBOT_REAL)">
-        <include file="$(find amigo_launch_files)/launch/interaction/df_speech_recognition_dummy.launch" />	
+        <include file="$(find amigo_launch_files)/launch/interaction/df_speech_recognition_dummy.launch" />
     </group>
 
     <!-- Action server -->
