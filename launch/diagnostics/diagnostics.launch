@@ -5,11 +5,16 @@
 	<arg name="ROBOT_REAL" />
 
 	<!-- Collects all the diagnostics messages -->
-	<include file="$(find amigo_diagnostics)/launch/aggregator.launch" />
+    <node pkg="diagnostic_aggregator" type="aggregator_node" name="diag_agg" args="CPP" output="screen" ns="amigo">
+        <rosparam command="load" file="$(find amigo_launch_files)/launch/diagnostics/parameters/general_analyzers.yaml" />
+        <rosparam command="load" file="$(find amigo_launch_files)/launch/diagnostics/parameters/hardware_analyzers.yaml" />
+    </node>
+
 
 	<!-- Checks if nodes are still running -->
-	<rosparam command="load" file="$(find amigo_launch_files)/launch/diagnostics/parameters/neglect_nodes.yaml" />
-	<node name="node_alive_server" type="node_alive_server" pkg="node_alive" />
+    <node name="node_alive_server" type="node_alive_server" pkg="node_alive" ns="amigo">
+	    <rosparam command="load" file="$(find amigo_launch_files)/launch/diagnostics/parameters/neglect_nodes.yaml" />
+    </node>
 
 	<!-- Start challenge logger -->
 	<include file="$(find challenge_logger)/launch/start.launch" />
@@ -24,12 +29,12 @@
 	<group if="$(arg ROBOT_REAL)">
 
 		<!-- BATTERY -->
-		<include file="$(find amigo_launch_files)/launch/diagnostics/battery_manager.launch" />
+        <node pkg="battery_manager" type="battery_manager" respawn="false" name="battery_manager" output="screen" ns="amigo">
+            <rosparam file="$(find amigo_launch_files)/launch/diagnostics/parameters/battery_parameters.yaml" command="load" />
+        </node>
 
 		<!-- EMERGENCY BUTTON -->
-		<node pkg="emergency_speakup" type="emergency_speakup" respawn="true" name="emergency_speakup">
-            <remap from="/emergency_switch" to="/amigo/emergency_switch"/>
-        </node>
+        <node pkg="emergency_speakup" type="emergency_speakup" respawn="true" name="emergency_speakup" ns="amigo" />
 
 	</group>
 
