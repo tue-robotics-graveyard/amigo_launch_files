@@ -12,7 +12,7 @@
 
 
 	<!-- Checks if nodes are still running -->
-    <node name="node_alive_server" type="node_alive_server" pkg="node_alive" ns="amigo">
+    <node name="node_alive_server" type="node_alive_server" pkg="node_alive">
 	    <rosparam command="load" file="$(find amigo_launch_files)/launch/diagnostics/parameters/neglect_nodes.yaml" />
     </node>
 
