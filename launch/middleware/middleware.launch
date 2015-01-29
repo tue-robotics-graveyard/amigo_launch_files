@@ -16,7 +16,7 @@
 
 
     <!-- Localization -->
-    <include file="$(find amigo_launch_files)/launch/middleware/localization.launch" />
+    <!--include file="$(find amigo_launch_files)/launch/middleware/localization.launch" /-->
 
     <!-- Navigation -->
     <include file="$(find amigo_launch_files)/launch/navigation/cb_base_navigation.launch"/>
