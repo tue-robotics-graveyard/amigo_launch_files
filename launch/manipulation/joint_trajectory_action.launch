@@ -5,7 +5,7 @@
 
     <node pkg="tue_manipulation" type="joint_trajectory_action" name="joint_trajectory_action_left" output="screen" machine="$(arg machine)">
     	<rosparam command="load" file="$(find amigo_launch_files)/launch/manipulation/joints_left.yaml" />
-        <remap from="joint_trajectory_action" to="joint_trajectory_action_left" />
+        <remap from="joint_trajectory_action" to="/amigo/left_arm/joint_trajectory_action" />
         <remap from="measurements" to="/amigo/left_arm/measurements" />
 	<remap from="references" to="/amigo/left_arm/references" />
         <remap from="torso/references" to="/amigo/torso/references"/>
@@ -15,7 +15,7 @@
 
     <node pkg="tue_manipulation" type="joint_trajectory_action" name="joint_trajectory_action_right" output="screen" machine="$(arg machine)">
 	    <rosparam command="load" file="$(find amigo_launch_files)/launch/manipulation/joints_right.yaml" />
-        <remap from="joint_trajectory_action" to="joint_trajectory_action_right" />
+        <remap from="joint_trajectory_action" to="/amigo/right_arm/joint_trajectory_action" />
         <remap from="measurements" to="/amigo/right_arm/measurements" />
 	<remap from="references" to="/amigo/right_arm/references" />
         <remap from="torso/references" to="/amigo/torso/references"/>
