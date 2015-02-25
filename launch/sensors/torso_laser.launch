@@ -5,8 +5,8 @@
         <include file="$(find amigo_machine_files)/machines/amigo2.machine" />
 
         <node pkg="hokuyo_node" type="hokuyo_node" name="torso_hokuyo_node" output="screen" machine="amigo2" ns="amigo">
-            <remap from="scan" to="/amigo/torso_laser_raw"/>
-            <param name="frame_id" value="/amigo/torso_laser"/>
+            <remap from="scan" to="/amigo/torso_laser/scan_raw"/>
+            <param name="frame_id" value="/amigo/torso_laser/scan"/>
         </node>
 
         <node name="$(anon dynparam)" pkg="dynamic_reconfigure" type="dynparam" args="set_from_parameters torso_hokuyo_node" machine="amigo2" ns="amigo">
@@ -26,8 +26,8 @@
                     window: 1
             </rosparam>
 
-            <remap from="scan" to="/amigo/torso_laser_raw" />
-            <remap from="scan_filtered" to="/amigo/torso_laser" />
+            <remap from="scan" to="/amigo/torso_laser/scan_raw" />
+            <remap from="scan_filtered" to="/amigo/torso_laser/scan" />
         </node>
 
 </launch>
