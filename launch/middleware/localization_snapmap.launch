@@ -18,7 +18,7 @@
      <node pkg="snapmap_icp_fast" type="snapmap_node" name="snapmap" machine="$(arg machine)" output="screen">         
          <param name="odom_frame_id" value="/amigo/odom"/>
          <param name="base_frame_id" value="/amigo/base_link"/>
-         <param name="laser_topic" value="/amigo/base_front_laser"/>
+         <param name="laser_topic" value="/amigo/base_laser/scan"/>
          <param name="init_pose_topic" value="/amigo/initialpose"/>
          <param name="map_topic" value="/loc_map"/>
      </node>

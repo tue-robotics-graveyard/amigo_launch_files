@@ -5,7 +5,7 @@
         <include file="$(find amigo_machine_files)/machines/amigo1.machine" />
 
         <node pkg="hokuyo_node" type="hokuyo_node" name="front_hokuyo_node" output="screen" machine="amigo1" ns="amigo">
-            <remap from="scan" to="/amigo/base_front_laser_raw"/>
+            <remap from="scan" to="/amigo/base_laser/scan_raw"/>
             <param name="frame_id" value="/amigo/base_laser"/>
         </node>
 
@@ -41,8 +41,8 @@
                             number_of_observations: 3
             </rosparam>
 
-            <remap from="scan" to="/amigo/base_front_laser_raw" />
-            <remap from="scan_filtered" to="/amigo/base_front_laser" />
+            <remap from="scan" to="/amigo/base_laser/scan_raw" />
+            <remap from="scan_filtered" to="/amigo/base_laser/scan" />
         </node>
 
 </launch>

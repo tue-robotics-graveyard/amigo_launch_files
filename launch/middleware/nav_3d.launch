@@ -16,7 +16,7 @@
     <!-- Start the node that converts the laser data to a pointcloud -->
     <!-- <node pkg="tue_laser_to_pointcloud" type="laser_to_pointcloud" name="laser_to_pointcloud" machine="$(arg machine)"/> -->
     <node pkg="scan_to_cloud_converter" type="scan_to_cloud_converter_node" name="scan_to_cloud_converter_node" machine="$(arg machine)">
-        <remap from="/scan" to="amigo/base_front_laser" /> 
+        <remap from="/scan" to="amigo/base_laser/scan" /> 
         <remap from="/cloud" to="/fused_pointclouds" />
     </node> 
     
